@@ -1,2 +1,6 @@
 # go_fish
-Go fish experiment code
+
+To edit locallly:
+1. python -m http.server
+2. load http://localhost:8000/exp.html
+ 
