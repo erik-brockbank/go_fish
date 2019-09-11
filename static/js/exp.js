@@ -1,7 +1,7 @@
 
 
 
-Experiment = function(istest, control, htmlpath, inst_htmlpath, instruction_array, trial_array) {
+Experiment = function(istest, control, htmlpath, inst_htmlpath, instruction_array, trial_array, eval_array) {
     this.istest = istest; // `test` experiments simulate a real experiment but write results as TEST_{exptid}.json
     this.control = control; // `control` holds condition: TRUE if control, else FALSE
     this.htmlpath = htmlpath; // path to html file to load for experiment
@@ -9,7 +9,9 @@ Experiment = function(istest, control, htmlpath, inst_htmlpath, instruction_arra
     this.instruction_array = instruction_array; // array object used for instructions
 
     this.trialIndex = 0; // Index for keeping track of trial iterations
+    this.evalIndex = 0; // Index for keeping track of rule evaluation iterations
     this.trialArray = trial_array; // array object used for trials
+    this.evalArray = eval_array; // array object used for the evaluation task
 };
 
 
@@ -31,9 +33,9 @@ Experiment.prototype.startTrials = function() {
 
 Experiment.prototype.showEvidence = function() {
     console.log("Showing evidence for trial: ", this.trialIndex + 1);
-    var trialObj = this.trialArray[this.trialIndex];
 
-    // Process trialObj for this evidence trial
+    // Process trial object for this evidence trial
+    var trialObj = this.trialArray[this.trialIndex];
     var outcomeText = "";
     if (trialObj.outcome == 1) {
         outcomeText = OUTCOME_POSITIVE; // TODO pass this in (or have separate constants file exp_constants or something)
@@ -57,9 +59,9 @@ Experiment.prototype.showEvidence = function() {
 
 Experiment.prototype.showEvidenceResponse = function() {
     console.log("Collecting evidence response for trial: ", this.trialIndex + 1);
-    var trialObj = this.trialArray[this.trialIndex];
 
-    // Process trialObj for this evidence response trial
+    // Process trial object for this evidence response trial
+    var trialObj = this.trialArray[this.trialIndex];
     var responseBanner = "";
     if (this.control) {
         if (trialObj.outcome == 1) {
@@ -91,9 +93,8 @@ Experiment.prototype.showEvidenceResponse = function() {
 
 Experiment.prototype.showPrediction = function() {
     console.log("Collecting prediction for trial: ", this.trialIndex + 1);
+    // Process trial object for this prediction trial
     var trialObj = this.trialArray[this.trialIndex];
-
-    // Process trialObj for this prediction trial
 
 
     // Display html for this prediction trial
@@ -122,7 +123,9 @@ Experiment.prototype.showRuleGeneration = function() {
     // Display html for rule generation
     $("#obs-container").hide(); // TODO make separate function to clear out full trial stuff (observations etc.)
     $("#exp-container").empty();
-    $("#exp-container").load(HTML_LOOKUP["generate"]);
+    $("#exp-container").load(HTML_LOOKUP["generate"], function() {
+        // TODO move the below in here potentially?
+    });
 
     // Update button response
     var that = this;
@@ -135,4 +138,67 @@ Experiment.prototype.showRuleGeneration = function() {
 Experiment.prototype.showJudgmentTask = function() {
     console.log("Collecting rule judgments.");
 
+    // Display html for rule judgment task
+    $("#exp-container").empty();
+    $("#exp-container").load(HTML_LOOKUP["judgment"], function() {
+        // TODO fill in judgment stimuli
+    });
+
+    // Update button response
+    var that = this;
+    $(".next-button").unbind().click(function() {
+        // TODO process whether they clicked anything here (prevent from clicking next if they didn't) and add what they selected to experiment object
+        that.showEvaluationTask();
+    });
+};
+
+Experiment.prototype.showEvaluationTask = function() {
+    console.log("Showing rule evaluation for rule: ", this.evalIndex + 1);
+    var ruleEval = this.evalArray[this.evalIndex];
+
+    // Display html for evaluation task
+    $("#exp-container").empty();
+    $("#exp-container").load(HTML_LOOKUP["evaluation"], function() {
+        $("#eval-rule").text(ruleEval.rule_text);
+    });
+
+    // Update button response
+    this.evalIndex += 1;
+    var that = this;
+    $(".next-button").unbind().click(function() {
+        // TODO process whether they clicked anything here (prevent from clicking next if they didn't) and add what they selected to experiment object
+        if (that.evalIndex >= that.evalArray.length) {
+            console.log("Completed all evaluations.");
+            that.showMemoryTask();
+        } else {
+            that.showEvaluationTask();
+        }
+    });
+};
+
+Experiment.prototype.showMemoryTask = function() {
+    console.log("Showing memory task.");
+
+    // Display html for memory task
+    $("#exp-container").empty();
+    $("#exp-container").load(HTML_LOOKUP["memory"], function() {
+        // TODO fill in memory items
+    });
+
+    // Update button response
+    var that = this;
+    $(".next-button").unbind().click(function() {
+        // TODO process whether they clicked anything here (prevent from clicking next if they didn't) and add what they selected to experiment object
+        that.endExperiment();
+    });
+};
+
+Experiment.prototype.endExperiment = function() {
+    console.log("End of experiment!");
+
+    $("#exp-container").empty();
+    $(".next-button").hide();
+    $("#exp-container").text("All done! Thanks for playing!"); // TODO make this a global, add in <h1> formatting
+
+    // TODO write results to json!
 };

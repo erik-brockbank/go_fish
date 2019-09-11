@@ -14,7 +14,9 @@ const HTML_LOOKUP = { // lookup table with human-understandable html file keys a
     "evidence_resp": "/static/html/evidence_response.html",
     "prediction": "/static/html/prediction.html",
     "generate": "/static/html/generate_input.html",
-    "judgment": "/static/html/generate_task.html"
+    "judgment": "/static/html/generate_task.html",
+    "evaluation": "/static/html/evaluate.html",
+    "memory": "/static/html/memory.html"
 };
 
 
@@ -23,7 +25,8 @@ const HTML_LOOKUP = { // lookup table with human-understandable html file keys a
  */
 
 /*
- * INSTRUCTION_ARRAY is a list with identical dictionary elements that each contain:
+ * INSTRUCTION_ARRAY is a list with identical dictionary elements used to display instructions.
+ * Each element contains:
  *  "top_text": text to display in top instruction text bucket
  *  "canvas_img": path to image to display in center instruction canvas
  *  "bottom_text": text to display in bottom instruction text bucket
@@ -79,6 +82,15 @@ const CONTROL_RESPONSE_NEG = "In the space below, describe this lure combination
 const EXPLAIN_RESPONSE_POS = "In the space below, explain why your friend might have caught a fish with this lure combination.";
 const EXPLAIN_RESPONSE_NEG = "In the space below, explain why your friend might not have caught any fish with this lure combination.";
 
+/*
+ * TRIAL_ARRAY is a list of dictionary objects containing information to be filled in when
+ * displaying each trial during the experiment.
+ * Each element contains:
+ *  evidence: a dictionary object dictating what sort of lure combination is shown as evidence in this trial
+ *  outcome: (bool) variable indicating whether this lure combination caught a fish
+ *  prediction: a dictionary object of the same sort as `evidence` indicating what sort of lure combination
+ *      should be used for the prediction on this trial
+ */
 const TRIAL_ARRAY = [
     {
         evidence: {
@@ -199,5 +211,36 @@ const TRIAL_ARRAY = [
             bottom_shape: "",
             bottom_color: ""
         }
+    }
+];
+
+/*
+ * EVAL_ARRAY is a list of dictionary objects containing the rules to be evaluated sequentially
+ * during the evaluation task of the experiment.
+ * Each element contains:
+ *  rule_text: the string containing the rule to be evaluated
+ *  is_target: a (bool) variable indicating whether this is the rule we are most interested in
+ */
+const EVAL_ARRAY = [
+    {
+        rule_text: "If a lure combination has a yellow shape, it will catch fish.",
+        is_target: false // TODO consider including how much evidence each rule is consistent with
+    },
+    {
+        rule_text: "If a lure combination contains a diamond, it will catch fish.",
+        is_target: false
+    },
+    {
+        rule_text: "There is no pattern to which lure combinations catch fish: the results are " +
+            "random, but there are approximately equal numbers that catch fish and don’t.",
+        is_target: false
+    },
+    {
+        rule_text: "The lures that catch fish have a pointy shape on bottom.",
+        is_target: true
+    },
+    {
+        rule_text: "A lure combination will catch fish only if it has no blue shapes.",
+        is_target: false
     }
 ];

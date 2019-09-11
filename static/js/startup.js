@@ -26,6 +26,6 @@ loadExperiment = function() {
 
     console.log("Starting experiment with test = ", istest, "; control = ", control);
     var exp = new Experiment(istest, control, HTML_LOOKUP["experiment"], HTML_LOOKUP["instructions"],
-                                INSTRUCTION_ARRAY, TRIAL_ARRAY);
+                                INSTRUCTION_ARRAY, TRIAL_ARRAY, EVAL_ARRAY);
     exp.run();
 };
