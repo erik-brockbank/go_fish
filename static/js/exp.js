@@ -20,6 +20,7 @@ Experiment.prototype.run = function() {
     inst.run(this.startTrials.bind(this));
 };
 
+
 Experiment.prototype.startTrials = function() {
     console.log("Starting experiment trials");
     console.log(this);
@@ -31,31 +32,42 @@ Experiment.prototype.startTrials = function() {
     });
 };
 
+
 Experiment.prototype.showEvidence = function() {
     console.log("Showing evidence for trial: ", this.trialIndex + 1);
 
     // Process trial object for this evidence trial
     var trialObj = this.trialArray[this.trialIndex];
     var outcomeText = "";
+    var outcomeImg = "";
     if (trialObj.outcome == 1) {
         outcomeText = OUTCOME_POSITIVE; // TODO pass this in (or have separate constants file exp_constants or something)
+        outcomeImg = "/img/fish_icon.png"; // TODO save this somewhere as a constant
     } else if (trialObj.outcome == 0) {
         outcomeText = OUTCOME_NEGATIVE; // TODO pass this in (or have separate constants file exp_constants or something)
+        outcomeImg = "/img/no-fish_icon.png"; // TODO save this somewhere as a constant
     }
+
+    evidenceShape = "/img/lure_dummy.png"; // TODO replace this with actual shape drawing process
 
     // Display html for this evidence trial
     $("#exp-container").empty();
     $("#exp-container").load(HTML_LOOKUP["evidence"], function() { // TODO pass in html_lookup path
         $("#evidence-outcome").text(outcomeText);
+        $("#evidence-outcome-img-container").html("<img class='evidence-outcome-img' src='" + outcomeImg + "' />");
+
+        // TODO replace this with results of shape drawing process above
+        $("#evidence-shape-container").html("<img class='evidence-shape-img' src='" + evidenceShape + "' />");
     });
 
     // Update button response
     var that = this;
-    $(".next-button").unbind().click(function() {
+    $("#next-exp").unbind().click(function() {
         // TODO process time to click here (did they read this page?) and add data to experiment trial object
         that.showEvidenceResponse();
     });
 };
+
 
 Experiment.prototype.showEvidenceResponse = function() {
     console.log("Collecting evidence response for trial: ", this.trialIndex + 1);
@@ -81,11 +93,12 @@ Experiment.prototype.showEvidenceResponse = function() {
     $("#exp-container").empty();
     $("#exp-container").load(HTML_LOOKUP["evidence_resp"], function() { // TODO pass in html_lookup path
         $("#evidence-response-banner").text(responseBanner);
+        $("#evidence-response-banner").css("font-style", "Italic");
     });
 
     // Update button response
     var that = this;
-    $(".next-button").unbind().click(function() {
+    $("#next-exp").unbind().click(function() {
         // TODO process whether they wrote anything here (prevent from clicking if they didn't write anything) and add what they wrote to experiment trial object
         that.showPrediction();
     });
@@ -96,17 +109,19 @@ Experiment.prototype.showPrediction = function() {
     // Process trial object for this prediction trial
     var trialObj = this.trialArray[this.trialIndex];
 
+    var predictionShape = "/img/lure_dummy.png"; // TODO get actual prediction shape info here
 
     // Display html for this prediction trial
     $("#exp-container").empty(); // TODO consider making a separate function to clear stuff out, we call this a lot...
     $("#exp-container").load(HTML_LOOKUP["prediction"], function() { // TODO pass in html_lookup path
-        // TODO display prediction shape here
+        // TODO replace this with results of actual shape prediction process above
+        $("#prediction-img-container").html("<img class='prediction-shape-img' src='" + predictionShape + "' />");
     });
 
     // Update button response
     this.trialIndex += 1;
     var that = this;
-    $(".next-button").unbind().click(function() {
+    $("#next-exp").unbind().click(function() {
         // TODO process whether they clicked everything here (prevent from clicking if they didn't click stuff) and add their data to experiment trial object
         if (that.trialIndex >= that.trialArray.length) {
             console.log("Completed all trials.");
@@ -129,7 +144,7 @@ Experiment.prototype.showRuleGeneration = function() {
 
     // Update button response
     var that = this;
-    $(".next-button").unbind().click(function() {
+    $("#next-exp").unbind().click(function() {
         // TODO process whether they wrote anything here (prevent from clicking if they didn't write anything) and add what they wrote to experiment object
         that.showJudgmentTask();
     });
@@ -146,7 +161,7 @@ Experiment.prototype.showJudgmentTask = function() {
 
     // Update button response
     var that = this;
-    $(".next-button").unbind().click(function() {
+    $("#next-exp").unbind().click(function() {
         // TODO process whether they clicked anything here (prevent from clicking next if they didn't) and add what they selected to experiment object
         that.showEvaluationTask();
     });
@@ -165,7 +180,7 @@ Experiment.prototype.showEvaluationTask = function() {
     // Update button response
     this.evalIndex += 1;
     var that = this;
-    $(".next-button").unbind().click(function() {
+    $("#next-exp").unbind().click(function() {
         // TODO process whether they clicked anything here (prevent from clicking next if they didn't) and add what they selected to experiment object
         if (that.evalIndex >= that.evalArray.length) {
             console.log("Completed all evaluations.");
@@ -187,7 +202,7 @@ Experiment.prototype.showMemoryTask = function() {
 
     // Update button response
     var that = this;
-    $(".next-button").unbind().click(function() {
+    $("#next-exp").unbind().click(function() {
         // TODO process whether they clicked anything here (prevent from clicking next if they didn't) and add what they selected to experiment object
         that.endExperiment();
     });
@@ -197,7 +212,7 @@ Experiment.prototype.endExperiment = function() {
     console.log("End of experiment!");
 
     $("#exp-container").empty();
-    $(".next-button").hide();
+    $("#next-exp").hide();
     $("#exp-container").text("All done! Thanks for playing!"); // TODO make this a global, add in <h1> formatting
 
     // TODO write results to json!

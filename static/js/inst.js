@@ -19,9 +19,10 @@ Instructions.prototype.run = function(experimentCallback) {
 
     // Load html for displaying instructions
     var that = this;
+    console.log("loading: ", that.htmlpath);
     $("body").load(that.htmlpath, function() {
         that.populateInstruction()
-        $("#next-inst").click(function() {that.buttonNext();});
+        $("#next-inst").unbind().click(function() {that.buttonNext();});
     });
 };
 
@@ -50,8 +51,9 @@ Instructions.prototype.populateInstruction = function() {
     // Add bottom text
     $("#text-bottom").text(instructionElem.bottom_text);
     // Add and format image
-    $("#canvas-mid").prepend("<img class='instruction-img' src='" + instructionElem.canvas_img + "' />");
-    $(".instruction-img").height(200);
+    if (instructionElem.canvas_img != "") {
+        $("#canvas-mid").prepend("<img class='instruction-img' src='" + instructionElem.canvas_img + "' />");
+    }
 
     this.instructionsIndex++;
     return

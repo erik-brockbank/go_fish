@@ -1,0 +1,164 @@
+#exp-container {
+    font-family: 'Average Sans';
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    width: 800px;
+}
+
+#exp-button-container {
+    text-align: center;
+    padding: 20px;
+    font-family: 'Average Sans';
+}
+
+#next-exp {
+    text-decoration: none;
+    background-color: #4CAF50;
+    border: 2px solid #4CAF50;
+    color: white;
+    margin: 4px 2px;
+    padding: 8px 16px;
+    font-size: 16px;
+}
+
+#next-exp:hover {
+    background-color: #4CAF50;
+    color: black;
+}
+
+.evidence-shape-img, .evidence-outcome-img, .prediction-shape-img {
+    height: 200px;
+    padding: 20px;
+}
+
+#prediction-response-checkbox-container, #prediction-confidence-scale-container,
+#eval-rule, #eval-slider-container {
+    padding: 20px;
+}
+
+.slider {
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+  }
+
+#prediction-confidence-scale-container, #eval-slider-container {
+    width: 500px;
+}
+
+
+/*
+ * This code taken from top response here:
+ * https://stackoverflow.com/questions/33699852/show-tick-positions-in-custom-range-input
+ */
+.sliderticks {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 12px; /* customized this to look best */
+  }
+
+.sliderticks p {
+    display: flex;
+    justify-content: center;
+    width: 2px; /* customized this to look best */
+    background: #D3D3D3;
+    height: 10px;
+    line-height: 40px;
+    margin: 0 0 20px 0;
+    font-size: 18px;
+}
+
+/* This should match sliderticks above */
+.sliderlabels {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.sliderlabels p {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 0 0;
+    font-size: 18px;
+}
+
+
+/* This code for custom radio buttons taken from here:
+ * https://www.w3schools.com/howto/howto_css_custom_checkbox.asp
+ */
+/* The container */
+.custom-radio {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+/* Hide the browser's default radio button */
+.custom-radio input {
+    position: absolute;
+    opacity: 0;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.custom-radio:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.custom-radio input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.custom-radio input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.custom-radio .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}

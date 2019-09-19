@@ -7,8 +7,26 @@
 <div id="prediction-container">
         <div id="prediction-banner">Here's a new lure combination:</div>
         <div id="prediction-img-container"></div>
-        <div id="prediction-response-banner">Do you think it will catch fish?</div>
-        <div id="prediction-response-checkbox-container"></div>
-        <div id="prediction-confidence-banner">How confident are you?</div>
-        <div id="prediction-confidence-scale-container"></div>
+        <div id="prediction-response-banner"><i>Do you think it will catch fish?</i></div>
+        <div id="prediction-response-checkbox-container">
+            <label class="custom-radio">Yes
+                <input type="radio" checked="checked" name="radio">
+                <span class="checkmark"></span>
+            </label>
+            <label class="custom-radio">No
+                <input type="radio" name="radio">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+        <div id="prediction-confidence-banner"><i>How confident are you?</i></div>
+        <div id="prediction-confidence-scale-container">
+            <input type="range" class="slider" id="prediction-slider" min="1" max="7" step="1">
+            <div class="sliderticks">
+                <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p>
+            </div>
+            <div class="sliderlabels">
+                <p><i>Not sure</i></p>
+                <p><i>Very sure</i></p>
+            </div>
+        </div>
 </div>

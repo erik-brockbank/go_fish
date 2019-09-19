@@ -59,9 +59,10 @@ const INSTRUCTION_ARRAY = [
         bottom_text: ""
     },
     {
-        top_text: "Your job is to figure out why your friend catches fish with some lure combinations and not with others. ",
+        top_text: "Your job is to figure out why your friend catches fish with some lure combinations and not with others. " +
+            "Throughout the experiment, you will be asked to predict whether different lure combinations are likely to catch fish.",
         canvas_img: "",
-        bottom_text: "Throughout the experiment, you will be asked to predict whether different lure combinations are likely to catch fish. "
+        bottom_text: ""
     },
     {
         top_text: "Let's get started!",
