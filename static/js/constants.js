@@ -245,3 +245,83 @@ const EVAL_ARRAY = [
         is_target: false
     }
 ];
+
+
+/*
+ * MEMORY_ARRAY is a list of dictionary objects containing the shapes to be used in the memory probe,
+ * as well as whether they were in fact part of the experiment.
+ */
+const MEMORY_ARRAY = [
+    {
+        probe: {
+            top_shape: "",
+            top_color: "",
+            bottom_shape: "",
+            bottom_color: ""
+        },
+        in_expt: 1
+    },
+    {
+        probe: {
+            top_shape: "",
+            top_color: "",
+            bottom_shape: "",
+            bottom_color: ""
+        },
+        in_expt: 1
+    },
+    {
+        probe: {
+            top_shape: "",
+            top_color: "",
+            bottom_shape: "",
+            bottom_color: ""
+        },
+        in_expt: 1
+    },
+    {
+        probe: {
+            top_shape: "",
+            top_color: "",
+            bottom_shape: "",
+            bottom_color: ""
+        },
+        in_expt: 1
+    },
+    {
+        probe: {
+            top_shape: "",
+            top_color: "",
+            bottom_shape: "",
+            bottom_color: ""
+        },
+        in_expt: 1
+    },
+    {
+        probe: {
+            top_shape: "",
+            top_color: "",
+            bottom_shape: "",
+            bottom_color: ""
+        },
+        in_expt: 1
+    },
+    {
+        probe: {
+            top_shape: "",
+            top_color: "",
+            bottom_shape: "",
+            bottom_color: ""
+        },
+        in_expt: 1
+    },
+    {
+        probe: {
+            top_shape: "",
+            top_color: "",
+            bottom_shape: "",
+            bottom_color: ""
+        },
+        in_expt: 1
+    }
+];

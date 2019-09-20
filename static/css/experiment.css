@@ -11,6 +11,9 @@
     text-align: center;
     padding: 20px;
     font-family: 'Average Sans';
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #next-exp {
@@ -65,6 +68,33 @@
 #prediction-confidence-scale-container, #eval-slider-container {
     width: 500px;
 }
+
+.memory-test-container {
+    padding-top: 20px;
+}
+
+/* Note the width and margin here are what hold together the layout in combination
+ * with the left float and the right flot of the img container. It's a bit delicate...
+ */
+.memory-probe {
+    width: 120px;
+    margin: 40px;
+    float: left;
+}
+
+.memory-img-container {
+    float: right;
+}
+
+.memory-probe-img {
+    width: 50px;
+}
+
+.memory-checkbox-container {
+    margin-top: 20px;
+}
+
+
 
 
 /*

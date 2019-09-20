@@ -104,6 +104,7 @@ Experiment.prototype.showEvidenceResponse = function() {
     });
 };
 
+
 Experiment.prototype.showPrediction = function() {
     console.log("Collecting prediction for trial: ", this.trialIndex + 1);
     // Process trial object for this prediction trial
@@ -132,6 +133,7 @@ Experiment.prototype.showPrediction = function() {
     });
 };
 
+
 Experiment.prototype.showRuleGeneration = function() {
     console.log("Collecting rule generation.");
 
@@ -150,6 +152,7 @@ Experiment.prototype.showRuleGeneration = function() {
     });
 };
 
+
 Experiment.prototype.showJudgmentTask = function() {
     console.log("Collecting rule judgments.");
 
@@ -166,6 +169,7 @@ Experiment.prototype.showJudgmentTask = function() {
         that.showEvaluationTask();
     });
 };
+
 
 Experiment.prototype.showEvaluationTask = function() {
     console.log("Showing rule evaluation for rule: ", this.evalIndex + 1);
@@ -191,13 +195,20 @@ Experiment.prototype.showEvaluationTask = function() {
     });
 };
 
+
 Experiment.prototype.showMemoryTask = function() {
     console.log("Showing memory task.");
+
+    var predictionShape = "/img/lure_dummy.png"; // TODO get actual memory shape info here
 
     // Display html for memory task
     $("#exp-container").empty();
     $("#exp-container").load(HTML_LOOKUP["memory"], function() {
-        // TODO fill in memory items
+        for (memIndex = 1; memIndex <= MEMORY_ARRAY.length; memIndex++) {
+            // TODO replace this with results of actual memory shape process above
+            $("#memory-img-container-" + memIndex).html(
+                "<img class='memory-probe-img' id='memory-probe-img-" + memIndex + "' src='" + predictionShape + "' />");
+        }
     });
 
     // Update button response
@@ -208,12 +219,13 @@ Experiment.prototype.showMemoryTask = function() {
     });
 };
 
+
 Experiment.prototype.endExperiment = function() {
     console.log("End of experiment!");
 
     $("#exp-container").empty();
     $("#next-exp").hide();
-    $("#exp-container").text("All done! Thanks for playing!"); // TODO make this a global, add in <h1> formatting
+    $("#exp-container").html("<h1>All done! Thanks for playing!</h1>"); // TODO make this a global
 
     // TODO write results to json!
 };
