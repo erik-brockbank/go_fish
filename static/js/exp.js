@@ -159,7 +159,12 @@ Experiment.prototype.showJudgmentTask = function() {
     // Display html for rule judgment task
     $("#exp-container").empty();
     $("#exp-container").load(HTML_LOOKUP["judgment"], function() {
-        // TODO fill in judgment stimuli
+        for (genIndex = 1; genIndex <= GENERATE_ARRAY.length; genIndex++) {
+            // TODO replace the below with results of actual generation shape process (get elem in GENERATE_ARRAY at genIndex, do stuff)
+            var genShape = "/img/lure_dummy.png"; // TODO get actual shape info here
+            $("#generate-img-container-" + genIndex).html(
+                "<img class='generate-img' id='generate-img-" + genIndex + "' src='" + genShape + "' />");
+        }
     });
 
     // Update button response
@@ -198,14 +203,12 @@ Experiment.prototype.showEvaluationTask = function() {
 
 Experiment.prototype.showMemoryTask = function() {
     console.log("Showing memory task.");
-
-    var predictionShape = "/img/lure_dummy.png"; // TODO get actual memory shape info here
-
     // Display html for memory task
     $("#exp-container").empty();
     $("#exp-container").load(HTML_LOOKUP["memory"], function() {
         for (memIndex = 1; memIndex <= MEMORY_ARRAY.length; memIndex++) {
-            // TODO replace this with results of actual memory shape process above
+            // TODO replace the below with results of actual memory shape process (get elem in MEMORY_ARRAY at memIndex, do stuff)
+            var predictionShape = "/img/lure_dummy.png"; // TODO get actual memory shape info here
             $("#memory-img-container-" + memIndex).html(
                 "<img class='memory-probe-img' id='memory-probe-img-" + memIndex + "' src='" + predictionShape + "' />");
         }

@@ -4,9 +4,211 @@
 -->
 
 <div id="judgment-container">
-        <div id="judgment-banner">
-            <i>In the space below, check the box next to each lure combination to indicate
-            whether you think it will catch fish and how confident you are.</i>
+    <div id="judgment-banner">
+        <i>In the space below, check the box next to each lure combination to indicate
+        whether you think it will catch fish and how confident you are.</i>
+    </div>
+    <div id="judgment-test-container">
+        <!-- TODO see about injecting these dynamically with jquery, since they're basically identical...-->
+        <div class="generate-probe" id="generate-probe-1">
+            <div class="generate-img-container" id="generate-img-container-1"></div>
+            <div class="generate-checkbox-container">
+                <label class="custom-radio">
+                    <img src="/img/fish_icon-checkbox.png" class="generate-checkbox-img">
+                    <input type="radio" name="generate-1">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="custom-radio">
+                    <img src="/img/no-fish_icon-checkbox.png" class="generate-checkbox-img">
+                    <input type="radio" name="generate-1">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <div class="generate-scale-container" id="generate-scale-1">
+                <input type="range" class="slider" id="prediction-slider" min="1" max="7" step="1">
+                <div class="sliderticks" id="generate-sliderticks">
+                    <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p>
+                </div>
+                <div class="sliderlabels" id="generate-sliderlabels">
+                    <p><i>Not sure</i></p>
+                    <p><i>Very sure</i></p>
+                </div>
+            </div>
         </div>
-        <div id="judgment-test-container"></div>
+        <div class="generate-probe" id="generate-probe-2">
+            <div class="generate-img-container" id="generate-img-container-2"></div>
+            <div class="generate-checkbox-container">
+                <label class="custom-radio">
+                    <img src="/img/fish_icon-checkbox.png" class="generate-checkbox-img">
+                    <input type="radio" name="generate-2">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="custom-radio">
+                    <img src="/img/no-fish_icon-checkbox.png" class="generate-checkbox-img">
+                    <input type="radio" name="generate-2">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <div class="generate-scale-container" id="generate-scale-2">
+                <input type="range" class="slider" id="prediction-slider" min="1" max="7" step="1">
+                <div class="sliderticks" id="generate-sliderticks">
+                        <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p>
+                    </div>
+                    <div class="sliderlabels" id="generate-sliderlabels">
+                        <p><i>Not sure</i></p>
+                        <p><i>Very sure</i></p>
+                </div>
+            </div>
+        </div>
+        <div class="generate-probe" id="generate-probe-3">
+            <div class="generate-img-container" id="generate-img-container-3"></div>
+            <div class="generate-checkbox-container">
+                <label class="custom-radio">
+                    <img src="/img/fish_icon-checkbox.png" class="generate-checkbox-img">
+                    <input type="radio" name="generate-3">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="custom-radio">
+                    <img src="/img/no-fish_icon-checkbox.png" class="generate-checkbox-img">
+                    <input type="radio" name="generate-3">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <div class="generate-scale-container" id="generate-scale-3">
+                <input type="range" class="slider" id="prediction-slider" min="1" max="7" step="1">
+                <div class="sliderticks" id="generate-sliderticks">
+                        <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p>
+                    </div>
+                    <div class="sliderlabels" id="generate-sliderlabels">
+                        <p><i>Not sure</i></p>
+                        <p><i>Very sure</i></p>
+                </div>
+            </div>
+        </div>
+        <div class="generate-probe" id="generate-probe-4">
+            <div class="generate-img-container" id="generate-img-container-4"></div>
+            <div class="generate-checkbox-container">
+                <label class="custom-radio">
+                    <img src="/img/fish_icon-checkbox.png" class="generate-checkbox-img">
+                    <input type="radio" name="generate-4">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="custom-radio">
+                    <img src="/img/no-fish_icon-checkbox.png" class="generate-checkbox-img">
+                    <input type="radio" name="generate-4">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <div class="generate-scale-container" id="generate-scale-4">
+                <input type="range" class="slider" id="prediction-slider" min="1" max="7" step="1">
+                <div class="sliderticks" id="generate-sliderticks">
+                        <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p>
+                    </div>
+                    <div class="sliderlabels" id="generate-sliderlabels">
+                        <p><i>Not sure</i></p>
+                        <p><i>Very sure</i></p>
+                </div>
+            </div>
+        </div>
+        <div class="generate-probe" id="generate-probe-5">
+            <div class="generate-img-container" id="generate-img-container-5"></div>
+            <div class="generate-checkbox-container">
+                <label class="custom-radio">
+                    <img src="/img/fish_icon-checkbox.png" class="generate-checkbox-img">
+                    <input type="radio" name="generate-5">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="custom-radio">
+                    <img src="/img/no-fish_icon-checkbox.png" class="generate-checkbox-img">
+                    <input type="radio" name="generate-5">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <div class="generate-scale-container" id="generate-scale-5">
+                <input type="range" class="slider" id="prediction-slider" min="1" max="7" step="1">
+                <div class="sliderticks" id="generate-sliderticks">
+                        <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p>
+                    </div>
+                    <div class="sliderlabels" id="generate-sliderlabels">
+                        <p><i>Not sure</i></p>
+                        <p><i>Very sure</i></p>
+                </div>
+            </div>
+        </div>
+        <div class="generate-probe" id="generate-probe-6">
+            <div class="generate-img-container" id="generate-img-container-6"></div>
+            <div class="generate-checkbox-container">
+                <label class="custom-radio">
+                    <img src="/img/fish_icon-checkbox.png" class="generate-checkbox-img">
+                    <input type="radio" name="generate-6">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="custom-radio">
+                    <img src="/img/no-fish_icon-checkbox.png" class="generate-checkbox-img">
+                    <input type="radio" name="generate-6">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <div class="generate-scale-container" id="generate-scale-6">
+                <input type="range" class="slider" id="prediction-slider" min="1" max="7" step="1">
+                <div class="sliderticks" id="generate-sliderticks">
+                        <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p>
+                    </div>
+                    <div class="sliderlabels" id="generate-sliderlabels">
+                        <p><i>Not sure</i></p>
+                        <p><i>Very sure</i></p>
+                </div>
+            </div>
+        </div>
+        <div class="generate-probe" id="generate-probe-7">
+            <div class="generate-img-container" id="generate-img-container-7"></div>
+            <div class="generate-checkbox-container">
+                <label class="custom-radio">
+                    <img src="/img/fish_icon-checkbox.png" class="generate-checkbox-img">
+                    <input type="radio" name="generate-7">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="custom-radio">
+                    <img src="/img/no-fish_icon-checkbox.png" class="generate-checkbox-img">
+                    <input type="radio" name="generate-7">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <div class="generate-scale-container" id="generate-scale-7">
+                <input type="range" class="slider" id="prediction-slider" min="1" max="7" step="1">
+                <div class="sliderticks" id="generate-sliderticks">
+                        <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p>
+                    </div>
+                    <div class="sliderlabels" id="generate-sliderlabels">
+                        <p><i>Not sure</i></p>
+                        <p><i>Very sure</i></p>
+                </div>
+            </div>
+        </div>
+        <div class="generate-probe" id="generate-probe-5">
+            <div class="generate-img-container" id="generate-img-container-8"></div>
+            <div class="generate-checkbox-container">
+                <label class="custom-radio">
+                    <img src="/img/fish_icon-checkbox.png" class="generate-checkbox-img">
+                    <input type="radio" name="generate-8">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="custom-radio">
+                    <img src="/img/no-fish_icon-checkbox.png" class="generate-checkbox-img">
+                    <input type="radio" name="generate-8">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <div class="generate-scale-container" id="generate-scale-8">
+                <input type="range" class="slider" id="prediction-slider" min="1" max="7" step="1">
+                <div class="sliderticks" id="generate-sliderticks">
+                        <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p>
+                    </div>
+                    <div class="sliderlabels" id="generate-sliderlabels">
+                        <p><i>Not sure</i></p>
+                        <p><i>Very sure</i></p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

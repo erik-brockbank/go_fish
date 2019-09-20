@@ -216,6 +216,85 @@ const TRIAL_ARRAY = [
 ];
 
 /*
+ * GENERATE_ARRAY is a list of dictionary objects containing the elements to be presented
+ * during the judgment task in the generate phase of the experiment
+ */
+const GENERATE_ARRAY = [
+    {
+        probe: {
+            top_shape: "",
+            top_color: "",
+            bottom_shape: "",
+            bottom_color: ""
+        },
+        catches_fish: 1
+    },
+    {
+        probe: {
+            top_shape: "",
+            top_color: "",
+            bottom_shape: "",
+            bottom_color: ""
+        },
+        catches_fish: 1
+    },
+    {
+        probe: {
+            top_shape: "",
+            top_color: "",
+            bottom_shape: "",
+            bottom_color: ""
+        },
+        catches_fish: 1
+    },
+    {
+        probe: {
+            top_shape: "",
+            top_color: "",
+            bottom_shape: "",
+            bottom_color: ""
+        },
+        catches_fish: 1
+    },
+    {
+        probe: {
+            top_shape: "",
+            top_color: "",
+            bottom_shape: "",
+            bottom_color: ""
+        },
+        catches_fish: 1
+    },
+    {
+        probe: {
+            top_shape: "",
+            top_color: "",
+            bottom_shape: "",
+            bottom_color: ""
+        },
+        catches_fish: 1
+    },
+    {
+        probe: {
+            top_shape: "",
+            top_color: "",
+            bottom_shape: "",
+            bottom_color: ""
+        },
+        catches_fish: 1
+    },
+    {
+        probe: {
+            top_shape: "",
+            top_color: "",
+            bottom_shape: "",
+            bottom_color: ""
+        },
+        catches_fish: 1
+    }
+];
+
+/*
  * EVAL_ARRAY is a list of dictionary objects containing the rules to be evaluated sequentially
  * during the evaluation task of the experiment.
  * Each element contains:

@@ -94,6 +94,43 @@
     margin-top: 20px;
 }
 
+/* Formatting for judgment task */
+.generate-probe {
+    width: 180px;
+    margin: 25px 10px 10px 10px;
+    float: left;
+}
+
+.generate-checkbox-img {
+    width: 50px;
+}
+
+.generate-img-container {
+    float: right;
+}
+
+.generate-img {
+    width: 50px;
+}
+
+.generate-checkbox-container {
+    margin-top: 20px;
+}
+
+
+#prediction-sliderticks p {
+    font-size: 18px;
+}
+#prediction-sliderlabels p {
+    font-size: 18px;
+}
+
+#generate-sliderticks p {
+    font-size: 16px;
+}
+#generate-sliderlabels p {
+    font-size: 14px;
+}
 
 
 
@@ -115,7 +152,6 @@
     height: 10px;
     line-height: 40px;
     margin: 0 0 20px 0;
-    font-size: 18px;
 }
 
 /* This should match sliderticks above */
@@ -129,7 +165,6 @@
     display: flex;
     justify-content: center;
     margin: 0 0 0 0;
-    font-size: 18px;
 }
 
 
