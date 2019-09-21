@@ -183,6 +183,7 @@ Experiment.prototype.showEvaluationTask = function() {
     // Display html for evaluation task
     $("#exp-container").empty();
     $("#exp-container").load(HTML_LOOKUP["evaluation"], function() {
+        $("#obs-container").show(); // show observed evidence during evaluation task
         $("#eval-rule").text(ruleEval.rule_text);
     });
 
@@ -205,6 +206,7 @@ Experiment.prototype.showMemoryTask = function() {
     console.log("Showing memory task.");
     // Display html for memory task
     $("#exp-container").empty();
+    $("#obs-container").hide(); // TODO make separate function to clear out full trial stuff (observations etc.)
     $("#exp-container").load(HTML_LOOKUP["memory"], function() {
         for (memIndex = 1; memIndex <= MEMORY_ARRAY.length; memIndex++) {
             // TODO replace the below with results of actual memory shape process (get elem in MEMORY_ARRAY at memIndex, do stuff)

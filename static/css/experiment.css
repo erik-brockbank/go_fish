@@ -31,6 +31,27 @@
     color: black;
 }
 
+#obs-container {
+    font-family: 'Average Sans';
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+    height: 160px;
+    margin-bottom: 20px;
+    margin-top: 40px;
+}
+
+/* Note the structure of the observations lined up depends on the width and height set here*/
+.obs-item {
+    width: 80px;
+    height: 120px;
+    margin: 10px;
+    float: left;
+    background: #d3d3d3;
+    outline: 2px solid black;
+}
+
 .evidence-shape-img, .evidence-outcome-img, .prediction-shape-img {
     height: 200px;
     padding: 20px;
@@ -77,13 +98,14 @@
  * with the left float and the right flot of the img container. It's a bit delicate...
  */
 .memory-probe {
-    width: 120px;
-    margin: 40px;
+    width: 160px;
+    margin: 20px;
     float: left;
 }
 
 .memory-img-container {
     float: right;
+    padding-right: 20px;
 }
 
 .memory-probe-img {
@@ -95,6 +117,10 @@
 }
 
 /* Formatting for judgment task */
+#judgment-container {
+    height: 500px; /* this is a little sketchy but the only way to keep the Next button from crowding up */
+}
+
 .generate-probe {
     width: 180px;
     margin: 25px 10px 10px 10px;
@@ -107,6 +133,7 @@
 
 .generate-img-container {
     float: right;
+    padding-right: 20px;
 }
 
 .generate-img {
