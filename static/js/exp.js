@@ -89,11 +89,17 @@ Experiment.prototype.showEvidenceResponse = function() {
         }
     }
 
+    evidenceShape = "/img/lure_dummy.png"; // TODO replace this with actual retrieval of this trial's shape
+
     // Display html for this response trial
+    var that = this;
     $("#exp-container").empty();
     $("#exp-container").load(HTML_LOOKUP["evidence_resp"], function() { // TODO pass in html_lookup path
         $("#evidence-response-banner").text(responseBanner);
         $("#evidence-response-banner").css("font-style", "Italic");
+        // TODO replace this with a function that handles observed evidence updates
+        $("#obs-item-" + (that.trialIndex + 1)).html("<img class='obs-item-img' src='" + evidenceShape + "' />");
+        // TODO add fish and no-fish icon under the evidence and box around fish
     });
 
     // Update button response

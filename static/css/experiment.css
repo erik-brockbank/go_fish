@@ -50,6 +50,11 @@
     float: left;
     background: #d3d3d3;
     outline: 2px solid black;
+    text-align: center;
+}
+
+.obs-item-img {
+    width: 60px;
 }
 
 .evidence-shape-img, .evidence-outcome-img, .prediction-shape-img {
