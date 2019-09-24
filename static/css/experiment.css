@@ -37,7 +37,7 @@
     margin-left: auto;
     margin-right: auto;
     width: 800px;
-    height: 160px;
+    height: 240px;
     margin-bottom: 20px;
     margin-top: 40px;
 }
@@ -54,6 +54,18 @@
 }
 
 .obs-item-img {
+    width: 60px;
+}
+
+.obs-outcome {
+    width: 80px;
+    height: 20px;
+    margin: 10px;
+    float: left;
+    text-align: center;
+}
+
+.obs-outcome-img {
     width: 60px;
 }
 

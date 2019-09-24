@@ -75,6 +75,7 @@ Experiment.prototype.showEvidenceResponse = function() {
     // Process trial object for this evidence response trial
     var trialObj = this.trialArray[this.trialIndex];
     var responseBanner = "";
+    var evidenceOutcomeImg = "";
     if (this.control) {
         if (trialObj.outcome == 1) {
             responseBanner = CONTROL_RESPONSE_POS;
@@ -89,6 +90,14 @@ Experiment.prototype.showEvidenceResponse = function() {
         }
     }
 
+    // TODO consolidate this with the above
+    // TODO make same-size fish and no-fish images for outcomes and checkboxes
+    if (trialObj.outcome == 1) {
+        evidenceOutcomeImg = "/img/fish_icon-checkbox.png";
+    } else {
+        evidenceOutcomeImg = "/img/no-fish_icon-checkbox.png";
+    }
+
     evidenceShape = "/img/lure_dummy.png"; // TODO replace this with actual retrieval of this trial's shape
 
     // Display html for this response trial
@@ -99,7 +108,11 @@ Experiment.prototype.showEvidenceResponse = function() {
         $("#evidence-response-banner").css("font-style", "Italic");
         // TODO replace this with a function that handles observed evidence updates
         $("#obs-item-" + (that.trialIndex + 1)).html("<img class='obs-item-img' src='" + evidenceShape + "' />");
-        // TODO add fish and no-fish icon under the evidence and box around fish
+        $("#obs-outcome-" + (that.trialIndex + 1)).html("<img class='obs-outcome-img' src='" + evidenceOutcomeImg + "' />");
+        if (trialObj.outcome == 1) {
+            $("#obs-item-" + (that.trialIndex + 1)).css("border", "5px solid black"); // draw bold box around fish catches
+            $("#obs-item-" + (that.trialIndex + 1)).css("margin", "5px"); // decrease margin to keep everything lined up
+        }
     });
 
     // Update button response
