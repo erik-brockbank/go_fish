@@ -48,7 +48,6 @@ Experiment.prototype.showEvidence = function() {
         outcomeImg = "/img/no-fish_icon.png"; // TODO save this somewhere as a constant
     }
 
-    evidenceShape = "/img/lure_dummy.png"; // TODO replace this with actual shape drawing process
 
     // Display html for this evidence trial
     $("#exp-container").empty();
@@ -57,7 +56,10 @@ Experiment.prototype.showEvidence = function() {
         $("#evidence-outcome-img-container").html("<img class='evidence-outcome-img' src='" + outcomeImg + "' />");
 
         // TODO replace this with results of shape drawing process above
-        $("#evidence-shape-container").html("<img class='evidence-shape-img' src='" + evidenceShape + "' />");
+        // $("#evidence-shape-container").html("<img class='evidence-shape-img' src='" + evidenceShape + "' />");
+        shapeInfo = trialObj.evidence;
+        evidenceShape = new Lure(shapeInfo.top_shape, shapeInfo.bottom_shape, shapeInfo.top_color, shapeInfo.bottom_color);
+        evidenceShape.drawLure(canvasId = "evidence-shape-canvas"); // TODO store this ID somewhere sensible
     });
 
     // Update button response

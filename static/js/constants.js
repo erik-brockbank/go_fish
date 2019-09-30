@@ -20,6 +20,11 @@ const HTML_LOOKUP = { // lookup table with human-understandable html file keys a
 };
 
 
+const COLOR_LOOKUP = {
+    "red": "#FF0000",
+};
+
+
 /*
  * INSTRUCTION CONSTANTS
  */
@@ -94,11 +99,11 @@ const EXPLAIN_RESPONSE_NEG = "In the space below, explain why your friend might 
  */
 const TRIAL_ARRAY = [
     {
-        evidence: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
+        evidence: { // Note this isn't the actual first evidence but is an easy one to draw...
+            top_shape: "circle",
+            top_color: "red",
+            bottom_shape: "triangle",
+            bottom_color: "blue"
         },
         outcome: 1,
         prediction: {
