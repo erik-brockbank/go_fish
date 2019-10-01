@@ -69,11 +69,11 @@
     width: 60px;
 }
 
-#evidence-shape-canvas {
+#evidence-shape-canvas, #prediction-shape-canvas {
     height: 200px;
 }
 
-.evidence-outcome-img, .prediction-shape-img {
+.evidence-outcome-img {
     height: 200px;
     padding: 20px;
 }

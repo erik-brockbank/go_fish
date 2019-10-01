@@ -56,8 +56,8 @@ Experiment.prototype.showEvidence = function() {
 
         // TODO replace this with results of shape drawing process above
         // $("#evidence-shape-container").html("<img class='evidence-shape-img' src='" + evidenceShape + "' />");
-        shapeInfo = trialObj.evidence;
-        evidenceShape = new Lure(shapeInfo.top_shape, shapeInfo.bottom_shape, shapeInfo.top_color, shapeInfo.bottom_color);
+        var shapeInfo = trialObj.evidence;
+        var evidenceShape = new Lure(shapeInfo.top_shape, shapeInfo.bottom_shape, shapeInfo.top_color, shapeInfo.bottom_color);
         evidenceShape.drawLure(canvasId = "evidence-shape-canvas"); // TODO store this ID somewhere sensible
     });
 
@@ -130,13 +130,17 @@ Experiment.prototype.showPrediction = function() {
     // Process trial object for this prediction trial
     var trialObj = this.trialArray[this.trialIndex];
 
-    var predictionShape = "/img/lure_dummy.png"; // TODO get actual prediction shape info here
+    // var predictionShape = "/img/lure_dummy.png"; // TODO get actual prediction shape info here
+
 
     // Display html for this prediction trial
     $("#exp-container").empty(); // TODO consider making a separate function to clear stuff out, we call this a lot...
     $("#exp-container").load(HTML_LOOKUP["prediction"], function() { // TODO pass in html_lookup path
         // TODO replace this with results of actual shape prediction process above
-        $("#prediction-img-container").html("<img class='prediction-shape-img' src='" + predictionShape + "' />");
+        // $("#prediction-img-container").html("<img class='prediction-shape-img' src='" + predictionShape + "' />");
+        var shapeInfo = trialObj.prediction;
+        var evidenceShape = new Lure(shapeInfo.top_shape, shapeInfo.bottom_shape, shapeInfo.top_color, shapeInfo.bottom_color);
+        evidenceShape.drawLure(canvasId = "prediction-shape-canvas"); // TODO store this ID somewhere sensible
     });
 
     // Update button response

@@ -129,18 +129,17 @@ Teardrop = function(position, color) {
         this.width = 50;
     } else if (position == "bottom") {
         this.top_x = 62.5;
-        this.top_y = 100;
+        this.top_y = 112.5;
         this.width = 25;
     }
     this.color = color;
 };
 
 Teardrop.prototype.draw = function(ctx) {
-    // TODO replace this with straight lines down to < half circle arcs
     ctx.beginPath();
-    ctx.arc(this.top_x, this.top_y, this.width / 2, 0, Math.PI / 2);
-    ctx.arc(this.top_x + (this.width / 2), this.top_y + (this.width / 2), this.width / 2, Math.PI, 0, true);
-    ctx.arc(this.top_x + this.width, this.top_y, this.width / 2, Math.PI / 2, Math.PI);
+    ctx.arc(this.top_x + (this.width / 2), this.top_y + (this.width / 2), this.width / 2, (5/4) * Math.PI, (7/4) * Math.PI, true);
+    ctx.lineTo(this.top_x + (this.width / 2), this.top_y - (this.width / 2));
+    ctx.closePath();
     ctx.fillStyle = this.color;
     ctx.fill();
 };

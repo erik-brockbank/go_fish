@@ -107,60 +107,75 @@ const TRIAL_ARRAY = [
         evidence: {
             top_shape: "teardrop",
             top_color: "red",
-            bottom_shape: "teardrop",
-            bottom_color: "blue"
+            bottom_shape: "triangle",
+            bottom_color: "yellow"
         },
         outcome: 1,
         prediction: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
-        }
-    },
-    {
-        evidence: {
-            top_shape: "teardrop",
-            top_color: "yellow",
-            bottom_shape: "circle",
-            bottom_color: "green"
-        },
-        outcome: 0,
-        prediction: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
-        }
-    },
-    {
-        evidence: {
             top_shape: "teardrop",
             top_color: "red",
-            bottom_shape: "triangle",
+            bottom_shape: "diamond",
+            bottom_color: "green"
+        }
+    },
+    {
+        evidence: {
+            top_shape: "circle",
+            top_color: "green",
+            bottom_shape: "teardrop",
             bottom_color: "blue"
         },
         outcome: 0,
         prediction: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
+            top_shape: "circle",
+            top_color: "green",
+            bottom_shape: "triangle",
+            bottom_color: "blue"
+        }
+    },
+    {
+        evidence: {
+            top_shape: "diamond",
+            top_color: "yellow",
+            bottom_shape: "circle",
+            bottom_color: "blue"
+        },
+        outcome: 0,
+        prediction: {
+            top_shape: "triangle",
+            top_color: "yellow",
+            bottom_shape: "circle",
+            bottom_color: "blue"
         }
     },
     {
         evidence: {
             top_shape: "teardrop",
-            top_color: "yellow",
+            top_color: "blue",
+            bottom_shape: "diamond",
+            bottom_color: "yellow"
+        },
+        outcome: 1,
+        prediction: {
+            top_shape: "teardrop",
+            top_color: "blue",
+            bottom_shape: "circle",
+            bottom_color: "yellow"
+        }
+    },
+    {
+        evidence: {
+            top_shape: "circle",
+            top_color: "red",
             bottom_shape: "diamond",
             bottom_color: "green"
         },
         outcome: 1,
         prediction: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
+            top_shape: "circle",
+            top_color: "red",
+            bottom_shape: "teardrop",
+            bottom_color: "blue"
         }
     },
     {
@@ -170,57 +185,42 @@ const TRIAL_ARRAY = [
             bottom_shape: "teardrop",
             bottom_color: "red"
         },
-        outcome: 1,
-        prediction: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
-        }
-    },
-    {
-        evidence: {
-            top_shape: "circle",
-            top_color: "green",
-            bottom_shape: "teardrop",
-            bottom_color: "yellow"
-        },
         outcome: 0,
         prediction: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
-        }
-    },
-    {
-        evidence: {
-            top_shape: "triangle",
-            top_color: "red",
-            bottom_shape: "teardrop",
-            bottom_color: "blue"
-        },
-        outcome: 1,
-        prediction: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
-        }
-    },
-    {
-        evidence: {
-            top_shape: "triangle",
+            top_shape: "diamond",
             top_color: "blue",
             bottom_shape: "diamond",
+            bottom_color: "green"
+        }
+    },
+    {
+        evidence: {
+            top_shape: "triangle",
+            top_color: "yellow",
+            bottom_shape: "triangle",
             bottom_color: "yellow"
+        },
+        outcome: 1,
+        prediction: {
+            top_shape: "diamond",
+            top_color: "red",
+            bottom_shape: "triangle",
+            bottom_color: "yellow"
+        }
+    },
+    {
+        evidence: {
+            top_shape: "triangle",
+            top_color: "green",
+            bottom_shape: "circle",
+            bottom_color: "red"
         },
         outcome: 0,
         prediction: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
+            top_shape: "triangle",
+            top_color: "green",
+            bottom_shape: "teardrop",
+            bottom_color: "red"
         }
     }
 ];
