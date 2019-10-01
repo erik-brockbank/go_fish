@@ -15,48 +15,59 @@ Lure = function(top_shape, bottom_shape, top_color, bottom_color) {
     this.bottom_color = bottom_color
 };
 
-Lure.prototype.drawLure = function(canvasId) {
-    console.log("Drawing lure: ", this);
-    this.drawShape(canvasId, this.top_shape, this.top_color, position = "top");
-    this.drawShape(canvasId, this.bottom_shape, this.bottom_color, position = "bottom");
+Lure.prototype.drawLure = function(canvasId, sizeConfig) {
+    this.drawShape(canvasId, sizeConfig, this.top_shape, this.top_color, position = "top");
+    this.drawShape(canvasId, sizeConfig, this.bottom_shape, this.bottom_color, position = "bottom");
 };
 
-Lure.prototype.drawShape = function(canvasId, shape_str, color_str, position) {
-    var shapeObj = this.makeShapeObj(shape_str, color_str, position);
+Lure.prototype.drawShape = function(canvasId, sizeConfig, shape_str, color_str, position) {
+    var shapeObj = this.makeShapeObj(shape_str, color_str, position, sizeConfig);
     var canvas = document.getElementById(canvasId); // unclear why we can't use jquery here
     if (canvas.getContext && shapeObj) {
         var ctx = canvas.getContext("2d");
-
         shapeObj.draw(ctx)
     }
 };
 
-Lure.prototype.makeShapeObj = function(shape_str, color_str, position) {
+Lure.prototype.makeShapeObj = function(shape_str, color_str, position, sizeConfig) {
     // get color hex val for this shape
     var color = "";
     if (color_str in COLOR_LOOKUP) color = COLOR_LOOKUP[color_str];
 
     // get appropriate shape class for this shape
     var shapeObj;
-    if (shape_str == "circle") shapeObj = new Circle(position, color);
-    if (shape_str == "triangle") shapeObj = new Triangle(position, color);
-    if (shape_str == "diamond") shapeObj = new Diamond(position, color);
-    if (shape_str == "teardrop") shapeObj = new Teardrop(position, color);
+    if (shape_str == "circle") shapeObj = new Circle(sizeConfig, position, color);
+    if (shape_str == "triangle") shapeObj = new Triangle(sizeConfig, position, color);
+    if (shape_str == "diamond") shapeObj = new Diamond(sizeConfig, position, color);
+    if (shape_str == "teardrop") shapeObj = new Teardrop(sizeConfig, position, color);
 
     return shapeObj;
 };
 
 
 
-Circle = function(position, color) {
-    if (position == "top") {
-        this.x = 75;
-        this.y = 75;
-        this.radius = 25;
-    } else if (position == "bottom") {
-        this.x = 75;
-        this.y = 110;
-        this.radius = 10;
+Circle = function(sizeConfig, position, color) {
+    if (["evidence", "prediction"].indexOf(sizeConfig) != -1) {
+        if (position == "top") {
+            this.x = 75;
+            this.y = 75;
+            this.radius = 25;
+        } else if (position == "bottom") {
+            this.x = 75;
+            this.y = 110;
+            this.radius = 10;
+        }
+    }
+    if (sizeConfig == "observations") {
+        if (position == "top") {
+            this.x = 75;
+            this.y = 75;
+            this.radius = 25;
+        } else if (position == "bottom") {
+            this.x = 75;
+            this.y = 110;
+            this.radius = 10;
+        }
     }
     this.color = color;
 };
@@ -69,17 +80,32 @@ Circle.prototype.draw = function(ctx) {
 };
 
 
-Triangle = function(position, color) {
-    if (position == "top") {
-        this.top_x = 50;
-        this.top_y = 50;
-        this.base = 50;
-        this.height = 50;
-    } else if (position == "bottom") {
-        this.top_x = 62.5;
-        this.top_y = 100;
-        this.base = 25;
-        this.height = 25;
+Triangle = function(sizeConfig, position, color) {
+    if (["evidence", "prediction"].indexOf(sizeConfig) != -1) {
+        if (position == "top") {
+            this.top_x = 50;
+            this.top_y = 50;
+            this.base = 50;
+            this.height = 50;
+        } else if (position == "bottom") {
+            this.top_x = 62.5;
+            this.top_y = 100;
+            this.base = 25;
+            this.height = 25;
+        }
+    }
+    if (sizeConfig == "observations") {
+        if (position == "top") {
+            this.top_x = 50;
+            this.top_y = 50;
+            this.base = 50;
+            this.height = 50;
+        } else if (position == "bottom") {
+            this.top_x = 62.5;
+            this.top_y = 100;
+            this.base = 25;
+            this.height = 25;
+        }
     }
     this.color = color;
 };
@@ -95,17 +121,32 @@ Triangle.prototype.draw = function(ctx) {
 };
 
 
-Diamond = function(position, color) {
-    if (position == "top") {
-        this.top_x = 75;
-        this.top_y = 50;
-        this.width = 50;
-        this.height = 50;
-    } else if (position == "bottom") {
-        this.top_x = 75;
-        this.top_y = 100;
-        this.width = 25;
-        this.height = 25;
+Diamond = function(sizeConfig, position, color) {
+    if (["evidence", "prediction"].indexOf(sizeConfig) != -1) { // TODO is there a cleaner way to do this?
+        if (position == "top") {
+            this.top_x = 75;
+            this.top_y = 50;
+            this.width = 50;
+            this.height = 50;
+        } else if (position == "bottom") {
+            this.top_x = 75;
+            this.top_y = 100;
+            this.width = 25;
+            this.height = 25;
+        }
+    }
+    if (sizeConfig == "observations") { // TODO is there a cleaner way to do this?
+        if (position == "top") {
+            this.top_x = 75;
+            this.top_y = 50;
+            this.width = 50;
+            this.height = 50;
+        } else if (position == "bottom") {
+            this.top_x = 75;
+            this.top_y = 100;
+            this.width = 25;
+            this.height = 25;
+        }
     }
     this.color = color;
 };
@@ -122,15 +163,28 @@ Diamond.prototype.draw = function(ctx) {
 };
 
 
-Teardrop = function(position, color) {
-    if (position == "top") {
-        this.top_x = 50;
-        this.top_y = 50;
-        this.width = 50;
-    } else if (position == "bottom") {
-        this.top_x = 62.5;
-        this.top_y = 112.5;
-        this.width = 25;
+Teardrop = function(sizeConfig, position, color) {
+    if (["evidence", "prediction"].indexOf(sizeConfig) != -1) {
+        if (position == "top") {
+            this.top_x = 50;
+            this.top_y = 50;
+            this.width = 50;
+        } else if (position == "bottom") {
+            this.top_x = 62.5;
+            this.top_y = 112.5;
+            this.width = 25;
+        }
+    }
+    if (sizeConfig == "observations") {
+        if (position == "top") {
+            this.top_x = 50;
+            this.top_y = 50;
+            this.width = 50;
+        } else if (position == "bottom") {
+            this.top_x = 62.5;
+            this.top_y = 112.5;
+            this.width = 25;
+        }
     }
     this.color = color;
 };

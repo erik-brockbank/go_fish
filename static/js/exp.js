@@ -23,8 +23,6 @@ Experiment.prototype.run = function() {
 
 Experiment.prototype.startTrials = function() {
     console.log("Starting experiment trials");
-    console.log(this);
-
     // Load html for running trials, fill in appropriate text
     var that = this;
     $("body").load(this.htmlpath, function() {
@@ -53,12 +51,9 @@ Experiment.prototype.showEvidence = function() {
     $("#exp-container").load(HTML_LOOKUP["evidence"], function() { // TODO pass in html_lookup path
         $("#evidence-outcome").text(outcomeText);
         $("#evidence-outcome-img-container").html("<img class='evidence-outcome-img' src='" + outcomeImg + "' />");
-
-        // TODO replace this with results of shape drawing process above
-        // $("#evidence-shape-container").html("<img class='evidence-shape-img' src='" + evidenceShape + "' />");
         var shapeInfo = trialObj.evidence;
         var evidenceShape = new Lure(shapeInfo.top_shape, shapeInfo.bottom_shape, shapeInfo.top_color, shapeInfo.bottom_color);
-        evidenceShape.drawLure(canvasId = "evidence-shape-canvas"); // TODO store this ID somewhere sensible
+        evidenceShape.drawLure(canvasId = "evidence-shape-canvas", sizeConfig = "evidence"); // TODO store this ID somewhere sensible
     });
 
     // Update button response
@@ -99,7 +94,7 @@ Experiment.prototype.showEvidenceResponse = function() {
         evidenceOutcomeImg = "/img/no-fish_icon-checkbox.png";
     }
 
-    evidenceShape = "/img/lure_dummy.png"; // TODO replace this with actual retrieval of this trial's shape
+    // evidenceShape = "/img/lure_dummy.png"; // TODO replace this with actual retrieval of this trial's shape
 
     // Display html for this response trial
     var that = this;
@@ -108,7 +103,11 @@ Experiment.prototype.showEvidenceResponse = function() {
         $("#evidence-response-banner").text(responseBanner);
         $("#evidence-response-banner").css("font-style", "Italic");
         // TODO replace this with a function that handles observed evidence updates
-        $("#obs-item-" + (that.trialIndex + 1)).html("<img class='obs-item-img' src='" + evidenceShape + "' />");
+        // $("#obs-item-" + (that.trialIndex + 1)).html("<img class='obs-item-img' src='" + evidenceShape + "' />");
+        var shapeInfo = trialObj.evidence;
+        var evidenceShape = new Lure(shapeInfo.top_shape, shapeInfo.bottom_shape, shapeInfo.top_color, shapeInfo.bottom_color);
+        evidenceShape.drawLure(canvasId = "obs-item-canvas-" + (that.trialIndex + 1), sizeConfig = "observations"); // TODO store this ID somewhere sensible
+
         $("#obs-outcome-" + (that.trialIndex + 1)).html("<img class='obs-outcome-img' src='" + evidenceOutcomeImg + "' />");
         if (trialObj.outcome == 1) {
             $("#obs-item-" + (that.trialIndex + 1)).css("border", "5px solid black"); // draw bold box around fish catches
@@ -129,18 +128,12 @@ Experiment.prototype.showPrediction = function() {
     console.log("Collecting prediction for trial: ", this.trialIndex + 1);
     // Process trial object for this prediction trial
     var trialObj = this.trialArray[this.trialIndex];
-
-    // var predictionShape = "/img/lure_dummy.png"; // TODO get actual prediction shape info here
-
-
     // Display html for this prediction trial
     $("#exp-container").empty(); // TODO consider making a separate function to clear stuff out, we call this a lot...
     $("#exp-container").load(HTML_LOOKUP["prediction"], function() { // TODO pass in html_lookup path
-        // TODO replace this with results of actual shape prediction process above
-        // $("#prediction-img-container").html("<img class='prediction-shape-img' src='" + predictionShape + "' />");
         var shapeInfo = trialObj.prediction;
         var evidenceShape = new Lure(shapeInfo.top_shape, shapeInfo.bottom_shape, shapeInfo.top_color, shapeInfo.bottom_color);
-        evidenceShape.drawLure(canvasId = "prediction-shape-canvas"); // TODO store this ID somewhere sensible
+        evidenceShape.drawLure(canvasId = "prediction-shape-canvas", sizeConfig = "prediction"); // TODO store this ID somewhere sensible
     });
 
     // Update button response
