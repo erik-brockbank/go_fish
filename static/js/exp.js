@@ -48,7 +48,6 @@ Experiment.prototype.showEvidence = function() {
         outcomeImg = "/img/no-fish_icon.png"; // TODO save this somewhere as a constant
     }
 
-
     // Display html for this evidence trial
     $("#exp-container").empty();
     $("#exp-container").load(HTML_LOOKUP["evidence"], function() { // TODO pass in html_lookup path

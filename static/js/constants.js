@@ -19,9 +19,14 @@ const HTML_LOOKUP = { // lookup table with human-understandable html file keys a
     "memory": "/static/html/memory.html"
 };
 
-
+/*
+ * Lookup function for human readable colors to hex values
+ */
 const COLOR_LOOKUP = {
-    "red": "#FF0000",
+    "red": "#f44336",
+    "green": "#4CAF50",
+    "blue": "#008CBA",
+    "yellow": "#FFD700"
 };
 
 
@@ -99,10 +104,10 @@ const EXPLAIN_RESPONSE_NEG = "In the space below, explain why your friend might 
  */
 const TRIAL_ARRAY = [
     {
-        evidence: { // Note this isn't the actual first evidence but is an easy one to draw...
-            top_shape: "circle",
+        evidence: {
+            top_shape: "teardrop",
             top_color: "red",
-            bottom_shape: "triangle",
+            bottom_shape: "teardrop",
             bottom_color: "blue"
         },
         outcome: 1,
@@ -115,10 +120,10 @@ const TRIAL_ARRAY = [
     },
     {
         evidence: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
+            top_shape: "teardrop",
+            top_color: "yellow",
+            bottom_shape: "circle",
+            bottom_color: "green"
         },
         outcome: 0,
         prediction: {
@@ -130,10 +135,10 @@ const TRIAL_ARRAY = [
     },
     {
         evidence: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
+            top_shape: "teardrop",
+            top_color: "red",
+            bottom_shape: "triangle",
+            bottom_color: "blue"
         },
         outcome: 0,
         prediction: {
@@ -145,10 +150,10 @@ const TRIAL_ARRAY = [
     },
     {
         evidence: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
+            top_shape: "teardrop",
+            top_color: "yellow",
+            bottom_shape: "diamond",
+            bottom_color: "green"
         },
         outcome: 1,
         prediction: {
@@ -160,10 +165,10 @@ const TRIAL_ARRAY = [
     },
     {
         evidence: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
+            top_shape: "diamond",
+            top_color: "blue",
+            bottom_shape: "teardrop",
+            bottom_color: "red"
         },
         outcome: 1,
         prediction: {
@@ -175,10 +180,10 @@ const TRIAL_ARRAY = [
     },
     {
         evidence: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
+            top_shape: "circle",
+            top_color: "green",
+            bottom_shape: "teardrop",
+            bottom_color: "yellow"
         },
         outcome: 0,
         prediction: {
@@ -190,10 +195,10 @@ const TRIAL_ARRAY = [
     },
     {
         evidence: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
+            top_shape: "triangle",
+            top_color: "red",
+            bottom_shape: "teardrop",
+            bottom_color: "blue"
         },
         outcome: 1,
         prediction: {
@@ -205,10 +210,10 @@ const TRIAL_ARRAY = [
     },
     {
         evidence: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
+            top_shape: "triangle",
+            top_color: "blue",
+            bottom_shape: "diamond",
+            bottom_color: "yellow"
         },
         outcome: 0,
         prediction: {
