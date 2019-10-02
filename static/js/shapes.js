@@ -47,7 +47,7 @@ Lure.prototype.makeShapeObj = function(shape_str, color_str, position, sizeConfi
 
 
 Circle = function(sizeConfig, position, color) {
-    if (["evidence", "prediction"].indexOf(sizeConfig) != -1) {
+    if (sizeConfig == "evidence" || sizeConfig == "prediction") {
         if (position == "top") {
             this.x = 75;
             this.y = 75;
@@ -69,6 +69,17 @@ Circle = function(sizeConfig, position, color) {
             this.radius = 10;
         }
     }
+    if (sizeConfig == "generate" || sizeConfig == "memory") {
+        if (position == "top") {
+            this.x = 30;
+            this.y = 55;
+            this.radius = 25;
+        } else if (position == "bottom") {
+            this.x = 30;
+            this.y = 90;
+            this.radius = 10;
+        }
+    }
     this.color = color;
 };
 
@@ -81,7 +92,7 @@ Circle.prototype.draw = function(ctx) {
 
 
 Triangle = function(sizeConfig, position, color) {
-    if (["evidence", "prediction"].indexOf(sizeConfig) != -1) {
+    if (sizeConfig == "evidence" || sizeConfig == "prediction") {
         if (position == "top") {
             this.top_x = 50;
             this.top_y = 50;
@@ -107,6 +118,19 @@ Triangle = function(sizeConfig, position, color) {
             this.height = 25;
         }
     }
+    if (sizeConfig == "generate" || sizeConfig == "memory") {
+        if (position == "top") {
+            this.top_x = 5;
+            this.top_y = 30;
+            this.base = 50;
+            this.height = 50;
+        } else if (position == "bottom") {
+            this.top_x = 17.5;
+            this.top_y = 80;
+            this.base = 25;
+            this.height = 25;
+        }
+    }
     this.color = color;
 };
 
@@ -122,7 +146,7 @@ Triangle.prototype.draw = function(ctx) {
 
 
 Diamond = function(sizeConfig, position, color) {
-    if (["evidence", "prediction"].indexOf(sizeConfig) != -1) { // TODO is there a cleaner way to do this?
+    if (sizeConfig == "evidence" || sizeConfig == "prediction") { // TODO is there a cleaner way to do this?
         if (position == "top") {
             this.top_x = 75;
             this.top_y = 50;
@@ -148,6 +172,19 @@ Diamond = function(sizeConfig, position, color) {
             this.height = 25;
         }
     }
+    if (sizeConfig == "generate" || sizeConfig == "memory") { // TODO is there a cleaner way to do this?
+        if (position == "top") {
+            this.top_x = 30;
+            this.top_y = 30;
+            this.width = 50;
+            this.height = 50;
+        } else if (position == "bottom") {
+            this.top_x = 30;
+            this.top_y = 80;
+            this.width = 25;
+            this.height = 25;
+        }
+    }
     this.color = color;
 };
 
@@ -164,7 +201,7 @@ Diamond.prototype.draw = function(ctx) {
 
 
 Teardrop = function(sizeConfig, position, color) {
-    if (["evidence", "prediction"].indexOf(sizeConfig) != -1) {
+    if (sizeConfig == "evidence" || sizeConfig == "prediction") {
         if (position == "top") {
             this.top_x = 50;
             this.top_y = 50;
@@ -182,6 +219,17 @@ Teardrop = function(sizeConfig, position, color) {
             this.width = 50;
         } else if (position == "bottom") {
             this.top_x = 27.5;
+            this.top_y = 92.5;
+            this.width = 25;
+        }
+    }
+    if (sizeConfig == "generate" || sizeConfig == "memory") {
+        if (position == "top") {
+            this.top_x = 5;
+            this.top_y = 30;
+            this.width = 50;
+        } else if (position == "bottom") {
+            this.top_x = 17.5;
             this.top_y = 92.5;
             this.width = 25;
         }

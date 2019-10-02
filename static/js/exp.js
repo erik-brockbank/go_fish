@@ -33,7 +33,6 @@ Experiment.prototype.startTrials = function() {
 
 Experiment.prototype.showEvidence = function() {
     console.log("Showing evidence for trial: ", this.trialIndex + 1);
-
     // Process trial object for this evidence trial
     var trialObj = this.trialArray[this.trialIndex];
     var outcomeText = "";
@@ -67,7 +66,6 @@ Experiment.prototype.showEvidence = function() {
 
 Experiment.prototype.showEvidenceResponse = function() {
     console.log("Collecting evidence response for trial: ", this.trialIndex + 1);
-
     // Process trial object for this evidence response trial
     var trialObj = this.trialArray[this.trialIndex];
     var responseBanner = "";
@@ -94,16 +92,12 @@ Experiment.prototype.showEvidenceResponse = function() {
         evidenceOutcomeImg = "/img/no-fish_icon-checkbox.png";
     }
 
-    // evidenceShape = "/img/lure_dummy.png"; // TODO replace this with actual retrieval of this trial's shape
-
     // Display html for this response trial
     var that = this;
     $("#exp-container").empty();
     $("#exp-container").load(HTML_LOOKUP["evidence_resp"], function() { // TODO pass in html_lookup path
         $("#evidence-response-banner").text(responseBanner);
         $("#evidence-response-banner").css("font-style", "Italic");
-        // TODO replace this with a function that handles observed evidence updates
-        // $("#obs-item-" + (that.trialIndex + 1)).html("<img class='obs-item-img' src='" + evidenceShape + "' />");
         var shapeInfo = trialObj.evidence;
         var evidenceShape = new Lure(shapeInfo.top_shape, shapeInfo.bottom_shape, shapeInfo.top_color, shapeInfo.bottom_color);
         evidenceShape.drawLure(canvasId = "obs-item-canvas-" + (that.trialIndex + 1), sizeConfig = "observations"); // TODO store this ID somewhere sensible
@@ -153,7 +147,6 @@ Experiment.prototype.showPrediction = function() {
 
 Experiment.prototype.showRuleGeneration = function() {
     console.log("Collecting rule generation.");
-
     // Display html for rule generation
     $("#obs-container").hide(); // TODO make separate function to clear out full trial stuff (observations etc.)
     $("#exp-container").empty();
@@ -172,15 +165,14 @@ Experiment.prototype.showRuleGeneration = function() {
 
 Experiment.prototype.showJudgmentTask = function() {
     console.log("Collecting rule judgments.");
-
     // Display html for rule judgment task
     $("#exp-container").empty();
     $("#exp-container").load(HTML_LOOKUP["judgment"], function() {
         for (genIndex = 1; genIndex <= GENERATE_ARRAY.length; genIndex++) {
-            // TODO replace the below with results of actual generation shape process (get elem in GENERATE_ARRAY at genIndex, do stuff)
-            var genShape = "/img/lure_dummy.png"; // TODO get actual shape info here
-            $("#generate-img-container-" + genIndex).html(
-                "<img class='generate-img' id='generate-img-" + genIndex + "' src='" + genShape + "' />");
+            var genItem = GENERATE_ARRAY[genIndex - 1];
+            var shapeInfo = genItem.probe;
+            var genShape = new Lure(shapeInfo.top_shape, shapeInfo.bottom_shape, shapeInfo.top_color, shapeInfo.bottom_color);
+            genShape.drawLure(canvasId = "generate-item-canvas-" + genIndex, sizeConfig = "generate"); // TODO store this ID somewhere sensible
         }
     });
 
@@ -226,10 +218,10 @@ Experiment.prototype.showMemoryTask = function() {
     $("#obs-container").hide(); // TODO make separate function to clear out full trial stuff (observations etc.)
     $("#exp-container").load(HTML_LOOKUP["memory"], function() {
         for (memIndex = 1; memIndex <= MEMORY_ARRAY.length; memIndex++) {
-            // TODO replace the below with results of actual memory shape process (get elem in MEMORY_ARRAY at memIndex, do stuff)
-            var predictionShape = "/img/lure_dummy.png"; // TODO get actual memory shape info here
-            $("#memory-img-container-" + memIndex).html(
-                "<img class='memory-probe-img' id='memory-probe-img-" + memIndex + "' src='" + predictionShape + "' />");
+            var memItem = MEMORY_ARRAY[memIndex - 1];
+            var shapeInfo = memItem.probe;
+            var memShape = new Lure(shapeInfo.top_shape, shapeInfo.bottom_shape, shapeInfo.top_color, shapeInfo.bottom_color);
+            memShape.drawLure(canvasId = "memory-item-canvas-" + memIndex, sizeConfig = "memory"); // TODO store this ID somewhere sensible
         }
     });
 

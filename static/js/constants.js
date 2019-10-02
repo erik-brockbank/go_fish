@@ -232,73 +232,73 @@ const TRIAL_ARRAY = [
 const GENERATE_ARRAY = [
     {
         probe: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
+            top_shape: "triangle",
+            top_color: "green",
+            bottom_shape: "circle",
+            bottom_color: "blue"
+        },
+        catches_fish: 0
+    },
+    {
+        probe: {
+            top_shape: "triangle",
+            top_color: "yellow",
+            bottom_shape: "triangle",
+            bottom_color: "green"
         },
         catches_fish: 1
     },
     {
         probe: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
+            top_shape: "diamond",
+            top_color: "green",
+            bottom_shape: "diamond",
+            bottom_color: "yellow"
         },
         catches_fish: 1
     },
     {
         probe: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
+            top_shape: "teardrop",
+            top_color: "red",
+            bottom_shape: "teardrop",
+            bottom_color: "green"
+        },
+        catches_fish: 0
+    },
+    {
+        probe: {
+            top_shape: "teardrop",
+            top_color: "blue",
+            bottom_shape: "triangle",
+            bottom_color: "yellow"
         },
         catches_fish: 1
     },
     {
         probe: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
+            top_shape: "triangle",
+            top_color: "yellow",
+            bottom_shape: "teardrop",
+            bottom_color: "red"
         },
-        catches_fish: 1
+        catches_fish: 0
     },
     {
         probe: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
+            top_shape: "circle",
+            top_color: "blue",
+            bottom_shape: "circle",
+            bottom_color: "red"
         },
-        catches_fish: 1
+        catches_fish: 0
     },
     {
         probe: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
-        },
-        catches_fish: 1
-    },
-    {
-        probe: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
-        },
-        catches_fish: 1
-    },
-    {
-        probe: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
+            top_shape: "teardrop",
+            top_color: "red",
+            bottom_shape: "diamond",
+            bottom_color: "blue"
         },
         catches_fish: 1
     }
@@ -343,73 +343,73 @@ const EVAL_ARRAY = [
 const MEMORY_ARRAY = [
     {
         probe: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
+            top_shape: "teardrop",
+            top_color: "red",
+            bottom_shape: "circle",
+            bottom_color: "blue"
+        },
+        in_expt: 0
+    },
+    {
+        probe: {
+            top_shape: "circle",
+            top_color: "yellow",
+            bottom_shape: "triangle",
+            bottom_color: "green"
+        },
+        in_expt: 0
+    },
+    {
+        probe: {
+            top_shape: "triangle",
+            top_color: "green",
+            bottom_shape: "teardrop",
+            bottom_color: "yellow"
+        },
+        in_expt: 0
+    },
+    {
+        probe: {
+            top_shape: "teardrop",
+            top_color: "red",
+            bottom_shape: "triangle",
+            bottom_color: "yellow"
         },
         in_expt: 1
     },
     {
         probe: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
+            top_shape: "triangle",
+            top_color: "yellow",
+            bottom_shape: "circle",
+            bottom_color: "blue"
         },
         in_expt: 1
     },
     {
         probe: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
+            top_shape: "diamond",
+            top_color: "blue",
+            bottom_shape: "diamond",
+            bottom_color: "green"
         },
         in_expt: 1
     },
     {
         probe: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
+            top_shape: "circle",
+            top_color: "red",
+            bottom_shape: "diamond",
+            bottom_color: "yellow"
         },
-        in_expt: 1
+        in_expt: 0
     },
     {
         probe: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
-        },
-        in_expt: 1
-    },
-    {
-        probe: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
-        },
-        in_expt: 1
-    },
-    {
-        probe: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
-        },
-        in_expt: 1
-    },
-    {
-        probe: {
-            top_shape: "",
-            top_color: "",
-            bottom_shape: "",
-            bottom_color: ""
+            top_shape: "diamond",
+            top_color: "blue",
+            bottom_shape: "teardrop",
+            bottom_color: "red"
         },
         in_expt: 1
     }

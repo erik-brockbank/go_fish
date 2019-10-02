@@ -135,13 +135,13 @@
     float: left;
 }
 
-.memory-img-container {
+.memory-canvas-container {
     float: right;
     padding-right: 20px;
 }
 
-.memory-probe-img {
-    width: 50px;
+.memory-item-canvas {
+    width: 60px;
 }
 
 .memory-checkbox-container {
@@ -150,7 +150,7 @@
 
 /* Formatting for judgment task */
 #judgment-container {
-    height: 500px; /* this is a little sketchy but the only way to keep the Next button from crowding up */
+    height: 550px; /* this is a little sketchy but the only way to keep the Next button from crowding up */
 }
 
 .generate-probe {
@@ -163,13 +163,9 @@
     width: 50px;
 }
 
-.generate-img-container {
+.generate-item-container {
     float: right;
     padding-right: 20px;
-}
-
-.generate-img {
-    width: 50px;
 }
 
 .generate-checkbox-container {
