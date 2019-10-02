@@ -60,12 +60,12 @@ Circle = function(sizeConfig, position, color) {
     }
     if (sizeConfig == "observations") {
         if (position == "top") {
-            this.x = 75;
-            this.y = 75;
+            this.x = 40;
+            this.y = 55;
             this.radius = 25;
         } else if (position == "bottom") {
-            this.x = 75;
-            this.y = 110;
+            this.x = 40;
+            this.y = 90;
             this.radius = 10;
         }
     }
@@ -96,13 +96,13 @@ Triangle = function(sizeConfig, position, color) {
     }
     if (sizeConfig == "observations") {
         if (position == "top") {
-            this.top_x = 50;
-            this.top_y = 50;
+            this.top_x = 15;
+            this.top_y = 30;
             this.base = 50;
             this.height = 50;
         } else if (position == "bottom") {
-            this.top_x = 62.5;
-            this.top_y = 100;
+            this.top_x = 27.5;
+            this.top_y = 80;
             this.base = 25;
             this.height = 25;
         }
@@ -137,13 +137,13 @@ Diamond = function(sizeConfig, position, color) {
     }
     if (sizeConfig == "observations") { // TODO is there a cleaner way to do this?
         if (position == "top") {
-            this.top_x = 75;
-            this.top_y = 50;
+            this.top_x = 40;
+            this.top_y = 30;
             this.width = 50;
             this.height = 50;
         } else if (position == "bottom") {
-            this.top_x = 75;
-            this.top_y = 100;
+            this.top_x = 40;
+            this.top_y = 80;
             this.width = 25;
             this.height = 25;
         }
@@ -177,12 +177,12 @@ Teardrop = function(sizeConfig, position, color) {
     }
     if (sizeConfig == "observations") {
         if (position == "top") {
-            this.top_x = 50;
-            this.top_y = 50;
+            this.top_x = 15;
+            this.top_y = 30;
             this.width = 50;
         } else if (position == "bottom") {
-            this.top_x = 62.5;
-            this.top_y = 112.5;
+            this.top_x = 27.5;
+            this.top_y = 92.5;
             this.width = 25;
         }
     }

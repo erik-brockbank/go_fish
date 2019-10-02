@@ -42,14 +42,19 @@
     margin-top: 40px;
 }
 
+#obs-item-container {
+    height: 140px;
+}
+
+
 /* Note the structure of the observations lined up depends on the width and height set here*/
 .obs-item {
     width: 80px;
     height: 120px;
-    margin: 10px;
+    margin: 7px;
     float: left;
     background: #d3d3d3;
-    outline: 2px solid black;
+    border: 2px solid black;
     text-align: center;
 }
 
@@ -58,10 +63,15 @@
     height: 120px;
 }
 
+#obs-outcome-container {
+    height: 40px;
+    padding-top: 10px;
+}
+
 .obs-outcome {
     width: 80px;
     height: 20px;
-    margin: 10px;
+    padding: 9.5px;
     float: left;
     text-align: center;
 }
