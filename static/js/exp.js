@@ -42,7 +42,7 @@ Experiment.prototype.showEvidence = function() {
         outcomeImg = "/img/fish_icon.png"; // TODO save this somewhere as a constant
     } else if (trialObj.outcome == 0) {
         outcomeText = OUTCOME_NEGATIVE; // TODO pass this in (or have separate constants file exp_constants or something)
-        outcomeImg = "/img/no-fish_icon.png"; // TODO save this somewhere as a constant
+        outcomeImg = "/img/fish_icon-no_fish.png"; // TODO save this somewhere as a constant
     }
 
     // Display html for this evidence trial
@@ -51,7 +51,8 @@ Experiment.prototype.showEvidence = function() {
         $("#evidence-outcome").text(outcomeText);
         $("#evidence-outcome-img-container").html("<img class='evidence-outcome-img' src='" + outcomeImg + "' />");
         var shapeInfo = trialObj.evidence;
-        var evidenceShape = new Lure(shapeInfo.top_shape, shapeInfo.bottom_shape, shapeInfo.top_color, shapeInfo.bottom_color);
+        var evidenceShape = new Lure(shapeInfo.top_shape, shapeInfo.bottom_shape,
+            shapeInfo.top_color, shapeInfo.bottom_color, shapeInfo.top_texture, shapeInfo.bottom_texture);
         evidenceShape.drawLure(canvasId = "evidence-shape-canvas", sizeConfig = "evidence"); // TODO store this ID somewhere sensible
     });
 
@@ -89,7 +90,7 @@ Experiment.prototype.showEvidenceResponse = function() {
     if (trialObj.outcome == 1) {
         evidenceOutcomeImg = "/img/fish_icon-checkbox.png";
     } else {
-        evidenceOutcomeImg = "/img/no-fish_icon-checkbox.png";
+        evidenceOutcomeImg = "/img/fish_icon-no_fish-checkbox.png";
     }
 
     // Display html for this response trial
@@ -99,7 +100,8 @@ Experiment.prototype.showEvidenceResponse = function() {
         $("#evidence-response-banner").text(responseBanner);
         $("#evidence-response-banner").css("font-style", "Italic");
         var shapeInfo = trialObj.evidence;
-        var evidenceShape = new Lure(shapeInfo.top_shape, shapeInfo.bottom_shape, shapeInfo.top_color, shapeInfo.bottom_color);
+        var evidenceShape = new Lure(shapeInfo.top_shape, shapeInfo.bottom_shape,
+            shapeInfo.top_color, shapeInfo.bottom_color, shapeInfo.top_texture, shapeInfo.bottom_texture);
         evidenceShape.drawLure(canvasId = "obs-item-canvas-" + (that.trialIndex + 1), sizeConfig = "observations"); // TODO store this ID somewhere sensible
 
         $("#obs-outcome-" + (that.trialIndex + 1)).html("<img class='obs-outcome-img' src='" + evidenceOutcomeImg + "' />");

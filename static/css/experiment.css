@@ -14,6 +14,7 @@
     width: 800px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 20px;
 }
 
 #next-exp {
@@ -37,9 +38,6 @@
     margin-left: auto;
     margin-right: auto;
     width: 800px;
-    height: 240px;
-    margin-bottom: 20px;
-    margin-top: 40px;
 }
 
 #obs-item-container {
@@ -64,14 +62,12 @@
 }
 
 #obs-outcome-container {
-    height: 40px;
-    padding-top: 10px;
+    height: 50px;
 }
 
 .obs-outcome {
     width: 80px;
-    height: 20px;
-    padding: 9.5px;
+    padding: 0px 9.5px 0px 9.5px;
     float: left;
     text-align: center;
 }
@@ -85,13 +81,27 @@
 }
 
 .evidence-outcome-img {
-    height: 200px;
-    padding: 20px;
+    height: 150px;
+    padding-left: 20px;
+}
+
+#evidence-response, #generate-response {
+    margin-top: 20px;
+    margin-bottom: 40px;
 }
 
 #prediction-response-checkbox-container, #prediction-confidence-scale-container,
-#eval-rule, #eval-slider-container {
+#eval-rule {
     padding: 20px;
+}
+
+#eval-slider-container {
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+#prediction-confidence-scale-container {
+    margin-bottom: 40px;
 }
 
 .slider {
@@ -150,7 +160,7 @@
 
 /* Formatting for judgment task */
 #judgment-container {
-    height: 550px; /* this is a little sketchy but the only way to keep the Next button from crowding up */
+    height: 600px; /* this is a little sketchy but the only way to keep the Next button from crowding up */
 }
 
 .generate-probe {
@@ -249,6 +259,10 @@
     width: 25px;
     background-color: #eee;
     border-radius: 50%;
+}
+
+#fish-icon-checkmark {
+    margin-top: 10px; /* I added this to the checkmark styling above */
 }
 
 /* On mouse-over, add a grey background color */

@@ -105,16 +105,18 @@ const EXPLAIN_RESPONSE_NEG = "In the space below, explain why your friend might 
 const TRIAL_ARRAY = [
     {
         evidence: {
-            top_shape: "teardrop",
-            top_color: "red",
-            bottom_shape: "triangle",
-            bottom_color: "yellow"
+            top_shape: "circle", // circle
+            top_color: "red", // red
+            top_texture: true, // true
+            bottom_shape: "triangle", // triangle
+            bottom_color: "yellow", // yellow
+            bottom_texture: false // false
         },
         outcome: 1,
         prediction: {
             top_shape: "teardrop",
             top_color: "red",
-            bottom_shape: "diamond",
+            bottom_shape: "star",
             bottom_color: "green"
         }
     },
@@ -122,12 +124,14 @@ const TRIAL_ARRAY = [
         evidence: {
             top_shape: "circle",
             top_color: "green",
+            top_texture: false,
             bottom_shape: "teardrop",
-            bottom_color: "blue"
+            bottom_color: "blue",
+            bottom_texture: false
         },
         outcome: 0,
         prediction: {
-            top_shape: "circle",
+            top_shape: "oval",
             top_color: "green",
             bottom_shape: "triangle",
             bottom_color: "blue"
@@ -137,8 +141,10 @@ const TRIAL_ARRAY = [
         evidence: {
             top_shape: "diamond",
             top_color: "yellow",
+            top_texture: true,
             bottom_shape: "circle",
-            bottom_color: "blue"
+            bottom_color: "blue",
+            bottom_texture: false
         },
         outcome: 0,
         prediction: {
@@ -150,25 +156,29 @@ const TRIAL_ARRAY = [
     },
     {
         evidence: {
-            top_shape: "teardrop",
+            top_shape: "oval",
             top_color: "blue",
-            bottom_shape: "diamond",
-            bottom_color: "yellow"
+            top_texture: false,
+            bottom_shape: "star",
+            bottom_color: "yellow",
+            bottom_texture: true
         },
         outcome: 1,
         prediction: {
             top_shape: "teardrop",
             top_color: "blue",
-            bottom_shape: "circle",
+            bottom_shape: "oval",
             bottom_color: "yellow"
         }
     },
     {
         evidence: {
-            top_shape: "circle",
+            top_shape: "teardrop",
             top_color: "red",
+            top_texture: true,
             bottom_shape: "diamond",
-            bottom_color: "green"
+            bottom_color: "green",
+            bottom_texture: true
         },
         outcome: 1,
         prediction: {
@@ -180,10 +190,12 @@ const TRIAL_ARRAY = [
     },
     {
         evidence: {
-            top_shape: "diamond",
+            top_shape: "star",
             top_color: "blue",
-            bottom_shape: "teardrop",
-            bottom_color: "red"
+            top_texture: false,
+            bottom_shape: "circle",
+            bottom_color: "red",
+            bottom_texture: false
         },
         outcome: 0,
         prediction: {
@@ -195,10 +207,12 @@ const TRIAL_ARRAY = [
     },
     {
         evidence: {
-            top_shape: "triangle",
+            top_shape: "diamond",
             top_color: "yellow",
+            top_texture: true,
             bottom_shape: "triangle",
-            bottom_color: "yellow"
+            bottom_color: "yellow",
+            bottom_texture: false
         },
         outcome: 1,
         prediction: {
@@ -212,8 +226,10 @@ const TRIAL_ARRAY = [
         evidence: {
             top_shape: "triangle",
             top_color: "green",
-            bottom_shape: "circle",
-            bottom_color: "red"
+            top_texture: true,
+            bottom_shape: "oval",
+            bottom_color: "red",
+            bottom_texture: true
         },
         outcome: 0,
         prediction: {
