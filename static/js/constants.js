@@ -4,9 +4,21 @@
 
 
 /*
- * STARTUP CONSTANTS
+ * HTML_LOOKUP is a lookup dictionary with paths to the html files loaded dynamically during the experiment
  */
 const HTML_LOOKUP = { // lookup table with human-understandable html file keys and the path to those files as vals
+    // Prod pathways //
+    // "consent": "/go_fish/static/html/consent.html",
+    // "instructions": "/go_fish/static/html/inst.html",
+    // "experiment": "/go_fish/static/html/exp.html",
+    // "evidence": "/go_fish/static/html/evidence.html",
+    // "evidence_resp": "/go_fish/static/html/evidence_response.html",
+    // "prediction": "/go_fish/static/html/prediction.html",
+    // "generate": "/go_fish/static/html/generate_input.html",
+    // "judgment": "/go_fish/static/html/generate_task.html",
+    // "evaluation": "/go_fish/static/html/evaluate.html",
+    // "memory": "/go_fish/static/html/memory.html"
+    // Local pathways //
     "consent": "/static/html/consent.html",
     "instructions": "/static/html/inst.html",
     "experiment": "/static/html/exp.html",
@@ -17,16 +29,6 @@ const HTML_LOOKUP = { // lookup table with human-understandable html file keys a
     "judgment": "/static/html/generate_task.html",
     "evaluation": "/static/html/evaluate.html",
     "memory": "/static/html/memory.html"
-};
-
-/*
- * Lookup function for human readable colors to hex values
- */
-const COLOR_LOOKUP = {
-    "red": "#f44336",
-    "green": "#4CAF50",
-    "blue": "#008CBA",
-    "yellow": "#FFD700"
 };
 
 
@@ -51,7 +53,7 @@ const INSTRUCTION_ARRAY = [
     {
         top_text: "There’s only one kind of fish in the lake your friend fishes at. ",
         canvas_img: "img/inst-fish.png",
-        bottom_text: "To keep things simple, assume that the fish in the lake always bite certain lure combinations and never bite others. "
+        bottom_text: "The fish in the lake always bite certain lure combinations and never bite others. "
     },
     {
         top_text: "You’re going to see a series of fishing lure combinations that your friend uses to try and catch fish. Here's an example: ",
@@ -61,16 +63,11 @@ const INSTRUCTION_ARRAY = [
     {
         top_text: "Some lure combinations catch fish, and others don’t: ",
         canvas_img: "img/inst-lure_catch.png",
-        bottom_text: "These are just examples. In the task today, you won’t see lures like this. "
-    },
-    {
-        top_text: "The lure combinations you’ll see in today’s task all use the colors and shapes below: ",
-        canvas_img: "img/inst-lure_shapes.png",
         bottom_text: ""
     },
     {
-        top_text: "Your job is to figure out why your friend catches fish with some lure combinations and not with others. " +
-            "Throughout the experiment, you will be asked to predict whether different lure combinations are likely to catch fish.",
+        top_text: "Throughout the experiment, you will be asked to predict whether different lure " +
+            "combinations are likely to catch fish.",
         canvas_img: "",
         bottom_text: ""
     },
@@ -85,6 +82,25 @@ const INSTRUCTION_ARRAY = [
 /*
  * EXPERIMENT CONSTANTS
  */
+
+
+const IMAGE_LOOKUP = {
+    // Prod pathways //
+    // "fish_img": "/go_fish/img/fish_icon.png",
+    // "no_fish_img": "/go_fish/img/fish_icon-no_fish.png",
+    // "fish_checkbox": "/go_fish/img/fish_icon-checkbox.png",
+    // "no_fish_checkbox": "/go_fish/img/fish_icon-no_fish-checkbox.png"
+    // Local pathways //
+    "fish_img": "/img/fish_icon.png",
+    "no_fish_img": "/img/fish_icon-no_fish.png",
+    "fish_checkbox": "/img/fish_icon-checkbox.png",
+    "no_fish_checkbox": "/img/fish_icon-no_fish-checkbox.png"
+};
+
+/*
+ * Message constants. These are messages displayed to the user throughout the experiment,
+ * stored here for easier editing
+ */
 const OBSERVATIONS = "Observed lure combinations";
 const OUTCOME_POSITIVE = "With these lures, she caught a fish!";
 const OUTCOME_NEGATIVE = "With these lures, she didn't catch any fish.";
@@ -92,6 +108,8 @@ const CONTROL_RESPONSE_POS = "In the space below, describe this lure combination
 const CONTROL_RESPONSE_NEG = "In the space below, describe this lure combination that your friend didn’t catch a fish with.";
 const EXPLAIN_RESPONSE_POS = "In the space below, explain why your friend might have caught a fish with this lure combination.";
 const EXPLAIN_RESPONSE_NEG = "In the space below, explain why your friend might not have caught any fish with this lure combination.";
+const ENDGAME_MSG = "All done! Thanks for playing!";
+
 
 /*
  * TRIAL_ARRAY is a list of dictionary objects containing information to be filled in when
@@ -118,7 +136,8 @@ const TRIAL_ARRAY = [
             top_color: "red",
             bottom_shape: "star",
             bottom_color: "green"
-        }
+        },
+        prediction_outcome: 1
     },
     {
         evidence: {
@@ -135,7 +154,8 @@ const TRIAL_ARRAY = [
             top_color: "green",
             bottom_shape: "triangle",
             bottom_color: "blue"
-        }
+        },
+        prediction_outcome: 1
     },
     {
         evidence: {
@@ -152,7 +172,8 @@ const TRIAL_ARRAY = [
             top_color: "yellow",
             bottom_shape: "circle",
             bottom_color: "blue"
-        }
+        },
+        prediction_outcome: 1
     },
     {
         evidence: {
@@ -167,9 +188,10 @@ const TRIAL_ARRAY = [
         prediction: {
             top_shape: "teardrop",
             top_color: "blue",
-            bottom_shape: "oval",
+            bottom_shape: "star",
             bottom_color: "yellow"
-        }
+        },
+        prediction_outcome: 1
     },
     {
         evidence: {
@@ -186,7 +208,8 @@ const TRIAL_ARRAY = [
             top_color: "red",
             bottom_shape: "teardrop",
             bottom_color: "blue"
-        }
+        },
+        prediction_outcome: 1
     },
     {
         evidence: {
@@ -199,11 +222,12 @@ const TRIAL_ARRAY = [
         },
         outcome: 0,
         prediction: {
-            top_shape: "diamond",
+            top_shape: "star",
             top_color: "blue",
             bottom_shape: "diamond",
             bottom_color: "green"
-        }
+        },
+        prediction_outcome: 1
     },
     {
         evidence: {
@@ -220,7 +244,8 @@ const TRIAL_ARRAY = [
             top_color: "red",
             bottom_shape: "triangle",
             bottom_color: "yellow"
-        }
+        },
+        prediction_outcome: 1
     },
     {
         evidence: {
@@ -237,18 +262,22 @@ const TRIAL_ARRAY = [
             top_color: "green",
             bottom_shape: "teardrop",
             bottom_color: "red"
-        }
+        },
+        prediction_outcome: 1
     }
 ];
 
 /*
- * GENERATE_ARRAY is a list of dictionary objects containing the elements to be presented
+ * JUDGMENT_ARRAY is a list of dictionary objects containing the elements to be presented
  * during the judgment task in the generate phase of the experiment
+ * Each element contains:
+ *  probe: a dictionary object dictating what sort of lure combination is shown for each problem in the judgment task
+ *  catches_fish: (bool) variable indicating whether this lure combination will catch a fish (written as experiment data)
  */
-const GENERATE_ARRAY = [
+const JUDGMENT_ARRAY = [
     {
         probe: {
-            top_shape: "triangle",
+            top_shape: "star",
             top_color: "green",
             bottom_shape: "circle",
             bottom_color: "blue"
@@ -259,7 +288,7 @@ const GENERATE_ARRAY = [
         probe: {
             top_shape: "triangle",
             top_color: "yellow",
-            bottom_shape: "triangle",
+            bottom_shape: "star",
             bottom_color: "green"
         },
         catches_fish: 1
@@ -328,13 +357,18 @@ const GENERATE_ARRAY = [
  *  is_target: a (bool) variable indicating whether this is the rule we are most interested in
  */
 const EVAL_ARRAY = [
+    // TODO consider including how much evidence each rule is consistent with
     {
         rule_text: "If a lure combination has a yellow shape, it will catch fish.",
-        is_target: false // TODO consider including how much evidence each rule is consistent with
+        is_target: false
     },
     {
         rule_text: "If a lure combination contains a diamond, it will catch fish.",
         is_target: false
+    },
+    {
+        rule_text: "If a lure combination has a pointy shape on the bottom, it will catch fish.",
+        is_target: true
     },
     {
         rule_text: "There is no pattern to which lure combinations catch fish: the results are " +
@@ -342,19 +376,22 @@ const EVAL_ARRAY = [
         is_target: false
     },
     {
-        rule_text: "The lures that catch fish have a pointy shape on bottom.",
-        is_target: true
-    },
-    {
         rule_text: "A lure combination will catch fish only if it has no blue shapes.",
         is_target: false
-    }
+    },
+    {
+        rule_text: "If a lure combination has a purple dot on at least one of the lures, it will catch fish.",
+        is_target: false
+    },
 ];
 
 
 /*
  * MEMORY_ARRAY is a list of dictionary objects containing the shapes to be used in the memory probe,
  * as well as whether they were in fact part of the experiment.
+ * Each element contains:
+ *  probe: a dictionary object dictating what sort of lure combination is shown for each problem in the memory task
+ *  in_expt: (bool) variable indicating whether this lure combination was shown during the experiment (written as experiment data)
  */
 const MEMORY_ARRAY = [
     {

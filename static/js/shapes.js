@@ -4,6 +4,19 @@
  */
 
 
+ /*
+ * Lookup function for human readable colors to hex values
+ */
+const COLOR_LOOKUP = {
+    "red": "#f44336",
+    "green": "#4CAF50",
+    "blue": "#008CBA",
+    "yellow": "#FFD700"
+};
+
+// Color assignment used for texture dots on some shapes
+const TEXTURE_COLOR = "purple";
+
 
 /*
  * Lure class for drawing lure combinations made up of shape classes defined below (circle, triangle, etc.)
@@ -35,7 +48,6 @@ Lure.prototype.makeShapeObj = function(shape_str, color_str, texture, position, 
     // get color hex val for this shape
     var color = "";
     if (color_str in COLOR_LOOKUP) color = COLOR_LOOKUP[color_str];
-
     // get appropriate shape class for this shape
     var shapeObj;
     if (shape_str == "circle") shapeObj = new Circle(sizeConfig, position, color, texture);
@@ -51,6 +63,7 @@ Lure.prototype.makeShapeObj = function(shape_str, color_str, texture, position, 
 
 
 Circle = function(sizeConfig, position, color, texture) {
+    // TODO is there a cleaner way to do the x, y, radius assignment for each sizeConfig?
     if (sizeConfig == "evidence" || sizeConfig == "prediction") {
         if (position == "top") {
             this.x = 75;
@@ -97,7 +110,7 @@ Circle.prototype.draw = function(ctx) {
     if (this.texture) {
         ctx.beginPath();
         ctx.arc(this.x + 4, this.y + 5, this.radius / 4, 0, Math.PI * 2);
-        ctx.fillStyle = "purple";
+        ctx.fillStyle = TEXTURE_COLOR;
         ctx.fill();
     }
 };
@@ -107,40 +120,40 @@ Oval = function(sizeConfig, position, color, texture) {
     if (sizeConfig == "evidence" || sizeConfig == "prediction") {
         if (position == "top") {
             this.x = 75;
-            this.y = 75;
-            this.width = 10;
-            this.height = 25;
+            this.y = 70;
+            this.width = 15;
+            this.height = 30;
         } else if (position == "bottom") {
             this.x = 75;
-            this.y = 110;
-            this.width = 5;
-            this.height = 10;
+            this.y = 115;
+            this.width = 7.5;
+            this.height = 15;
         }
     }
     if (sizeConfig == "observations") {
         if (position == "top") {
             this.x = 40;
-            this.y = 55;
-            this.width = 10;
-            this.height = 25;
+            this.y = 50;
+            this.width = 15;
+            this.height = 30;
         } else if (position == "bottom") {
             this.x = 40;
-            this.y = 90;
-            this.width = 5;
-            this.height = 10;
+            this.y = 95;
+            this.width = 7.5;
+            this.height = 15;
         }
     }
     if (sizeConfig == "generate" || sizeConfig == "memory") {
         if (position == "top") {
             this.x = 30;
-            this.y = 55;
-            this.width = 10;
-            this.height = 25;
+            this.y = 50;
+            this.width = 15;
+            this.height = 30;
         } else if (position == "bottom") {
             this.x = 30;
-            this.y = 90;
-            this.width = 10;
-            this.height = 10;
+            this.y = 95;
+            this.width = 7.5;
+            this.height = 15;
         }
     }
     this.color = color;
@@ -157,10 +170,11 @@ Oval.prototype.draw = function(ctx) {
     if (this.texture) {
         ctx.beginPath();
         ctx.arc(this.x - 2, this.y, this.width / 4, 0, Math.PI * 2);
-        ctx.fillStyle = "purple";
+        ctx.fillStyle = TEXTURE_COLOR;
         ctx.fill();
     }
 };
+
 
 Teardrop = function(sizeConfig, position, color, texture) {
     if (sizeConfig == "evidence" || sizeConfig == "prediction") {
@@ -169,9 +183,9 @@ Teardrop = function(sizeConfig, position, color, texture) {
             this.top_y = 50;
             this.width = 50;
         } else if (position == "bottom") {
-            this.top_x = 62.5;
-            this.top_y = 112.5;
-            this.width = 25;
+            this.top_x = 65;
+            this.top_y = 110;
+            this.width = 20;
         }
     }
     if (sizeConfig == "observations") {
@@ -180,9 +194,9 @@ Teardrop = function(sizeConfig, position, color, texture) {
             this.top_y = 30;
             this.width = 50;
         } else if (position == "bottom") {
-            this.top_x = 27.5;
-            this.top_y = 92.5;
-            this.width = 25;
+            this.top_x = 30;
+            this.top_y = 90;
+            this.width = 20;
         }
     }
     if (sizeConfig == "generate" || sizeConfig == "memory") {
@@ -191,9 +205,9 @@ Teardrop = function(sizeConfig, position, color, texture) {
             this.top_y = 30;
             this.width = 50;
         } else if (position == "bottom") {
-            this.top_x = 17.5;
-            this.top_y = 92.5;
-            this.width = 25;
+            this.top_x = 20;
+            this.top_y = 90;
+            this.width = 20;
         }
     }
     this.color = color;
@@ -211,7 +225,7 @@ Teardrop.prototype.draw = function(ctx) {
     if (this.texture) {
         ctx.beginPath();
         ctx.arc(this.top_x + 16, this.top_y + 8, this.width / 8, 0, Math.PI * 2);
-        ctx.fillStyle = "purple";
+        ctx.fillStyle = TEXTURE_COLOR;
         ctx.fill();
     }
 };
@@ -273,14 +287,14 @@ Triangle.prototype.draw = function(ctx) {
     if (this.texture) {
         ctx.beginPath();
         ctx.arc(this.top_x + 12, this.top_y + 8, this.base / 10, 0, Math.PI * 2);
-        ctx.fillStyle = "purple";
+        ctx.fillStyle = TEXTURE_COLOR;
         ctx.fill();
     }
 };
 
 
 Diamond = function(sizeConfig, position, color, texture) {
-    if (sizeConfig == "evidence" || sizeConfig == "prediction") { // TODO is there a cleaner way to do this?
+    if (sizeConfig == "evidence" || sizeConfig == "prediction") {
         if (position == "top") {
             this.top_x = 75;
             this.top_y = 50;
@@ -293,7 +307,7 @@ Diamond = function(sizeConfig, position, color, texture) {
             this.height = 25;
         }
     }
-    if (sizeConfig == "observations") { // TODO is there a cleaner way to do this?
+    if (sizeConfig == "observations") {
         if (position == "top") {
             this.top_x = 40;
             this.top_y = 30;
@@ -306,7 +320,7 @@ Diamond = function(sizeConfig, position, color, texture) {
             this.height = 25;
         }
     }
-    if (sizeConfig == "generate" || sizeConfig == "memory") { // TODO is there a cleaner way to do this?
+    if (sizeConfig == "generate" || sizeConfig == "memory") {
         if (position == "top") {
             this.top_x = 30;
             this.top_y = 30;
@@ -336,49 +350,50 @@ Diamond.prototype.draw = function(ctx) {
     if (this.texture) {
         ctx.beginPath();
         ctx.arc(this.top_x + 4, this.top_y + 12, this.width / 10, 0, Math.PI * 2);
-        ctx.fillStyle = "purple";
+        ctx.fillStyle = TEXTURE_COLOR;
         ctx.fill();
     }
 };
+
 
 Star = function(sizeConfig, position, color, texture) {
     if (sizeConfig == "evidence" || sizeConfig == "prediction") {
         if (position == "top") {
             this.x = 75;
-            this.y = 75;
-            this.outer_radius = 25;
-            this.inner_radius = 10;
+            this.y = 70;
+            this.outer_radius = 30;
+            this.inner_radius = 15;
         } else if (position == "bottom") {
             this.x = 75;
-            this.y = 110;
-            this.outer_radius = 10;
-            this.inner_radius = 5;
+            this.y = 115;
+            this.outer_radius = 15;
+            this.inner_radius = 7.5;
         }
     }
     if (sizeConfig == "observations") {
         if (position == "top") {
             this.x = 40;
-            this.y = 55;
-            this.outer_radius = 25;
-            this.inner_radius = 10;
+            this.y = 50;
+            this.outer_radius = 30;
+            this.inner_radius = 15;
         } else if (position == "bottom") {
             this.x = 40;
-            this.y = 90;
-            this.outer_radius = 10;
-            this.inner_radius = 5;
+            this.y = 95;
+            this.outer_radius = 15;
+            this.inner_radius = 7.5;
         }
     }
     if (sizeConfig == "generate" || sizeConfig == "memory") {
         if (position == "top") {
             this.x = 30;
-            this.y = 55;
-            this.outer_radius = 25;
-            this.inner_radius = 10;
+            this.y = 50;
+            this.outer_radius = 30;
+            this.inner_radius = 15;
         } else if (position == "bottom") {
             this.x = 30;
-            this.y = 90;
-            this.outer_radius = 10;
-            this.inner_radius = 5;
+            this.y = 95;
+            this.outer_radius = 15;
+            this.inner_radius = 7.5;
         }
     }
     this.spikes = 4;
@@ -413,7 +428,7 @@ Star.prototype.draw = function(ctx) {
     if (this.texture) {
         ctx.beginPath();
         ctx.arc(this.x + 2, this.y - 2, this.inner_radius / 4, 0, Math.PI * 2);
-        ctx.fillStyle = "purple";
+        ctx.fillStyle = TEXTURE_COLOR;
         ctx.fill();
     }
 };
