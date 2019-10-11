@@ -5,8 +5,6 @@
  * - correct shapes in prediction, judgment, memory
  *
  * Core logic
- * - write to json
- * - validate inputs
  *
  * Cleanup
  * - clean up html (try referencing globals within html)
@@ -26,6 +24,9 @@
 Experiment = function(istest, control) {
     this.istest = istest; // `test` experiments simulate a real experiment but write results as TEST_{exptid}.json
     this.control = control; // `control` holds condition: TRUE if control, else FALSE
+    var uid = new Date().getTime();
+    if (istest) {this.exptid = "TEST_" + uid;}
+    else {this.exptid = "user_" + uid;}
     this.data = {}; // object for storing data that we write to json at end of experiment
 };
 
@@ -80,8 +81,13 @@ Experiment.prototype.initialize = function(htmlpath, inst_htmlpath, evidence_htm
 
 
 Experiment.prototype.run = function() {
-    var inst = new Instructions(this.inst_htmlpath, this.instruction_array);
+    // Instantiate relevant fields in data object
+    this.data["is_test"] = this.istest;
+    this.data["is_control"] = this.control;
+    this.data["expt_start_ts"] = new Date().getTime();
     this.data["instruction_data"] = {};
+    // Run instructions
+    var inst = new Instructions(this.inst_htmlpath, this.instruction_array);
     this.instruction_start_ts = new Date().getTime();
     inst.run(this.startTrials.bind(this));
 };
@@ -90,7 +96,7 @@ Experiment.prototype.run = function() {
 Experiment.prototype.startTrials = function() {
     console.log("Starting experiment trials");
     // write to data object
-    this.data["instruction_data"]["instruction_time"] = new Date().getTime() - this.instruction_start_ts;
+    this.data["instruction_data"]["instruction_completion_time"] = new Date().getTime() - this.instruction_start_ts;
     this.data["trial_data"] = [];
 
     // Load html for running trials, fill in appropriate text
@@ -121,7 +127,7 @@ Experiment.prototype.showEvidence = function() {
     // Write to data object
     this.data["trial_data"].push({"trial_index": this.trial_index + 1});
     this.data["trial_data"][this.trial_index]["evidence_shape"] = trialObj.evidence;
-    this.data["trial_data"][this.trial_index]["evidence_outcome"] = trialObj.outcome;
+    this.data["trial_data"][this.trial_index]["evidence_catches_fish"] = trialObj.outcome;
 
     // Update html to display this evidence trial
     var that = this;
@@ -143,6 +149,9 @@ Experiment.prototype.showEvidence = function() {
 
 Experiment.prototype.showEvidenceResponse = function() {
     console.log("Collecting evidence response for trial: ", this.trial_index + 1);
+    // Instantiate relevant fields in data object
+    this.data["trial_data"][this.trial_index]["input_evidence_response"] = "";
+
     // Process trial object for this evidence response trial
     var trialObj = this.trial_array[this.trial_index];
     var responseBanner = "";
@@ -184,8 +193,15 @@ Experiment.prototype.showEvidenceResponse = function() {
         // Update button response
         $("#next-exp").show();
         $("#next-exp").unbind().click(function() {
-            // TODO process whether they wrote anything here (prevent from clicking if they didn't write anything) and add what they wrote to experiment trial object
-            that.showPrediction();
+            // Process whether they wrote anything here and prevent from clicking if they didn't write anything
+            var resp = $("#evidence-response").val();
+            if (resp === "") {
+                alert("Please respond to the prompt!");
+            } else {
+                // Add what they wrote to experiment trial object
+                that.data["trial_data"][that.trial_index]["input_evidence_response"] = resp;
+                that.showPrediction();
+            }
         });
     });
 };
@@ -200,25 +216,35 @@ Experiment.prototype.showPrediction = function() {
 
     // Write to data object
     this.data["trial_data"][this.trial_index]["prediction_shape"] = trialObj.prediction;
-    this.data["trial_data"][this.trial_index]["prediction_outcome"] = trialObj.prediction_outcome;
+    this.data["trial_data"][this.trial_index]["prediction_catches_fish"] = trialObj.prediction_outcome;
 
     // Update html for this prediction trial
     var that = this;
     $("#exp-container").empty(); // TODO consider making a separate function to clear stuff out, we call this a lot...
     $("#next-exp").hide();
     $("#exp-container").load(this.prediction_htmlpath, function() {
-        that.trial_index += 1;
         evidenceShape.drawLure(canvasId = "prediction-shape-canvas", sizeConfig = "prediction"); // TODO store this ID somewhere sensible
 
         // Update button response
         $("#next-exp").show();
         $("#next-exp").unbind().click(function() {
-            // TODO process whether they clicked everything here (prevent from clicking if they didn't click stuff) and add their data to experiment trial object
-            if (that.trial_index >= that.trial_array.length) {
-                console.log("Completed all trials.");
-                that.showRuleGeneration();
+            // Process whether they clicked everything here (prevent from clicking if they didn't click stuff)
+            var radio_resp = $("input[name='prediction']:checked").val();
+            var slider_resp = $("#prediction-slider").val();
+            if (radio_resp === undefined) {
+                alert("Please select an answer for both the checkbox and the slider!");
             } else {
-                that.showEvidence();
+                // Add checkbox and slider values to experiment data object
+                that.data["trial_data"][that.trial_index]["input_prediction_catches_fish"] = parseInt(radio_resp);
+                that.data["trial_data"][that.trial_index]["input_prediction_conf"] = parseInt(slider_resp);
+                // Process whether to show next trial or continue to rule generation task
+                that.trial_index += 1;
+                if (that.trial_index >= that.trial_array.length) {
+                    console.log("Completed all trials.");
+                    that.showRuleGeneration();
+                } else {
+                    that.showEvidence();
+                }
             }
         });
     });
@@ -228,7 +254,8 @@ Experiment.prototype.showPrediction = function() {
 
 Experiment.prototype.showRuleGeneration = function() {
     console.log("Collecting rule generation.");
-
+    // Instantiate relevant fields in data object
+    this.data["generation_data"] = {"input_free_response": ""};
     // Update html for rule generation
     var that = this;
     $("#obs-container").hide(); // TODO make separate function to clear out full trial stuff (observations etc.)
@@ -238,8 +265,15 @@ Experiment.prototype.showRuleGeneration = function() {
         // Update button response
         $("#next-exp").show();
         $("#next-exp").unbind().click(function() {
-            // TODO process whether they wrote anything here (prevent from clicking if they didn't write anything) and add what they wrote to experiment object
-            that.showJudgmentTask();
+            // process whether they wrote anything here (prevent from clicking if they didn't write anything)
+            var resp = $("#generate-response").val();
+            if (resp === "") {
+                alert("Please respond to the prompt!");
+            } else {
+                // Add what they wrote to experiment data object
+                that.data["generation_data"]["input_free_response"] = resp;
+                that.showJudgmentTask();
+            }
         });
     });
 };
@@ -247,6 +281,8 @@ Experiment.prototype.showRuleGeneration = function() {
 
 Experiment.prototype.showJudgmentTask = function() {
     console.log("Collecting rule judgments.");
+    // Instantiate relevant fields in data object
+    this.data["generation_data"]["judgment_task"] = [];
     // Update html for rule judgment task
     var that = this;
     $("#exp-container").empty();
@@ -256,14 +292,38 @@ Experiment.prototype.showJudgmentTask = function() {
             var jItem = that.judgment_array[jIndex - 1];
             var shapeInfo = jItem.probe;
             var jShape = new Lure(shapeInfo.top_shape, shapeInfo.bottom_shape, shapeInfo.top_color, shapeInfo.bottom_color);
+            // write shape info to data object
+            that.data["generation_data"]["judgment_task"].push({"judgment_index": jIndex,
+                                                                "judgment_shape": shapeInfo,
+                                                                "catches_fish": jItem.catches_fish});
             jShape.drawLure(canvasId = "generate-item-canvas-" + jIndex, sizeConfig = "generate"); // TODO store this ID somewhere sensible
         }
 
         // Update button response
         $("#next-exp").show();
         $("#next-exp").unbind().click(function() {
-            // TODO process whether they clicked anything here (prevent from clicking next if they didn't) and add what they selected to experiment object
-            that.showEvaluationTask();
+            // Process whether they clicked anything here (prevent from clicking next if they didn't)
+            var radio_responses = [];
+            var slider_responses = [];
+            for (j = 1; j <= that.judgment_array.length; j++) {
+                var radio_resp = $("input[name='generate-" + j + "']:checked").val();
+                var slider_resp = $("#prediction-slider-" + j).val();
+                if (radio_resp !== undefined) {
+                    radio_responses.push(parseInt(radio_resp));
+                    slider_responses.push(parseInt(slider_resp));
+                }
+            }
+            // check that participant responded to all radio buttons
+            if (radio_responses.length < that.judgment_array.length) {
+                alert("Please select an answer for all the checkboxes and sliders!");
+            } else {
+                // Add selected answers to experiment data object
+                for (j = 0; j < that.data["generation_data"]["judgment_task"].length; j++) {
+                    that.data["generation_data"]["judgment_task"][j]["input_judgment"] = radio_responses[j];
+                    that.data["generation_data"]["judgment_task"][j]["input_judgment_conf"] = slider_responses[j];
+                }
+                that.showEvaluationTask();
+            }
         });
     });
 };
@@ -271,23 +331,33 @@ Experiment.prototype.showJudgmentTask = function() {
 
 Experiment.prototype.showEvaluationTask = function() {
     console.log("Showing rule evaluation for rule: ", this.eval_index + 1);
-    var ruleEval = this.evalArray[this.eval_index];
+    // Instantiate relevant fields in data object
+    if (!("evaluation_data" in this.data)) {
+        this.data["evaluation_data"] = [];
+    }
 
+    var ruleEval = this.evalArray[this.eval_index];
+    // Update data with this eval object
+    this.data["evaluation_data"].push({"eval_index": this.eval_index + 1,
+                                        "rule_text": ruleEval.rule_text,
+                                        "is_target_rule": ruleEval.is_target});
     // Update html for evaluation task
     var that = this;
     $("#exp-container").empty();
     $("#next-exp").hide();
     $("#exp-container").load(this.eval_htmlpath, function() {
-        that.eval_index += 1;
         $("#obs-container").show(); // show observed evidence during evaluation task
         $("#eval-rule").text(ruleEval.rule_text);
 
         // Update button response
         $("#next-exp").show();
         $("#next-exp").unbind().click(function() {
-            // TODO process whether they clicked anything here (prevent from clicking next if they didn't) and add what they selected to experiment object
+            // Add what user selected to experiment data object
+            var slider_resp = $("#eval-slider").val();
+            that.data["evaluation_data"][that.eval_index]["input_rule_rating"] = parseInt(slider_resp);
+            // Check whether eval task is complete and either proceed to memory task or complete next eval item
+            that.eval_index += 1;
             if (that.eval_index >= that.evalArray.length) {
-                console.log("Completed all evaluations.");
                 that.showMemoryTask();
             } else {
                 that.showEvaluationTask();
@@ -299,6 +369,9 @@ Experiment.prototype.showEvaluationTask = function() {
 
 Experiment.prototype.showMemoryTask = function() {
     console.log("Showing memory task.");
+    // Instantiate relevant fields in data object
+    this.data["memory_data"] = [];
+
     // Update html for memory task
     var that = this;
     $("#exp-container").empty();
@@ -309,14 +382,31 @@ Experiment.prototype.showMemoryTask = function() {
             var memItem = that.memory_array[memIndex - 1];
             var shapeInfo = memItem.probe;
             var memShape = new Lure(shapeInfo.top_shape, shapeInfo.bottom_shape, shapeInfo.top_color, shapeInfo.bottom_color);
+            // Update data with this memory object
+            that.data["memory_data"].push({"memory_shape": shapeInfo, "shape_in_expt": memItem.in_expt});
             memShape.drawLure(canvasId = "memory-item-canvas-" + memIndex, sizeConfig = "memory"); // TODO store this ID somewhere sensible
         }
 
         // Update button response
         $("#next-exp").show();
         $("#next-exp").unbind().click(function() {
-            // TODO process whether they clicked anything here (prevent from clicking next if they didn't) and add what they selected to experiment object
-            that.endExperiment();
+            // Process whether user clicked anything here (prevent from clicking next if they didn't)
+            var mem_responses = [];
+            for (m = 1; m <= that.memory_array.length; m++) {
+                var radio_resp = $("input[name='memory-" + m + "']:checked").val();
+                if (radio_resp !== undefined) {
+                    mem_responses.push(parseInt(radio_resp));
+                }
+            }
+            if (mem_responses.length < that.data["memory_data"].length) {
+                alert("Please select an answer for all the checkboxes!");
+            } else {
+                // Add what user selected to experiment data object
+                for (m = 0; m < that.data["memory_data"].length; m++) {
+                    that.data["memory_data"][m]["input_shape_in_expt"] = mem_responses[m];
+                }
+                that.endExperiment();
+            }
         });
     });
 };
@@ -324,10 +414,50 @@ Experiment.prototype.showMemoryTask = function() {
 
 Experiment.prototype.endExperiment = function() {
     console.log("End of experiment!");
+    // Write end of experiment ts to data object
+    this.data["expt_end_ts"] = new Date().getTime();
 
+    // update html to reflect end of experiment
     $("#exp-container").empty();
     $("#next-exp").hide();
     $("#exp-container").html("<h1>" + this.end_game_msg + "</h1>");
 
-    // TODO write results to json!
+    // write data to json
+    this.writeData();
+};
+
+
+Experiment.prototype.writeData = function() {
+    console.log("Writing experiment data to json");
+    var expt = {
+        "exptname": "go_fish", // name of experiment for easy reference
+        "exptversion": "1" // version number for the broader experiment run (in case we modify subsequently)
+    };
+    var client_trials = {
+        "test": this.istest,
+        "sid": this.exptid
+    };
+    // Write trial data
+    this.ajaxWrite({"expt": expt,
+                    "client": client_trials,
+                    "trials": this.data});
+};
+
+
+Experiment.prototype.ajaxWrite = function(jsondata) {
+    var results = JSON.stringify(jsondata);
+    console.log(results);
+    $.ajax({
+        dataType: "json",
+        type: "POST",
+        url: WRITE_ENDPOINT,
+        data: {data: results},
+        success: function(data){console.log("Success saving data!");},
+        error: function(xhr, status, error) {
+            console.log("Failure saving data. \n" +
+                        "Response: " + xhr.responseText + "\n" +
+                        "Status: " + status + "\n" +
+                        "Error: " + error);
+        }
+    });
 };

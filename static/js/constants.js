@@ -31,6 +31,8 @@ const HTML_LOOKUP = { // lookup table with human-understandable html file keys a
     "memory": "/static/html/memory.html"
 };
 
+const WRITE_ENDPOINT = "submit.php"; // endpoint for writing json results
+
 
 /*
  * INSTRUCTION CONSTANTS
@@ -86,15 +88,15 @@ const INSTRUCTION_ARRAY = [
 
 const IMAGE_LOOKUP = {
     // Prod pathways //
-    // "fish_img": "/go_fish/img/fish_icon.png",
-    // "no_fish_img": "/go_fish/img/fish_icon-no_fish.png",
-    // "fish_checkbox": "/go_fish/img/fish_icon-checkbox.png",
-    // "no_fish_checkbox": "/go_fish/img/fish_icon-no_fish-checkbox.png"
+    "fish_img": "/go_fish/img/fish_icon.png",
+    "no_fish_img": "/go_fish/img/fish_icon-no_fish.png",
+    "fish_checkbox": "/go_fish/img/fish_icon-checkbox.png",
+    "no_fish_checkbox": "/go_fish/img/fish_icon-no_fish-checkbox.png"
     // Local pathways //
-    "fish_img": "/img/fish_icon.png",
-    "no_fish_img": "/img/fish_icon-no_fish.png",
-    "fish_checkbox": "/img/fish_icon-checkbox.png",
-    "no_fish_checkbox": "/img/fish_icon-no_fish-checkbox.png"
+    // "fish_img": "/img/fish_icon.png",
+    // "no_fish_img": "/img/fish_icon-no_fish.png",
+    // "fish_checkbox": "/img/fish_icon-checkbox.png",
+    // "no_fish_checkbox": "/img/fish_icon-no_fish-checkbox.png"
 };
 
 /*
