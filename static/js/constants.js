@@ -255,10 +255,10 @@ const TRIAL_ARRAY = [
         },
         outcome: 1,
         prediction: { // same bottom shape
-            top_shape: "diamond",
+            top_shape: "star",
             top_color: "green",
             top_texture: false,
-            bottom_shape: "triangle",
+            bottom_shape: "diamond",
             bottom_color: "blue",
             bottom_texture: false
         },
