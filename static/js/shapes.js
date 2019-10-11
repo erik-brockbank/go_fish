@@ -169,7 +169,7 @@ Oval.prototype.draw = function(ctx) {
 
     if (this.texture) {
         ctx.beginPath();
-        ctx.arc(this.x - 2, this.y, this.width / 4, 0, Math.PI * 2);
+        ctx.arc(this.x - 2, this.y, this.width / 3, 0, Math.PI * 2);
         ctx.fillStyle = TEXTURE_COLOR;
         ctx.fill();
     }
@@ -427,7 +427,7 @@ Star.prototype.draw = function(ctx) {
 
     if (this.texture) {
         ctx.beginPath();
-        ctx.arc(this.x + 2, this.y - 2, this.inner_radius / 4, 0, Math.PI * 2);
+        ctx.arc(this.x + 2, this.y - 2, this.inner_radius / 3, 0, Math.PI * 2);
         ctx.fillStyle = TEXTURE_COLOR;
         ctx.fill();
     }

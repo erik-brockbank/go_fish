@@ -8,27 +8,27 @@
  */
 const HTML_LOOKUP = { // lookup table with human-understandable html file keys and the path to those files as vals
     // Prod pathways //
-    // "consent": "/go_fish/static/html/consent.html",
-    // "instructions": "/go_fish/static/html/inst.html",
-    // "experiment": "/go_fish/static/html/exp.html",
-    // "evidence": "/go_fish/static/html/evidence.html",
-    // "evidence_resp": "/go_fish/static/html/evidence_response.html",
-    // "prediction": "/go_fish/static/html/prediction.html",
-    // "generate": "/go_fish/static/html/generate_input.html",
-    // "judgment": "/go_fish/static/html/generate_task.html",
-    // "evaluation": "/go_fish/static/html/evaluate.html",
-    // "memory": "/go_fish/static/html/memory.html"
+    "consent": "/go_fish/static/html/consent.html",
+    "instructions": "/go_fish/static/html/inst.html",
+    "experiment": "/go_fish/static/html/exp.html",
+    "evidence": "/go_fish/static/html/evidence.html",
+    "evidence_resp": "/go_fish/static/html/evidence_response.html",
+    "prediction": "/go_fish/static/html/prediction.html",
+    "generate": "/go_fish/static/html/generate_input.html",
+    "judgment": "/go_fish/static/html/generate_task.html",
+    "evaluation": "/go_fish/static/html/evaluate.html",
+    "memory": "/go_fish/static/html/memory.html"
     // Local pathways //
-    "consent": "/static/html/consent.html",
-    "instructions": "/static/html/inst.html",
-    "experiment": "/static/html/exp.html",
-    "evidence": "/static/html/evidence.html",
-    "evidence_resp": "/static/html/evidence_response.html",
-    "prediction": "/static/html/prediction.html",
-    "generate": "/static/html/generate_input.html",
-    "judgment": "/static/html/generate_task.html",
-    "evaluation": "/static/html/evaluate.html",
-    "memory": "/static/html/memory.html"
+    // "consent": "/static/html/consent.html",
+    // "instructions": "/static/html/inst.html",
+    // "experiment": "/static/html/exp.html",
+    // "evidence": "/static/html/evidence.html",
+    // "evidence_resp": "/static/html/evidence_response.html",
+    // "prediction": "/static/html/prediction.html",
+    // "generate": "/static/html/generate_input.html",
+    // "judgment": "/static/html/generate_task.html",
+    // "evaluation": "/static/html/evaluate.html",
+    // "memory": "/static/html/memory.html"
 };
 
 const WRITE_ENDPOINT = "submit.php"; // endpoint for writing json results
@@ -121,23 +121,26 @@ const ENDGAME_MSG = "All done! Thanks for playing!";
  *  outcome: (bool) variable indicating whether this lure combination caught a fish
  *  prediction: a dictionary object of the same sort as `evidence` indicating what sort of lure combination
  *      should be used for the prediction on this trial
+ *  prediction_outcome: whether the prediction shape will catch fish
  */
 const TRIAL_ARRAY = [
     {
         evidence: {
-            top_shape: "circle", // circle
-            top_color: "red", // red
-            top_texture: true, // true
-            bottom_shape: "triangle", // triangle
-            bottom_color: "yellow", // yellow
-            bottom_texture: false // false
-        },
-        outcome: 1,
-        prediction: {
             top_shape: "teardrop",
             top_color: "red",
-            bottom_shape: "star",
-            bottom_color: "green"
+            top_texture: true,
+            bottom_shape: "triangle",
+            bottom_color: "yellow",
+            bottom_texture: false
+        },
+        outcome: 1,
+        prediction: { // same top shape
+            top_shape: "teardrop",
+            top_color: "red",
+            top_texture: true,
+            bottom_shape: "diamond",
+            bottom_color: "green",
+            bottom_texture: false
         },
         prediction_outcome: 1
     },
@@ -151,11 +154,13 @@ const TRIAL_ARRAY = [
             bottom_texture: false
         },
         outcome: 0,
-        prediction: {
-            top_shape: "oval",
+        prediction: { // same top shape
+            top_shape: "circle",
             top_color: "green",
+            top_texture: false,
             bottom_shape: "triangle",
-            bottom_color: "blue"
+            bottom_color: "red",
+            bottom_texture: false
         },
         prediction_outcome: 1
     },
@@ -163,19 +168,21 @@ const TRIAL_ARRAY = [
         evidence: {
             top_shape: "diamond",
             top_color: "yellow",
-            top_texture: true,
+            top_texture: false,
             bottom_shape: "circle",
-            bottom_color: "blue",
-            bottom_texture: false
+            bottom_color: "green",
+            bottom_texture: true
         },
         outcome: 0,
-        prediction: {
+        prediction: { // same bottom shape
             top_shape: "triangle",
             top_color: "yellow",
+            top_texture: false,
             bottom_shape: "circle",
-            bottom_color: "blue"
+            bottom_color: "green",
+            bottom_texture: true
         },
-        prediction_outcome: 1
+        prediction_outcome: 0
     },
     {
         evidence: {
@@ -187,17 +194,19 @@ const TRIAL_ARRAY = [
             bottom_texture: true
         },
         outcome: 1,
-        prediction: {
-            top_shape: "teardrop",
+        prediction: { // same top shape
+            top_shape: "oval",
             top_color: "blue",
-            bottom_shape: "star",
-            bottom_color: "yellow"
+            top_texture: false,
+            bottom_shape: "teardrop",
+            bottom_color: "red",
+            bottom_texture: true
         },
-        prediction_outcome: 1
+        prediction_outcome: 0
     },
     {
         evidence: {
-            top_shape: "teardrop",
+            top_shape: "circle",
             top_color: "red",
             top_texture: true,
             bottom_shape: "diamond",
@@ -205,13 +214,15 @@ const TRIAL_ARRAY = [
             bottom_texture: true
         },
         outcome: 1,
-        prediction: {
+        prediction: { // same top shape
             top_shape: "circle",
             top_color: "red",
+            top_texture: true,
             bottom_shape: "teardrop",
-            bottom_color: "blue"
+            bottom_color: "blue",
+            bottom_texture: false
         },
-        prediction_outcome: 1
+        prediction_outcome: 0
     },
     {
         evidence: {
@@ -223,11 +234,13 @@ const TRIAL_ARRAY = [
             bottom_texture: false
         },
         outcome: 0,
-        prediction: {
+        prediction: { // same top shape
             top_shape: "star",
             top_color: "blue",
-            bottom_shape: "diamond",
-            bottom_color: "green"
+            top_texture: false,
+            bottom_shape: "star",
+            bottom_color: "yellow",
+            bottom_texture: true
         },
         prediction_outcome: 1
     },
@@ -236,16 +249,18 @@ const TRIAL_ARRAY = [
             top_shape: "diamond",
             top_color: "yellow",
             top_texture: true,
-            bottom_shape: "triangle",
-            bottom_color: "yellow",
+            bottom_shape: "diamond",
+            bottom_color: "blue",
             bottom_texture: false
         },
         outcome: 1,
-        prediction: {
+        prediction: { // same bottom shape
             top_shape: "diamond",
-            top_color: "red",
+            top_color: "green",
+            top_texture: false,
             bottom_shape: "triangle",
-            bottom_color: "yellow"
+            bottom_color: "blue",
+            bottom_texture: false
         },
         prediction_outcome: 1
     },
@@ -259,13 +274,15 @@ const TRIAL_ARRAY = [
             bottom_texture: true
         },
         outcome: 0,
-        prediction: {
-            top_shape: "triangle",
-            top_color: "green",
-            bottom_shape: "teardrop",
-            bottom_color: "red"
+        prediction: { // same bottom shape
+            top_shape: "diamond",
+            top_color: "yellow",
+            top_texture: false,
+            bottom_shape: "oval",
+            bottom_color: "red",
+            bottom_texture: true
         },
-        prediction_outcome: 1
+        prediction_outcome: 0
     }
 ];
 
@@ -279,55 +296,45 @@ const TRIAL_ARRAY = [
 const JUDGMENT_ARRAY = [
     {
         probe: {
-            top_shape: "star",
-            top_color: "green",
-            bottom_shape: "circle",
-            bottom_color: "blue"
-        },
-        catches_fish: 0
-    },
-    {
-        probe: {
             top_shape: "triangle",
             top_color: "yellow",
-            bottom_shape: "star",
-            bottom_color: "green"
+            top_texture: true,
+            bottom_shape: "oval",
+            bottom_color: "blue",
+            bottom_texture: false
         },
-        catches_fish: 1
+        catches_fish: 0
     },
     {
         probe: {
             top_shape: "diamond",
-            top_color: "green",
+            top_color: "red",
+            top_texture: false,
             bottom_shape: "diamond",
-            bottom_color: "yellow"
+            bottom_color: "green",
+            bottom_texture: false
         },
         catches_fish: 1
     },
     {
         probe: {
-            top_shape: "teardrop",
-            top_color: "red",
-            bottom_shape: "teardrop",
-            bottom_color: "green"
-        },
-        catches_fish: 0
-    },
-    {
-        probe: {
-            top_shape: "teardrop",
-            top_color: "blue",
+            top_shape: "oval",
+            top_color: "green",
+            top_texture: true,
             bottom_shape: "triangle",
-            bottom_color: "yellow"
+            bottom_color: "yellow",
+            bottom_texture: false
         },
         catches_fish: 1
     },
     {
         probe: {
             top_shape: "triangle",
-            top_color: "yellow",
+            top_color: "red",
+            top_texture: false,
             bottom_shape: "teardrop",
-            bottom_color: "red"
+            bottom_color: "green",
+            bottom_texture: true
         },
         catches_fish: 0
     },
@@ -335,17 +342,43 @@ const JUDGMENT_ARRAY = [
         probe: {
             top_shape: "circle",
             top_color: "blue",
+            top_texture: false,
+            bottom_shape: "star",
+            bottom_color: "red",
+            bottom_texture: false
+        },
+        catches_fish: 1
+    },
+    {
+        probe: {
+            top_shape: "star",
+            top_color: "green",
+            top_texture: true,
+            bottom_shape: "oval",
+            bottom_color: "blue",
+            bottom_texture: true
+        },
+        catches_fish: 0
+    },
+    {
+        probe: {
+            top_shape: "oval",
+            top_color: "yellow",
+            top_texture: false,
             bottom_shape: "circle",
-            bottom_color: "red"
+            bottom_color: "red",
+            bottom_texture: true
         },
         catches_fish: 0
     },
     {
         probe: {
             top_shape: "teardrop",
-            top_color: "red",
-            bottom_shape: "diamond",
-            bottom_color: "blue"
+            top_color: "blue",
+            top_texture: false,
+            bottom_shape: "star",
+            bottom_color: "yellow",
+            bottom_texture: false
         },
         catches_fish: 1
     }
@@ -361,11 +394,11 @@ const JUDGMENT_ARRAY = [
 const EVAL_ARRAY = [
     // TODO consider including how much evidence each rule is consistent with
     {
-        rule_text: "If a lure combination has a yellow shape, it will catch fish.",
+        rule_text: "If a lure combination has a red shape or a blue shape, it will catch fish.",
         is_target: false
     },
     {
-        rule_text: "If a lure combination contains a diamond, it will catch fish.",
+        rule_text: "If a lure combination has a diamond, it will catch fish.",
         is_target: false
     },
     {
@@ -377,8 +410,8 @@ const EVAL_ARRAY = [
             "random, but there are approximately equal numbers that catch fish and don’t.",
         is_target: false
     },
-    {
-        rule_text: "A lure combination will catch fish only if it has no blue shapes.",
+    { // Distractor rule
+        rule_text: "If a lure combination has a yellow shape or a diamond on the bottom, it will catch fish.",
         is_target: false
     },
     {
@@ -394,78 +427,103 @@ const EVAL_ARRAY = [
  * Each element contains:
  *  probe: a dictionary object dictating what sort of lure combination is shown for each problem in the memory task
  *  in_expt: (bool) variable indicating whether this lure combination was shown during the experiment (written as experiment data)
+ *  catches_fish: (bool) variable indicating whether this lure combination would catch fish (not relevant but ensures we stay balanced)
  */
 const MEMORY_ARRAY = [
     {
         probe: {
             top_shape: "teardrop",
-            top_color: "red",
-            bottom_shape: "circle",
-            bottom_color: "blue"
-        },
-        in_expt: 0
-    },
-    {
-        probe: {
-            top_shape: "circle",
             top_color: "yellow",
-            bottom_shape: "triangle",
-            bottom_color: "green"
+            top_texture: false,
+            bottom_shape: "diamond",
+            bottom_color: "green",
+            bottom_texture: false
         },
-        in_expt: 0
+        in_expt: 0,
+        catches_fish: 1
     },
-    {
+    { // Prediction lure #3
         probe: {
             top_shape: "triangle",
-            top_color: "green",
-            bottom_shape: "teardrop",
-            bottom_color: "yellow"
+            top_color: "yellow",
+            top_texture: false,
+            bottom_shape: "circle",
+            bottom_color: "green",
+            bottom_texture: true
         },
-        in_expt: 0
+        in_expt: 1,
+        catches_fish: 0
     },
     {
+        probe: {
+            top_shape: "oval",
+            top_color: "green",
+            top_texture: false,
+            bottom_shape: "diamond",
+            bottom_color: "red",
+            bottom_texture: true
+        },
+        in_expt: 0,
+        catches_fish: 1
+    },
+    { // Evidence lure #1
         probe: {
             top_shape: "teardrop",
             top_color: "red",
+            top_texture: true,
             bottom_shape: "triangle",
-            bottom_color: "yellow"
+            bottom_color: "yellow",
+            bottom_texture: false
         },
-        in_expt: 1
-    },
-    {
-        probe: {
-            top_shape: "triangle",
-            top_color: "yellow",
-            bottom_shape: "circle",
-            bottom_color: "blue"
-        },
-        in_expt: 1
+        in_expt: 1,
+        catches_fish: 1
     },
     {
         probe: {
             top_shape: "diamond",
             top_color: "blue",
-            bottom_shape: "diamond",
-            bottom_color: "green"
+            top_texture: false,
+            bottom_shape: "circle",
+            bottom_color: "blue",
+            bottom_texture: false
         },
-        in_expt: 1
+        in_expt: 1,
+        catches_fish: 0
+    },
+    { // Evidence lure #6
+        probe: {
+            top_shape: "star",
+            top_color: "blue",
+            top_texture: false,
+            bottom_shape: "circle",
+            bottom_color: "red",
+            bottom_texture: false
+        },
+        in_expt: 1,
+        catches_fish: 0
     },
     {
         probe: {
             top_shape: "circle",
-            top_color: "red",
-            bottom_shape: "diamond",
-            bottom_color: "yellow"
+            top_color: "yellow",
+            top_texture: false,
+            bottom_shape: "oval",
+            bottom_color: "yellow",
+            bottom_texture: false
         },
-        in_expt: 0
+        in_expt: 0,
+        catches_fish: 0
     },
-    {
+    { // Prediction lure #6
         probe: {
-            top_shape: "diamond",
+            top_shape: "star",
             top_color: "blue",
-            bottom_shape: "teardrop",
-            bottom_color: "red"
+            top_texture: false,
+            bottom_shape: "star",
+            bottom_color: "yellow",
+            bottom_texture: true
         },
-        in_expt: 1
+        in_expt: 1,
+        catches_fish: 1
     }
 ];

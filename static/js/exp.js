@@ -212,7 +212,8 @@ Experiment.prototype.showPrediction = function() {
     // Process trial object for this prediction trial
     var trialObj = this.trial_array[this.trial_index];
     var shapeInfo = trialObj.prediction;
-    var evidenceShape = new Lure(shapeInfo.top_shape, shapeInfo.bottom_shape, shapeInfo.top_color, shapeInfo.bottom_color);
+    var evidenceShape = new Lure(shapeInfo.top_shape, shapeInfo.bottom_shape,
+        shapeInfo.top_color, shapeInfo.bottom_color, shapeInfo.top_texture, shapeInfo.bottom_texture);
 
     // Write to data object
     this.data["trial_data"][this.trial_index]["prediction_shape"] = trialObj.prediction;
@@ -291,11 +292,12 @@ Experiment.prototype.showJudgmentTask = function() {
         for (jIndex = 1; jIndex <= that.judgment_array.length; jIndex++) {
             var jItem = that.judgment_array[jIndex - 1];
             var shapeInfo = jItem.probe;
-            var jShape = new Lure(shapeInfo.top_shape, shapeInfo.bottom_shape, shapeInfo.top_color, shapeInfo.bottom_color);
+            var jShape = new Lure(shapeInfo.top_shape, shapeInfo.bottom_shape,
+                shapeInfo.top_color, shapeInfo.bottom_color, shapeInfo.top_texture, shapeInfo.bottom_texture);
             // write shape info to data object
             that.data["generation_data"]["judgment_task"].push({"judgment_index": jIndex,
                                                                 "judgment_shape": shapeInfo,
-                                                                "catches_fish": jItem.catches_fish});
+                                                                "judgment_catches_fish": jItem.catches_fish});
             jShape.drawLure(canvasId = "generate-item-canvas-" + jIndex, sizeConfig = "generate"); // TODO store this ID somewhere sensible
         }
 
@@ -381,9 +383,12 @@ Experiment.prototype.showMemoryTask = function() {
         for (memIndex = 1; memIndex <= that.memory_array.length; memIndex++) {
             var memItem = that.memory_array[memIndex - 1];
             var shapeInfo = memItem.probe;
-            var memShape = new Lure(shapeInfo.top_shape, shapeInfo.bottom_shape, shapeInfo.top_color, shapeInfo.bottom_color);
+            var memShape = new Lure(shapeInfo.top_shape, shapeInfo.bottom_shape,
+                shapeInfo.top_color, shapeInfo.bottom_color, shapeInfo.top_texture, shapeInfo.bottom_texture);
             // Update data with this memory object
-            that.data["memory_data"].push({"memory_shape": shapeInfo, "shape_in_expt": memItem.in_expt});
+            that.data["memory_data"].push({"memory_shape": shapeInfo,
+                                            "memory_shape_in_expt": memItem.in_expt,
+                                            "memory_shape_catches_fish": memItem.catches_fish});
             memShape.drawLure(canvasId = "memory-item-canvas-" + memIndex, sizeConfig = "memory"); // TODO store this ID somewhere sensible
         }
 
