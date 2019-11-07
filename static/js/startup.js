@@ -19,7 +19,7 @@ loadExperiment = function() {
     // ex. http://localhost:8000/index.html?&mode=test
     var istest = false;
     var urlParams = new URLSearchParams(window.location.href);
-    if (urlParams.has("mode") & urlParams.get("mode").includes("test")) {istest = true;}
+    if (urlParams.has("mode") && urlParams.get("mode").includes("test")) {istest = true;}
 
     // Set experiment condition
     var control = Math.random() < 0.5;
