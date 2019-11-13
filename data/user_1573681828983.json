@@ -1,0 +1,474 @@
+{
+    "expt": {
+        "exptname": "go_fish",
+        "exptversion": "1"
+    },
+    "client": {
+        "test": false,
+        "sid": "user_1573681828983"
+    },
+    "trials": {
+        "is_test": false,
+        "is_control": true,
+        "expt_start_ts": 1573681828983,
+        "instruction_data": {
+            "instruction_completion_time": 42349
+        },
+        "trial_data": [
+            {
+                "trial_index": 1,
+                "evidence_shape": {
+                    "top_shape": "teardrop",
+                    "top_color": "red",
+                    "top_texture": true,
+                    "bottom_shape": "triangle",
+                    "bottom_color": "yellow",
+                    "bottom_texture": false
+                },
+                "evidence_catches_fish": 1,
+                "input_evidence_response": "This lure combination that was used to successfully catch fish has three components: a red tear drop shape, a purple circle inside the teardrop shape, and an upside-down yellow triangle beneath the red teardrop shape. ",
+                "prediction_shape": {
+                    "top_shape": "teardrop",
+                    "top_color": "red",
+                    "top_texture": true,
+                    "bottom_shape": "diamond",
+                    "bottom_color": "green",
+                    "bottom_texture": false
+                },
+                "prediction_catches_fish": 1,
+                "input_prediction_catches_fish": 1,
+                "input_prediction_conf": 3
+            },
+            {
+                "trial_index": 2,
+                "evidence_shape": {
+                    "top_shape": "circle",
+                    "top_color": "green",
+                    "top_texture": false,
+                    "bottom_shape": "teardrop",
+                    "bottom_color": "blue",
+                    "bottom_texture": false
+                },
+                "evidence_catches_fish": 0,
+                "input_evidence_response": "This lure combination that did not successfully catch fish has two components: a green circle and a blue teardrop below the green circle ",
+                "prediction_shape": {
+                    "top_shape": "circle",
+                    "top_color": "green",
+                    "top_texture": false,
+                    "bottom_shape": "triangle",
+                    "bottom_color": "red",
+                    "bottom_texture": false
+                },
+                "prediction_catches_fish": 1,
+                "input_prediction_catches_fish": 0,
+                "input_prediction_conf": 4
+            },
+            {
+                "trial_index": 3,
+                "evidence_shape": {
+                    "top_shape": "diamond",
+                    "top_color": "yellow",
+                    "top_texture": false,
+                    "bottom_shape": "circle",
+                    "bottom_color": "green",
+                    "bottom_texture": true
+                },
+                "evidence_catches_fish": 0,
+                "input_evidence_response": "This lure combination that did not successfully catch fish has three components: a yellow diamond, a green circle below the yellow diamond, and a purple circle inside the green circle ",
+                "prediction_shape": {
+                    "top_shape": "triangle",
+                    "top_color": "yellow",
+                    "top_texture": false,
+                    "bottom_shape": "circle",
+                    "bottom_color": "green",
+                    "bottom_texture": true
+                },
+                "prediction_catches_fish": 0,
+                "input_prediction_catches_fish": 0,
+                "input_prediction_conf": 5
+            },
+            {
+                "trial_index": 4,
+                "evidence_shape": {
+                    "top_shape": "oval",
+                    "top_color": "blue",
+                    "top_texture": false,
+                    "bottom_shape": "star",
+                    "bottom_color": "yellow",
+                    "bottom_texture": true
+                },
+                "evidence_catches_fish": 1,
+                "input_evidence_response": "This lure combination that successfully caught fish has three components: a blue oval, a yellow star under the blue oval. and a purple circle inside the yellow star ",
+                "prediction_shape": {
+                    "top_shape": "oval",
+                    "top_color": "blue",
+                    "top_texture": false,
+                    "bottom_shape": "teardrop",
+                    "bottom_color": "red",
+                    "bottom_texture": true
+                },
+                "prediction_catches_fish": 0,
+                "input_prediction_catches_fish": 0,
+                "input_prediction_conf": 5
+            },
+            {
+                "trial_index": 5,
+                "evidence_shape": {
+                    "top_shape": "circle",
+                    "top_color": "red",
+                    "top_texture": true,
+                    "bottom_shape": "diamond",
+                    "bottom_color": "green",
+                    "bottom_texture": true
+                },
+                "evidence_catches_fish": 1,
+                "input_evidence_response": "This lure combination that successfully caught fish has four components: a red circle, a purple circle inside of the red circle, a green diamond, and a purple circle inside of the green diamond ",
+                "prediction_shape": {
+                    "top_shape": "circle",
+                    "top_color": "red",
+                    "top_texture": true,
+                    "bottom_shape": "teardrop",
+                    "bottom_color": "blue",
+                    "bottom_texture": false
+                },
+                "prediction_catches_fish": 0,
+                "input_prediction_catches_fish": 1,
+                "input_prediction_conf": 4
+            },
+            {
+                "trial_index": 6,
+                "evidence_shape": {
+                    "top_shape": "star",
+                    "top_color": "blue",
+                    "top_texture": false,
+                    "bottom_shape": "circle",
+                    "bottom_color": "red",
+                    "bottom_texture": false
+                },
+                "evidence_catches_fish": 0,
+                "input_evidence_response": "This lure combination that was not successful in catching fish has two components: a blue star, and a red circle ",
+                "prediction_shape": {
+                    "top_shape": "star",
+                    "top_color": "blue",
+                    "top_texture": false,
+                    "bottom_shape": "star",
+                    "bottom_color": "yellow",
+                    "bottom_texture": true
+                },
+                "prediction_catches_fish": 1,
+                "input_prediction_catches_fish": 1,
+                "input_prediction_conf": 5
+            },
+            {
+                "trial_index": 7,
+                "evidence_shape": {
+                    "top_shape": "diamond",
+                    "top_color": "yellow",
+                    "top_texture": true,
+                    "bottom_shape": "diamond",
+                    "bottom_color": "blue",
+                    "bottom_texture": false
+                },
+                "evidence_catches_fish": 1,
+                "input_evidence_response": "This lure combination that was successful in catching fish has three components: a yellow diamond, a purple circle in the yellow diamond, and a blue diamond ",
+                "prediction_shape": {
+                    "top_shape": "star",
+                    "top_color": "green",
+                    "top_texture": false,
+                    "bottom_shape": "diamond",
+                    "bottom_color": "blue",
+                    "bottom_texture": false
+                },
+                "prediction_catches_fish": 1,
+                "input_prediction_catches_fish": 1,
+                "input_prediction_conf": 5
+            },
+            {
+                "trial_index": 8,
+                "evidence_shape": {
+                    "top_shape": "triangle",
+                    "top_color": "green",
+                    "top_texture": true,
+                    "bottom_shape": "oval",
+                    "bottom_color": "red",
+                    "bottom_texture": true
+                },
+                "evidence_catches_fish": 0,
+                "input_evidence_response": "This lure combination that was not successful in catching fish has four components: an upside-down green triangle, a purple circle in the green triangle, a red oval, and a purple circle in the red oval ",
+                "prediction_shape": {
+                    "top_shape": "diamond",
+                    "top_color": "yellow",
+                    "top_texture": false,
+                    "bottom_shape": "oval",
+                    "bottom_color": "red",
+                    "bottom_texture": true
+                },
+                "prediction_catches_fish": 0,
+                "input_prediction_catches_fish": 0,
+                "input_prediction_conf": 5
+            }
+        ],
+        "generation_data": {
+            "input_free_response": "The single, best rule I used whether the combinations would catch fish was the bottom half of the combination, if it was similar to successful combinations I used it as an indicator of success for catching fish and vice versa ",
+            "judgment_task": [
+                {
+                    "judgment_index": 1,
+                    "judgment_shape": {
+                        "top_shape": "triangle",
+                        "top_color": "yellow",
+                        "top_texture": true,
+                        "bottom_shape": "oval",
+                        "bottom_color": "blue",
+                        "bottom_texture": false
+                    },
+                    "judgment_catches_fish": 0,
+                    "input_judgment": 1,
+                    "input_judgment_conf": 4
+                },
+                {
+                    "judgment_index": 2,
+                    "judgment_shape": {
+                        "top_shape": "diamond",
+                        "top_color": "red",
+                        "top_texture": false,
+                        "bottom_shape": "diamond",
+                        "bottom_color": "green",
+                        "bottom_texture": false
+                    },
+                    "judgment_catches_fish": 1,
+                    "input_judgment": 0,
+                    "input_judgment_conf": 4
+                },
+                {
+                    "judgment_index": 3,
+                    "judgment_shape": {
+                        "top_shape": "oval",
+                        "top_color": "green",
+                        "top_texture": true,
+                        "bottom_shape": "triangle",
+                        "bottom_color": "yellow",
+                        "bottom_texture": false
+                    },
+                    "judgment_catches_fish": 1,
+                    "input_judgment": 0,
+                    "input_judgment_conf": 4
+                },
+                {
+                    "judgment_index": 4,
+                    "judgment_shape": {
+                        "top_shape": "triangle",
+                        "top_color": "red",
+                        "top_texture": false,
+                        "bottom_shape": "teardrop",
+                        "bottom_color": "green",
+                        "bottom_texture": true
+                    },
+                    "judgment_catches_fish": 0,
+                    "input_judgment": 1,
+                    "input_judgment_conf": 4
+                },
+                {
+                    "judgment_index": 5,
+                    "judgment_shape": {
+                        "top_shape": "circle",
+                        "top_color": "blue",
+                        "top_texture": false,
+                        "bottom_shape": "star",
+                        "bottom_color": "red",
+                        "bottom_texture": false
+                    },
+                    "judgment_catches_fish": 1,
+                    "input_judgment": 0,
+                    "input_judgment_conf": 4
+                },
+                {
+                    "judgment_index": 6,
+                    "judgment_shape": {
+                        "top_shape": "star",
+                        "top_color": "green",
+                        "top_texture": true,
+                        "bottom_shape": "oval",
+                        "bottom_color": "blue",
+                        "bottom_texture": true
+                    },
+                    "judgment_catches_fish": 0,
+                    "input_judgment": 1,
+                    "input_judgment_conf": 4
+                },
+                {
+                    "judgment_index": 7,
+                    "judgment_shape": {
+                        "top_shape": "oval",
+                        "top_color": "yellow",
+                        "top_texture": false,
+                        "bottom_shape": "circle",
+                        "bottom_color": "red",
+                        "bottom_texture": true
+                    },
+                    "judgment_catches_fish": 0,
+                    "input_judgment": 0,
+                    "input_judgment_conf": 4
+                },
+                {
+                    "judgment_index": 8,
+                    "judgment_shape": {
+                        "top_shape": "teardrop",
+                        "top_color": "blue",
+                        "top_texture": false,
+                        "bottom_shape": "star",
+                        "bottom_color": "yellow",
+                        "bottom_texture": false
+                    },
+                    "judgment_catches_fish": 1,
+                    "input_judgment": 0,
+                    "input_judgment_conf": 4
+                }
+            ]
+        },
+        "evaluation_data": [
+            {
+                "eval_index": 1,
+                "rule_text": "If a lure combination has a red shape or a blue shape, it will catch fish.",
+                "is_target_rule": false,
+                "input_rule_rating": 5
+            },
+            {
+                "eval_index": 2,
+                "rule_text": "If a lure combination has a diamond, it will catch fish.",
+                "is_target_rule": false,
+                "input_rule_rating": 5
+            },
+            {
+                "eval_index": 3,
+                "rule_text": "If a lure combination has a pointy shape on the bottom, it will catch fish.",
+                "is_target_rule": true,
+                "input_rule_rating": 6
+            },
+            {
+                "eval_index": 4,
+                "rule_text": "There is no pattern to which lure combinations catch fish: the results are random, but there are approximately equal numbers that catch fish and don\u2019t.",
+                "is_target_rule": false,
+                "input_rule_rating": 2
+            },
+            {
+                "eval_index": 5,
+                "rule_text": "If a lure combination has a yellow shape or a diamond on the bottom, it will catch fish.",
+                "is_target_rule": false,
+                "input_rule_rating": 7
+            },
+            {
+                "eval_index": 6,
+                "rule_text": "If a lure combination has a purple dot on at least one of the lures, it will catch fish.",
+                "is_target_rule": false,
+                "input_rule_rating": 6
+            }
+        ],
+        "memory_data": [
+            {
+                "memory_shape": {
+                    "top_shape": "teardrop",
+                    "top_color": "yellow",
+                    "top_texture": false,
+                    "bottom_shape": "diamond",
+                    "bottom_color": "green",
+                    "bottom_texture": false
+                },
+                "memory_shape_in_expt": 0,
+                "memory_shape_catches_fish": 1,
+                "input_shape_in_expt": 1
+            },
+            {
+                "memory_shape": {
+                    "top_shape": "triangle",
+                    "top_color": "yellow",
+                    "top_texture": false,
+                    "bottom_shape": "circle",
+                    "bottom_color": "green",
+                    "bottom_texture": true
+                },
+                "memory_shape_in_expt": 1,
+                "memory_shape_catches_fish": 0,
+                "input_shape_in_expt": 1
+            },
+            {
+                "memory_shape": {
+                    "top_shape": "oval",
+                    "top_color": "green",
+                    "top_texture": false,
+                    "bottom_shape": "diamond",
+                    "bottom_color": "red",
+                    "bottom_texture": true
+                },
+                "memory_shape_in_expt": 0,
+                "memory_shape_catches_fish": 1,
+                "input_shape_in_expt": 0
+            },
+            {
+                "memory_shape": {
+                    "top_shape": "teardrop",
+                    "top_color": "red",
+                    "top_texture": true,
+                    "bottom_shape": "triangle",
+                    "bottom_color": "yellow",
+                    "bottom_texture": false
+                },
+                "memory_shape_in_expt": 1,
+                "memory_shape_catches_fish": 1,
+                "input_shape_in_expt": 1
+            },
+            {
+                "memory_shape": {
+                    "top_shape": "diamond",
+                    "top_color": "blue",
+                    "top_texture": false,
+                    "bottom_shape": "circle",
+                    "bottom_color": "blue",
+                    "bottom_texture": false
+                },
+                "memory_shape_in_expt": 1,
+                "memory_shape_catches_fish": 0,
+                "input_shape_in_expt": 1
+            },
+            {
+                "memory_shape": {
+                    "top_shape": "star",
+                    "top_color": "blue",
+                    "top_texture": false,
+                    "bottom_shape": "circle",
+                    "bottom_color": "red",
+                    "bottom_texture": false
+                },
+                "memory_shape_in_expt": 1,
+                "memory_shape_catches_fish": 0,
+                "input_shape_in_expt": 1
+            },
+            {
+                "memory_shape": {
+                    "top_shape": "circle",
+                    "top_color": "yellow",
+                    "top_texture": false,
+                    "bottom_shape": "oval",
+                    "bottom_color": "yellow",
+                    "bottom_texture": false
+                },
+                "memory_shape_in_expt": 0,
+                "memory_shape_catches_fish": 0,
+                "input_shape_in_expt": 0
+            },
+            {
+                "memory_shape": {
+                    "top_shape": "star",
+                    "top_color": "blue",
+                    "top_texture": false,
+                    "bottom_shape": "star",
+                    "bottom_color": "yellow",
+                    "bottom_texture": true
+                },
+                "memory_shape_in_expt": 1,
+                "memory_shape_catches_fish": 1,
+                "input_shape_in_expt": 0
+            }
+        ],
+        "expt_end_ts": 1573682578126
+    }
+}

@@ -88,7 +88,7 @@ Experiment.prototype.run = function() {
     this.data["instruction_data"] = {};
     // Run instructions
     var inst = new Instructions(this.inst_htmlpath, this.instruction_array);
-    this.instruction_start_ts = new Date().getTime();
+    this.data["instruction_data"]["instruction_start_ts"] = new Date().getTime();
     inst.run(this.startTrials.bind(this));
 };
 
@@ -96,7 +96,8 @@ Experiment.prototype.run = function() {
 Experiment.prototype.startTrials = function() {
     console.log("Starting experiment trials");
     // write to data object
-    this.data["instruction_data"]["instruction_completion_time"] = new Date().getTime() - this.instruction_start_ts;
+    this.data["instruction_data"]["instruction_end_ts"] = new Date().getTime();
+    this.data["trial_start_ts"] = new Date().getTime();
     this.data["trial_data"] = [];
 
     // Load html for running trials, fill in appropriate text
@@ -255,6 +256,7 @@ Experiment.prototype.showPrediction = function() {
 
 Experiment.prototype.showRuleGeneration = function() {
     console.log("Collecting rule generation.");
+    this.data["trial_end_ts"] = new Date().getTime();
     // Instantiate relevant fields in data object
     this.data["generation_data"] = {"input_free_response": ""};
     // Update html for rule generation

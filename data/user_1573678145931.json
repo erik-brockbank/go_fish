@@ -1,0 +1,474 @@
+{
+    "expt": {
+        "exptname": "go_fish",
+        "exptversion": "1"
+    },
+    "client": {
+        "test": false,
+        "sid": "user_1573678145931"
+    },
+    "trials": {
+        "is_test": false,
+        "is_control": false,
+        "expt_start_ts": 1573678145931,
+        "instruction_data": {
+            "instruction_completion_time": 20205
+        },
+        "trial_data": [
+            {
+                "trial_index": 1,
+                "evidence_shape": {
+                    "top_shape": "teardrop",
+                    "top_color": "red",
+                    "top_texture": true,
+                    "bottom_shape": "triangle",
+                    "bottom_color": "yellow",
+                    "bottom_texture": false
+                },
+                "evidence_catches_fish": 1,
+                "input_evidence_response": "Perhaps the friend caught the fish because the bottom part of the lure was colored in such a way that the fish may have been interested in it and was therefore drawn to bite it. ",
+                "prediction_shape": {
+                    "top_shape": "teardrop",
+                    "top_color": "red",
+                    "top_texture": true,
+                    "bottom_shape": "diamond",
+                    "bottom_color": "green",
+                    "bottom_texture": false
+                },
+                "prediction_catches_fish": 1,
+                "input_prediction_catches_fish": 1,
+                "input_prediction_conf": 2
+            },
+            {
+                "trial_index": 2,
+                "evidence_shape": {
+                    "top_shape": "circle",
+                    "top_color": "green",
+                    "top_texture": false,
+                    "bottom_shape": "teardrop",
+                    "bottom_color": "blue",
+                    "bottom_texture": false
+                },
+                "evidence_catches_fish": 0,
+                "input_evidence_response": "Perhaps the top part of the lure being a simple circle rather than a triangle on top of a circle contributes somehow to not being able to catch a fish. Also the color of the bottom part of the lure is blue and therefore maybe it is the same color as water leading to the fish not being drawn to it. ",
+                "prediction_shape": {
+                    "top_shape": "circle",
+                    "top_color": "green",
+                    "top_texture": false,
+                    "bottom_shape": "triangle",
+                    "bottom_color": "red",
+                    "bottom_texture": false
+                },
+                "prediction_catches_fish": 1,
+                "input_prediction_catches_fish": 0,
+                "input_prediction_conf": 5
+            },
+            {
+                "trial_index": 3,
+                "evidence_shape": {
+                    "top_shape": "diamond",
+                    "top_color": "yellow",
+                    "top_texture": false,
+                    "bottom_shape": "circle",
+                    "bottom_color": "green",
+                    "bottom_texture": true
+                },
+                "evidence_catches_fish": 0,
+                "input_evidence_response": "Maybe the only combination that can catch fish is the combination of 2 colors, red and yellow, which would explain why this combination of green and yellow did not catch any fish. Furthermore, maybe it is that having the color green in the lure leads to no fish being caught. ",
+                "prediction_shape": {
+                    "top_shape": "triangle",
+                    "top_color": "yellow",
+                    "top_texture": false,
+                    "bottom_shape": "circle",
+                    "bottom_color": "green",
+                    "bottom_texture": true
+                },
+                "prediction_catches_fish": 0,
+                "input_prediction_catches_fish": 0,
+                "input_prediction_conf": 5
+            },
+            {
+                "trial_index": 4,
+                "evidence_shape": {
+                    "top_shape": "oval",
+                    "top_color": "blue",
+                    "top_texture": false,
+                    "bottom_shape": "star",
+                    "bottom_color": "yellow",
+                    "bottom_texture": true
+                },
+                "evidence_catches_fish": 1,
+                "input_evidence_response": "Having no green in the lure may explain why fish can be caught with the combination of blue and yellow. ",
+                "prediction_shape": {
+                    "top_shape": "oval",
+                    "top_color": "blue",
+                    "top_texture": false,
+                    "bottom_shape": "teardrop",
+                    "bottom_color": "red",
+                    "bottom_texture": true
+                },
+                "prediction_catches_fish": 0,
+                "input_prediction_catches_fish": 1,
+                "input_prediction_conf": 6
+            },
+            {
+                "trial_index": 5,
+                "evidence_shape": {
+                    "top_shape": "circle",
+                    "top_color": "red",
+                    "top_texture": true,
+                    "bottom_shape": "diamond",
+                    "bottom_color": "green",
+                    "bottom_texture": true
+                },
+                "evidence_catches_fish": 1,
+                "input_evidence_response": "So the previous assumption that green in the lure cannot catch fish is wrong. Maybe then fish can be only caught if the bottom part of the lure has more than 1 side and as the bottom part of this lure has 4 sides, it can catch fish. ",
+                "prediction_shape": {
+                    "top_shape": "circle",
+                    "top_color": "red",
+                    "top_texture": true,
+                    "bottom_shape": "teardrop",
+                    "bottom_color": "blue",
+                    "bottom_texture": false
+                },
+                "prediction_catches_fish": 0,
+                "input_prediction_catches_fish": 0,
+                "input_prediction_conf": 3
+            },
+            {
+                "trial_index": 6,
+                "evidence_shape": {
+                    "top_shape": "star",
+                    "top_color": "blue",
+                    "top_texture": false,
+                    "bottom_shape": "circle",
+                    "bottom_color": "red",
+                    "bottom_texture": false
+                },
+                "evidence_catches_fish": 0,
+                "input_evidence_response": "As the lure on the bottom part is a circle and has no sides, the lure is unable to catch any fish. ",
+                "prediction_shape": {
+                    "top_shape": "star",
+                    "top_color": "blue",
+                    "top_texture": false,
+                    "bottom_shape": "star",
+                    "bottom_color": "yellow",
+                    "bottom_texture": true
+                },
+                "prediction_catches_fish": 1,
+                "input_prediction_catches_fish": 1,
+                "input_prediction_conf": 6
+            },
+            {
+                "trial_index": 7,
+                "evidence_shape": {
+                    "top_shape": "diamond",
+                    "top_color": "yellow",
+                    "top_texture": true,
+                    "bottom_shape": "diamond",
+                    "bottom_color": "blue",
+                    "bottom_texture": false
+                },
+                "evidence_catches_fish": 1,
+                "input_evidence_response": "Again, it is maybe the case that having more than 1 side in the bottom part of the lure makes it so catching fish in the lake is possible. ",
+                "prediction_shape": {
+                    "top_shape": "star",
+                    "top_color": "green",
+                    "top_texture": false,
+                    "bottom_shape": "diamond",
+                    "bottom_color": "blue",
+                    "bottom_texture": false
+                },
+                "prediction_catches_fish": 1,
+                "input_prediction_catches_fish": 1,
+                "input_prediction_conf": 7
+            },
+            {
+                "trial_index": 8,
+                "evidence_shape": {
+                    "top_shape": "triangle",
+                    "top_color": "green",
+                    "top_texture": true,
+                    "bottom_shape": "oval",
+                    "bottom_color": "red",
+                    "bottom_texture": true
+                },
+                "evidence_catches_fish": 0,
+                "input_evidence_response": "The bottom part of the lure does not have more than 1 side and therefore cannot catch fish in this particular lake. ",
+                "prediction_shape": {
+                    "top_shape": "diamond",
+                    "top_color": "yellow",
+                    "top_texture": false,
+                    "bottom_shape": "oval",
+                    "bottom_color": "red",
+                    "bottom_texture": true
+                },
+                "prediction_catches_fish": 0,
+                "input_prediction_catches_fish": 0,
+                "input_prediction_conf": 7
+            }
+        ],
+        "generation_data": {
+            "input_free_response": "The bottom part of the lure must have more than 1 side (so a square, a rectangle, a triangle for instance). If it does not, then it cannot catch fish in the lake. ",
+            "judgment_task": [
+                {
+                    "judgment_index": 1,
+                    "judgment_shape": {
+                        "top_shape": "triangle",
+                        "top_color": "yellow",
+                        "top_texture": true,
+                        "bottom_shape": "oval",
+                        "bottom_color": "blue",
+                        "bottom_texture": false
+                    },
+                    "judgment_catches_fish": 0,
+                    "input_judgment": 0,
+                    "input_judgment_conf": 5
+                },
+                {
+                    "judgment_index": 2,
+                    "judgment_shape": {
+                        "top_shape": "diamond",
+                        "top_color": "red",
+                        "top_texture": false,
+                        "bottom_shape": "diamond",
+                        "bottom_color": "green",
+                        "bottom_texture": false
+                    },
+                    "judgment_catches_fish": 1,
+                    "input_judgment": 1,
+                    "input_judgment_conf": 5
+                },
+                {
+                    "judgment_index": 3,
+                    "judgment_shape": {
+                        "top_shape": "oval",
+                        "top_color": "green",
+                        "top_texture": true,
+                        "bottom_shape": "triangle",
+                        "bottom_color": "yellow",
+                        "bottom_texture": false
+                    },
+                    "judgment_catches_fish": 1,
+                    "input_judgment": 1,
+                    "input_judgment_conf": 7
+                },
+                {
+                    "judgment_index": 4,
+                    "judgment_shape": {
+                        "top_shape": "triangle",
+                        "top_color": "red",
+                        "top_texture": false,
+                        "bottom_shape": "teardrop",
+                        "bottom_color": "green",
+                        "bottom_texture": true
+                    },
+                    "judgment_catches_fish": 0,
+                    "input_judgment": 0,
+                    "input_judgment_conf": 5
+                },
+                {
+                    "judgment_index": 5,
+                    "judgment_shape": {
+                        "top_shape": "circle",
+                        "top_color": "blue",
+                        "top_texture": false,
+                        "bottom_shape": "star",
+                        "bottom_color": "red",
+                        "bottom_texture": false
+                    },
+                    "judgment_catches_fish": 1,
+                    "input_judgment": 1,
+                    "input_judgment_conf": 4
+                },
+                {
+                    "judgment_index": 6,
+                    "judgment_shape": {
+                        "top_shape": "star",
+                        "top_color": "green",
+                        "top_texture": true,
+                        "bottom_shape": "oval",
+                        "bottom_color": "blue",
+                        "bottom_texture": true
+                    },
+                    "judgment_catches_fish": 0,
+                    "input_judgment": 0,
+                    "input_judgment_conf": 5
+                },
+                {
+                    "judgment_index": 7,
+                    "judgment_shape": {
+                        "top_shape": "oval",
+                        "top_color": "yellow",
+                        "top_texture": false,
+                        "bottom_shape": "circle",
+                        "bottom_color": "red",
+                        "bottom_texture": true
+                    },
+                    "judgment_catches_fish": 0,
+                    "input_judgment": 0,
+                    "input_judgment_conf": 7
+                },
+                {
+                    "judgment_index": 8,
+                    "judgment_shape": {
+                        "top_shape": "teardrop",
+                        "top_color": "blue",
+                        "top_texture": false,
+                        "bottom_shape": "star",
+                        "bottom_color": "yellow",
+                        "bottom_texture": false
+                    },
+                    "judgment_catches_fish": 1,
+                    "input_judgment": 1,
+                    "input_judgment_conf": 7
+                }
+            ]
+        },
+        "evaluation_data": [
+            {
+                "eval_index": 1,
+                "rule_text": "If a lure combination has a red shape or a blue shape, it will catch fish.",
+                "is_target_rule": false,
+                "input_rule_rating": 1
+            },
+            {
+                "eval_index": 2,
+                "rule_text": "If a lure combination has a diamond, it will catch fish.",
+                "is_target_rule": false,
+                "input_rule_rating": 3
+            },
+            {
+                "eval_index": 3,
+                "rule_text": "If a lure combination has a pointy shape on the bottom, it will catch fish.",
+                "is_target_rule": true,
+                "input_rule_rating": 7
+            },
+            {
+                "eval_index": 4,
+                "rule_text": "There is no pattern to which lure combinations catch fish: the results are random, but there are approximately equal numbers that catch fish and don\u2019t.",
+                "is_target_rule": false,
+                "input_rule_rating": 2
+            },
+            {
+                "eval_index": 5,
+                "rule_text": "If a lure combination has a yellow shape or a diamond on the bottom, it will catch fish.",
+                "is_target_rule": false,
+                "input_rule_rating": 7
+            },
+            {
+                "eval_index": 6,
+                "rule_text": "If a lure combination has a purple dot on at least one of the lures, it will catch fish.",
+                "is_target_rule": false,
+                "input_rule_rating": 2
+            }
+        ],
+        "memory_data": [
+            {
+                "memory_shape": {
+                    "top_shape": "teardrop",
+                    "top_color": "yellow",
+                    "top_texture": false,
+                    "bottom_shape": "diamond",
+                    "bottom_color": "green",
+                    "bottom_texture": false
+                },
+                "memory_shape_in_expt": 0,
+                "memory_shape_catches_fish": 1,
+                "input_shape_in_expt": 0
+            },
+            {
+                "memory_shape": {
+                    "top_shape": "triangle",
+                    "top_color": "yellow",
+                    "top_texture": false,
+                    "bottom_shape": "circle",
+                    "bottom_color": "green",
+                    "bottom_texture": true
+                },
+                "memory_shape_in_expt": 1,
+                "memory_shape_catches_fish": 0,
+                "input_shape_in_expt": 0
+            },
+            {
+                "memory_shape": {
+                    "top_shape": "oval",
+                    "top_color": "green",
+                    "top_texture": false,
+                    "bottom_shape": "diamond",
+                    "bottom_color": "red",
+                    "bottom_texture": true
+                },
+                "memory_shape_in_expt": 0,
+                "memory_shape_catches_fish": 1,
+                "input_shape_in_expt": 1
+            },
+            {
+                "memory_shape": {
+                    "top_shape": "teardrop",
+                    "top_color": "red",
+                    "top_texture": true,
+                    "bottom_shape": "triangle",
+                    "bottom_color": "yellow",
+                    "bottom_texture": false
+                },
+                "memory_shape_in_expt": 1,
+                "memory_shape_catches_fish": 1,
+                "input_shape_in_expt": 1
+            },
+            {
+                "memory_shape": {
+                    "top_shape": "diamond",
+                    "top_color": "blue",
+                    "top_texture": false,
+                    "bottom_shape": "circle",
+                    "bottom_color": "blue",
+                    "bottom_texture": false
+                },
+                "memory_shape_in_expt": 1,
+                "memory_shape_catches_fish": 0,
+                "input_shape_in_expt": 0
+            },
+            {
+                "memory_shape": {
+                    "top_shape": "star",
+                    "top_color": "blue",
+                    "top_texture": false,
+                    "bottom_shape": "circle",
+                    "bottom_color": "red",
+                    "bottom_texture": false
+                },
+                "memory_shape_in_expt": 1,
+                "memory_shape_catches_fish": 0,
+                "input_shape_in_expt": 0
+            },
+            {
+                "memory_shape": {
+                    "top_shape": "circle",
+                    "top_color": "yellow",
+                    "top_texture": false,
+                    "bottom_shape": "oval",
+                    "bottom_color": "yellow",
+                    "bottom_texture": false
+                },
+                "memory_shape_in_expt": 0,
+                "memory_shape_catches_fish": 0,
+                "input_shape_in_expt": 0
+            },
+            {
+                "memory_shape": {
+                    "top_shape": "star",
+                    "top_color": "blue",
+                    "top_texture": false,
+                    "bottom_shape": "star",
+                    "bottom_color": "yellow",
+                    "bottom_texture": true
+                },
+                "memory_shape_in_expt": 1,
+                "memory_shape_catches_fish": 1,
+                "input_shape_in_expt": 0
+            }
+        ],
+        "expt_end_ts": 1573679098440
+    }
+}
