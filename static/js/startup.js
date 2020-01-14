@@ -3,8 +3,8 @@
  * Instructions for startup:
  * 1. navigate to go_fish directory
  * 2. python -m http.server {port}
- * 3. navigate to http://localhost:8000/index.html for experiment version
- *      http://localhost:8000/index.html?&mode=test for test version
+ * 3. navigate to http://localhost:8000/go_fish.html for experiment version
+ *      http://localhost:8000/go_fish.html?&mode=test for test version
  */
 
 $(window).ready(function() {
