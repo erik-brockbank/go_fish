@@ -1,0 +1,549 @@
+{
+    "expt": {
+        "exptname": "go_fish",
+        "exptversion": "1"
+    },
+    "client": {
+        "test": false,
+        "sid": "user_1579208311948"
+    },
+    "trials": {
+        "is_test": false,
+        "is_control": false,
+        "expt_start_ts": 1579208311948,
+        "instruction_data": {
+            "instruction_start_ts": 1579208311948,
+            "instruction_end_ts": 1579208366938
+        },
+        "trial_start_ts": 1579208366938,
+        "trial_data": [
+            {
+                "trial_index": 1,
+                "trial_n_start_ts": 1579208366949,
+                "evidence_shape": {
+                    "top_shape": "teardrop",
+                    "top_color": "red",
+                    "top_texture": true,
+                    "bottom_shape": "triangle",
+                    "bottom_color": "yellow",
+                    "bottom_texture": false
+                },
+                "evidence_catches_fish": 1,
+                "input_evidence_response": "I'm not sure if fish can see colors, but maybe because of bright colors. Another possible reason is the shape of the combinations - it kind of looks like a fish?",
+                "evidence_resp_start_ts": 1579208380946,
+                "evidence_resp_end_ts": 1579208472681,
+                "prediction_start_ts": 1579208472682,
+                "prediction_shape": {
+                    "top_shape": "teardrop",
+                    "top_color": "red",
+                    "top_texture": true,
+                    "bottom_shape": "diamond",
+                    "bottom_color": "green",
+                    "bottom_texture": false
+                },
+                "prediction_catches_fish": 1,
+                "input_prediction_catches_fish": 0,
+                "input_prediction_conf": 4,
+                "prediction_end_ts": 1579208482057,
+                "trial_n_end_ts": 1579208482057
+            },
+            {
+                "trial_index": 2,
+                "trial_n_start_ts": 1579208482057,
+                "evidence_shape": {
+                    "top_shape": "circle",
+                    "top_color": "green",
+                    "top_texture": false,
+                    "bottom_shape": "teardrop",
+                    "bottom_color": "blue",
+                    "bottom_texture": false
+                },
+                "evidence_catches_fish": 0,
+                "input_evidence_response": "Maybe because the shapes are too round to catch fish. It might not be helpful to hook a fish.",
+                "evidence_resp_start_ts": 1579208489920,
+                "evidence_resp_end_ts": 1579208517976,
+                "prediction_start_ts": 1579208517976,
+                "prediction_shape": {
+                    "top_shape": "circle",
+                    "top_color": "green",
+                    "top_texture": false,
+                    "bottom_shape": "triangle",
+                    "bottom_color": "red",
+                    "bottom_texture": false
+                },
+                "prediction_catches_fish": 1,
+                "input_prediction_catches_fish": 0,
+                "input_prediction_conf": 4,
+                "prediction_end_ts": 1579208524496,
+                "trial_n_end_ts": 1579208524496
+            },
+            {
+                "trial_index": 3,
+                "trial_n_start_ts": 1579208524496,
+                "evidence_shape": {
+                    "top_shape": "diamond",
+                    "top_color": "yellow",
+                    "top_texture": false,
+                    "bottom_shape": "circle",
+                    "bottom_color": "green",
+                    "bottom_texture": true
+                },
+                "evidence_catches_fish": 0,
+                "input_evidence_response": "Although the top part is kind of sharp, but still the bottom part is round.",
+                "evidence_resp_start_ts": 1579208532680,
+                "evidence_resp_end_ts": 1579208556551,
+                "prediction_start_ts": 1579208556552,
+                "prediction_shape": {
+                    "top_shape": "triangle",
+                    "top_color": "yellow",
+                    "top_texture": false,
+                    "bottom_shape": "circle",
+                    "bottom_color": "green",
+                    "bottom_texture": true
+                },
+                "prediction_catches_fish": 0,
+                "input_prediction_catches_fish": 0,
+                "input_prediction_conf": 6,
+                "prediction_end_ts": 1579208566840,
+                "trial_n_end_ts": 1579208566840
+            },
+            {
+                "trial_index": 4,
+                "trial_n_start_ts": 1579208566840,
+                "evidence_shape": {
+                    "top_shape": "oval",
+                    "top_color": "blue",
+                    "top_texture": false,
+                    "bottom_shape": "star",
+                    "bottom_color": "yellow",
+                    "bottom_texture": true
+                },
+                "evidence_catches_fish": 1,
+                "input_evidence_response": "The bottom part has relatively sharp points. ",
+                "evidence_resp_start_ts": 1579208571367,
+                "evidence_resp_end_ts": 1579208599503,
+                "prediction_start_ts": 1579208599503,
+                "prediction_shape": {
+                    "top_shape": "oval",
+                    "top_color": "blue",
+                    "top_texture": false,
+                    "bottom_shape": "teardrop",
+                    "bottom_color": "red",
+                    "bottom_texture": true
+                },
+                "prediction_catches_fish": 0,
+                "input_prediction_catches_fish": 0,
+                "input_prediction_conf": 6,
+                "prediction_end_ts": 1579208603775,
+                "trial_n_end_ts": 1579208603775
+            },
+            {
+                "trial_index": 5,
+                "trial_n_start_ts": 1579208603775,
+                "evidence_shape": {
+                    "top_shape": "circle",
+                    "top_color": "red",
+                    "top_texture": true,
+                    "bottom_shape": "diamond",
+                    "bottom_color": "green",
+                    "bottom_texture": true
+                },
+                "evidence_catches_fish": 1,
+                "input_evidence_response": "The bottom part has sharp points. ",
+                "evidence_resp_start_ts": 1579208606591,
+                "evidence_resp_end_ts": 1579208630279,
+                "prediction_start_ts": 1579208630279,
+                "prediction_shape": {
+                    "top_shape": "circle",
+                    "top_color": "red",
+                    "top_texture": true,
+                    "bottom_shape": "teardrop",
+                    "bottom_color": "blue",
+                    "bottom_texture": false
+                },
+                "prediction_catches_fish": 0,
+                "input_prediction_catches_fish": 0,
+                "input_prediction_conf": 6,
+                "prediction_end_ts": 1579208638943,
+                "trial_n_end_ts": 1579208638943
+            },
+            {
+                "trial_index": 6,
+                "trial_n_start_ts": 1579208638943,
+                "evidence_shape": {
+                    "top_shape": "star",
+                    "top_color": "blue",
+                    "top_texture": false,
+                    "bottom_shape": "circle",
+                    "bottom_color": "red",
+                    "bottom_texture": false
+                },
+                "evidence_catches_fish": 0,
+                "input_evidence_response": "The bottom part of the combination is round. ",
+                "evidence_resp_start_ts": 1579208643287,
+                "evidence_resp_end_ts": 1579208658583,
+                "prediction_start_ts": 1579208658583,
+                "prediction_shape": {
+                    "top_shape": "star",
+                    "top_color": "blue",
+                    "top_texture": false,
+                    "bottom_shape": "star",
+                    "bottom_color": "yellow",
+                    "bottom_texture": true
+                },
+                "prediction_catches_fish": 1,
+                "input_prediction_catches_fish": 1,
+                "input_prediction_conf": 7,
+                "prediction_end_ts": 1579208663091,
+                "trial_n_end_ts": 1579208663091
+            },
+            {
+                "trial_index": 7,
+                "trial_n_start_ts": 1579208663091,
+                "evidence_shape": {
+                    "top_shape": "diamond",
+                    "top_color": "yellow",
+                    "top_texture": true,
+                    "bottom_shape": "diamond",
+                    "bottom_color": "blue",
+                    "bottom_texture": false
+                },
+                "evidence_catches_fish": 1,
+                "input_evidence_response": "Like the other combinations with sharp bottom part, the bottom part of this combination also has sharp points. ",
+                "evidence_resp_start_ts": 1579208667623,
+                "evidence_resp_end_ts": 1579208696086,
+                "prediction_start_ts": 1579208696087,
+                "prediction_shape": {
+                    "top_shape": "star",
+                    "top_color": "green",
+                    "top_texture": false,
+                    "bottom_shape": "diamond",
+                    "bottom_color": "blue",
+                    "bottom_texture": false
+                },
+                "prediction_catches_fish": 1,
+                "input_prediction_catches_fish": 1,
+                "input_prediction_conf": 7,
+                "prediction_end_ts": 1579208700711,
+                "trial_n_end_ts": 1579208700711
+            },
+            {
+                "trial_index": 8,
+                "trial_n_start_ts": 1579208700711,
+                "evidence_shape": {
+                    "top_shape": "triangle",
+                    "top_color": "green",
+                    "top_texture": true,
+                    "bottom_shape": "oval",
+                    "bottom_color": "red",
+                    "bottom_texture": true
+                },
+                "evidence_catches_fish": 0,
+                "input_evidence_response": "The bottom part is too round - it does not have pointy ends. ",
+                "evidence_resp_start_ts": 1579208702495,
+                "evidence_resp_end_ts": 1579208725190,
+                "prediction_start_ts": 1579208725190,
+                "prediction_shape": {
+                    "top_shape": "diamond",
+                    "top_color": "yellow",
+                    "top_texture": false,
+                    "bottom_shape": "oval",
+                    "bottom_color": "red",
+                    "bottom_texture": true
+                },
+                "prediction_catches_fish": 0,
+                "input_prediction_catches_fish": 0,
+                "input_prediction_conf": 7,
+                "prediction_end_ts": 1579208731054,
+                "trial_n_end_ts": 1579208731054
+            }
+        ],
+        "trial_end_ts": 1579208731055,
+        "generation_data": {
+            "input_free_response": "It seems like the combinations that have bottom parts with pointy ends catch fish. ",
+            "generation_start_ts": 1579208731055,
+            "generation_end_ts": 1579208764889,
+            "judgment_task": [
+                {
+                    "judgment_index": 1,
+                    "judgment_shape": {
+                        "top_shape": "triangle",
+                        "top_color": "yellow",
+                        "top_texture": true,
+                        "bottom_shape": "oval",
+                        "bottom_color": "blue",
+                        "bottom_texture": false
+                    },
+                    "judgment_catches_fish": 0,
+                    "input_judgment": 0,
+                    "input_judgment_conf": 6
+                },
+                {
+                    "judgment_index": 2,
+                    "judgment_shape": {
+                        "top_shape": "diamond",
+                        "top_color": "red",
+                        "top_texture": false,
+                        "bottom_shape": "diamond",
+                        "bottom_color": "green",
+                        "bottom_texture": false
+                    },
+                    "judgment_catches_fish": 1,
+                    "input_judgment": 1,
+                    "input_judgment_conf": 7
+                },
+                {
+                    "judgment_index": 3,
+                    "judgment_shape": {
+                        "top_shape": "oval",
+                        "top_color": "green",
+                        "top_texture": true,
+                        "bottom_shape": "triangle",
+                        "bottom_color": "yellow",
+                        "bottom_texture": false
+                    },
+                    "judgment_catches_fish": 1,
+                    "input_judgment": 1,
+                    "input_judgment_conf": 6
+                },
+                {
+                    "judgment_index": 4,
+                    "judgment_shape": {
+                        "top_shape": "triangle",
+                        "top_color": "red",
+                        "top_texture": false,
+                        "bottom_shape": "teardrop",
+                        "bottom_color": "green",
+                        "bottom_texture": true
+                    },
+                    "judgment_catches_fish": 0,
+                    "input_judgment": 0,
+                    "input_judgment_conf": 7
+                },
+                {
+                    "judgment_index": 5,
+                    "judgment_shape": {
+                        "top_shape": "circle",
+                        "top_color": "blue",
+                        "top_texture": false,
+                        "bottom_shape": "star",
+                        "bottom_color": "red",
+                        "bottom_texture": false
+                    },
+                    "judgment_catches_fish": 1,
+                    "input_judgment": 1,
+                    "input_judgment_conf": 6
+                },
+                {
+                    "judgment_index": 6,
+                    "judgment_shape": {
+                        "top_shape": "star",
+                        "top_color": "green",
+                        "top_texture": true,
+                        "bottom_shape": "oval",
+                        "bottom_color": "blue",
+                        "bottom_texture": true
+                    },
+                    "judgment_catches_fish": 0,
+                    "input_judgment": 0,
+                    "input_judgment_conf": 6
+                },
+                {
+                    "judgment_index": 7,
+                    "judgment_shape": {
+                        "top_shape": "oval",
+                        "top_color": "yellow",
+                        "top_texture": false,
+                        "bottom_shape": "circle",
+                        "bottom_color": "red",
+                        "bottom_texture": true
+                    },
+                    "judgment_catches_fish": 0,
+                    "input_judgment": 0,
+                    "input_judgment_conf": 7
+                },
+                {
+                    "judgment_index": 8,
+                    "judgment_shape": {
+                        "top_shape": "teardrop",
+                        "top_color": "blue",
+                        "top_texture": false,
+                        "bottom_shape": "star",
+                        "bottom_color": "yellow",
+                        "bottom_texture": false
+                    },
+                    "judgment_catches_fish": 1,
+                    "input_judgment": 1,
+                    "input_judgment_conf": 6
+                }
+            ],
+            "judgment_start_ts": 1579208764889,
+            "judgment_end_ts": 1579208800620
+        },
+        "evaluation_data": {
+            "eval_ratings": [
+                {
+                    "eval_index": 1,
+                    "eval_n_start_ts": 1579208800621,
+                    "rule_text": "If a lure combination has a red shape or a blue shape, it will catch fish.",
+                    "is_target_rule": false,
+                    "input_rule_rating": 1,
+                    "eval_n_end_ts": 1579208828270
+                },
+                {
+                    "eval_index": 2,
+                    "eval_n_start_ts": 1579208828270,
+                    "rule_text": "If a lure combination has a diamond, it will catch fish.",
+                    "is_target_rule": false,
+                    "input_rule_rating": 1,
+                    "eval_n_end_ts": 1579208839966
+                },
+                {
+                    "eval_index": 3,
+                    "eval_n_start_ts": 1579208839966,
+                    "rule_text": "If a lure combination has a pointy shape on the bottom, it will catch fish.",
+                    "is_target_rule": true,
+                    "input_rule_rating": 7,
+                    "eval_n_end_ts": 1579208851462
+                },
+                {
+                    "eval_index": 4,
+                    "eval_n_start_ts": 1579208851462,
+                    "rule_text": "There is no pattern to which lure combinations catch fish: the results are random, but there are approximately equal numbers that catch fish and don\u2019t.",
+                    "is_target_rule": false,
+                    "input_rule_rating": 4,
+                    "eval_n_end_ts": 1579208865693
+                },
+                {
+                    "eval_index": 5,
+                    "eval_n_start_ts": 1579208865694,
+                    "rule_text": "If a lure combination has a yellow shape or a diamond on the bottom, it will catch fish.",
+                    "is_target_rule": false,
+                    "input_rule_rating": 5,
+                    "eval_n_end_ts": 1579208891389
+                },
+                {
+                    "eval_index": 6,
+                    "eval_n_start_ts": 1579208891390,
+                    "rule_text": "If a lure combination has a purple dot on at least one of the lures, it will catch fish.",
+                    "is_target_rule": false,
+                    "input_rule_rating": 1,
+                    "eval_n_end_ts": 1579208899061
+                }
+            ],
+            "evaluation_start_ts": 1579208800621,
+            "evaluation_end_ts": 1579208899061
+        },
+        "memory_data": {
+            "memory_responses": [
+                {
+                    "memory_shape": {
+                        "top_shape": "teardrop",
+                        "top_color": "yellow",
+                        "top_texture": false,
+                        "bottom_shape": "diamond",
+                        "bottom_color": "green",
+                        "bottom_texture": false
+                    },
+                    "memory_shape_in_expt": 0,
+                    "memory_shape_catches_fish": 1,
+                    "input_shape_in_expt": 0
+                },
+                {
+                    "memory_shape": {
+                        "top_shape": "triangle",
+                        "top_color": "yellow",
+                        "top_texture": false,
+                        "bottom_shape": "circle",
+                        "bottom_color": "green",
+                        "bottom_texture": true
+                    },
+                    "memory_shape_in_expt": 1,
+                    "memory_shape_catches_fish": 0,
+                    "input_shape_in_expt": 0
+                },
+                {
+                    "memory_shape": {
+                        "top_shape": "oval",
+                        "top_color": "green",
+                        "top_texture": false,
+                        "bottom_shape": "diamond",
+                        "bottom_color": "red",
+                        "bottom_texture": true
+                    },
+                    "memory_shape_in_expt": 0,
+                    "memory_shape_catches_fish": 1,
+                    "input_shape_in_expt": 0
+                },
+                {
+                    "memory_shape": {
+                        "top_shape": "teardrop",
+                        "top_color": "red",
+                        "top_texture": true,
+                        "bottom_shape": "triangle",
+                        "bottom_color": "yellow",
+                        "bottom_texture": false
+                    },
+                    "memory_shape_in_expt": 1,
+                    "memory_shape_catches_fish": 1,
+                    "input_shape_in_expt": 1
+                },
+                {
+                    "memory_shape": {
+                        "top_shape": "diamond",
+                        "top_color": "blue",
+                        "top_texture": false,
+                        "bottom_shape": "circle",
+                        "bottom_color": "blue",
+                        "bottom_texture": false
+                    },
+                    "memory_shape_in_expt": 1,
+                    "memory_shape_catches_fish": 0,
+                    "input_shape_in_expt": 0
+                },
+                {
+                    "memory_shape": {
+                        "top_shape": "star",
+                        "top_color": "blue",
+                        "top_texture": false,
+                        "bottom_shape": "circle",
+                        "bottom_color": "red",
+                        "bottom_texture": false
+                    },
+                    "memory_shape_in_expt": 1,
+                    "memory_shape_catches_fish": 0,
+                    "input_shape_in_expt": 1
+                },
+                {
+                    "memory_shape": {
+                        "top_shape": "circle",
+                        "top_color": "yellow",
+                        "top_texture": false,
+                        "bottom_shape": "oval",
+                        "bottom_color": "yellow",
+                        "bottom_texture": false
+                    },
+                    "memory_shape_in_expt": 0,
+                    "memory_shape_catches_fish": 0,
+                    "input_shape_in_expt": 0
+                },
+                {
+                    "memory_shape": {
+                        "top_shape": "star",
+                        "top_color": "blue",
+                        "top_texture": false,
+                        "bottom_shape": "star",
+                        "bottom_color": "yellow",
+                        "bottom_texture": true
+                    },
+                    "memory_shape_in_expt": 1,
+                    "memory_shape_catches_fish": 1,
+                    "input_shape_in_expt": 0
+                }
+            ],
+            "memory_start_ts": 1579208899062,
+            "memory_end_ts": 1579208935166
+        },
+        "expt_end_ts": 1579208935166
+    }
+}

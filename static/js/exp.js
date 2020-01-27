@@ -110,6 +110,7 @@ Experiment.prototype.startTrials = function() {
 
 Experiment.prototype.showEvidence = function() {
     console.log("Showing evidence for trial: ", this.trial_index + 1);
+    var individ_trial_start_ts = new Date().getTime();
     // Process trial object for this evidence trial
     var trialObj = this.trial_array[this.trial_index];
     var outcomeText = "";
@@ -127,6 +128,7 @@ Experiment.prototype.showEvidence = function() {
 
     // Write to data object
     this.data["trial_data"].push({"trial_index": this.trial_index + 1});
+    this.data["trial_data"][this.trial_index]["trial_n_start_ts"] = individ_trial_start_ts;
     this.data["trial_data"][this.trial_index]["evidence_shape"] = trialObj.evidence;
     this.data["trial_data"][this.trial_index]["evidence_catches_fish"] = trialObj.outcome;
 
@@ -141,7 +143,6 @@ Experiment.prototype.showEvidence = function() {
         // Update button response
         $("#next-exp").show();
         $("#next-exp").unbind().click(function() {
-            // TODO process time to click here (did they read this page?) and add data to experiment trial object
             that.showEvidenceResponse();
         });
     });
@@ -152,6 +153,7 @@ Experiment.prototype.showEvidenceResponse = function() {
     console.log("Collecting evidence response for trial: ", this.trial_index + 1);
     // Instantiate relevant fields in data object
     this.data["trial_data"][this.trial_index]["input_evidence_response"] = "";
+    this.data["trial_data"][this.trial_index]["evidence_resp_start_ts"] = new Date().getTime();
 
     // Process trial object for this evidence response trial
     var trialObj = this.trial_array[this.trial_index];
@@ -199,8 +201,9 @@ Experiment.prototype.showEvidenceResponse = function() {
             if (resp === "") {
                 alert("Please respond to the prompt!");
             } else {
-                // Add what they wrote to experiment trial object
+                // Add what they wrote to experiment trial object and timestamp end of writing segment
                 that.data["trial_data"][that.trial_index]["input_evidence_response"] = resp;
+                that.data["trial_data"][that.trial_index]["evidence_resp_end_ts"] = new Date().getTime();
                 that.showPrediction();
             }
         });
@@ -210,6 +213,7 @@ Experiment.prototype.showEvidenceResponse = function() {
 
 Experiment.prototype.showPrediction = function() {
     console.log("Collecting prediction for trial: ", this.trial_index + 1);
+    var prediction_start_ts = new Date().getTime();
     // Process trial object for this prediction trial
     var trialObj = this.trial_array[this.trial_index];
     var shapeInfo = trialObj.prediction;
@@ -217,6 +221,7 @@ Experiment.prototype.showPrediction = function() {
         shapeInfo.top_color, shapeInfo.bottom_color, shapeInfo.top_texture, shapeInfo.bottom_texture);
 
     // Write to data object
+    this.data["trial_data"][this.trial_index]["prediction_start_ts"] = prediction_start_ts;
     this.data["trial_data"][this.trial_index]["prediction_shape"] = trialObj.prediction;
     this.data["trial_data"][this.trial_index]["prediction_catches_fish"] = trialObj.prediction_outcome;
 
@@ -239,10 +244,15 @@ Experiment.prototype.showPrediction = function() {
                 // Add checkbox and slider values to experiment data object
                 that.data["trial_data"][that.trial_index]["input_prediction_catches_fish"] = parseInt(radio_resp);
                 that.data["trial_data"][that.trial_index]["input_prediction_conf"] = parseInt(slider_resp);
+                // Add timestamp for end of prediction and end of individual trial
+                var pred_end_ts = new Date().getTime();
+                that.data["trial_data"][that.trial_index]["prediction_end_ts"] = pred_end_ts;
+                that.data["trial_data"][that.trial_index]["trial_n_end_ts"] = pred_end_ts;
                 // Process whether to show next trial or continue to rule generation task
                 that.trial_index += 1;
                 if (that.trial_index >= that.trial_array.length) {
                     console.log("Completed all trials.");
+                    that.data["trial_end_ts"] = new Date().getTime();
                     that.showRuleGeneration();
                 } else {
                     that.showEvidence();
@@ -256,9 +266,9 @@ Experiment.prototype.showPrediction = function() {
 
 Experiment.prototype.showRuleGeneration = function() {
     console.log("Collecting rule generation.");
-    this.data["trial_end_ts"] = new Date().getTime();
     // Instantiate relevant fields in data object
     this.data["generation_data"] = {"input_free_response": ""};
+    this.data["generation_data"]["generation_start_ts"] = new Date().getTime();
     // Update html for rule generation
     var that = this;
     $("#obs-container").hide(); // TODO make separate function to clear out full trial stuff (observations etc.)
@@ -273,8 +283,9 @@ Experiment.prototype.showRuleGeneration = function() {
             if (resp === "") {
                 alert("Please respond to the prompt!");
             } else {
-                // Add what they wrote to experiment data object
+                // Add what they wrote to experiment data object and track time on task
                 that.data["generation_data"]["input_free_response"] = resp;
+                that.data["generation_data"]["generation_end_ts"] = new Date().getTime();
                 that.showJudgmentTask();
             }
         });
@@ -286,6 +297,7 @@ Experiment.prototype.showJudgmentTask = function() {
     console.log("Collecting rule judgments.");
     // Instantiate relevant fields in data object
     this.data["generation_data"]["judgment_task"] = [];
+    this.data["generation_data"]["judgment_start_ts"] = new Date().getTime();
     // Update html for rule judgment task
     var that = this;
     $("#exp-container").empty();
@@ -326,6 +338,7 @@ Experiment.prototype.showJudgmentTask = function() {
                     that.data["generation_data"]["judgment_task"][j]["input_judgment"] = radio_responses[j];
                     that.data["generation_data"]["judgment_task"][j]["input_judgment_conf"] = slider_responses[j];
                 }
+                that.data["generation_data"]["judgment_end_ts"] = new Date().getTime();
                 that.showEvaluationTask();
             }
         });
@@ -335,16 +348,19 @@ Experiment.prototype.showJudgmentTask = function() {
 
 Experiment.prototype.showEvaluationTask = function() {
     console.log("Showing rule evaluation for rule: ", this.eval_index + 1);
+    var eval_n_start_ts = new Date().getTime();
     // Instantiate relevant fields in data object
     if (!("evaluation_data" in this.data)) {
-        this.data["evaluation_data"] = [];
+        this.data["evaluation_data"] = {"eval_ratings": []};
+        this.data["evaluation_data"]["evaluation_start_ts"] = new Date().getTime();
     }
 
     var ruleEval = this.evalArray[this.eval_index];
     // Update data with this eval object
-    this.data["evaluation_data"].push({"eval_index": this.eval_index + 1,
-                                        "rule_text": ruleEval.rule_text,
-                                        "is_target_rule": ruleEval.is_target});
+    this.data["evaluation_data"]["eval_ratings"].push({"eval_index": this.eval_index + 1,
+                                                        "eval_n_start_ts": eval_n_start_ts,
+                                                        "rule_text": ruleEval.rule_text,
+                                                        "is_target_rule": ruleEval.is_target});
     // Update html for evaluation task
     var that = this;
     $("#exp-container").empty();
@@ -356,12 +372,15 @@ Experiment.prototype.showEvaluationTask = function() {
         // Update button response
         $("#next-exp").show();
         $("#next-exp").unbind().click(function() {
-            // Add what user selected to experiment data object
+            // Add what user selected to experiment data object and timestamp end of evaluation
             var slider_resp = $("#eval-slider").val();
-            that.data["evaluation_data"][that.eval_index]["input_rule_rating"] = parseInt(slider_resp);
+            that.data["evaluation_data"]["eval_ratings"][that.eval_index]["input_rule_rating"] = parseInt(slider_resp);
+            that.data["evaluation_data"]["eval_ratings"][that.eval_index]["eval_n_end_ts"] = new Date().getTime();
             // Check whether eval task is complete and either proceed to memory task or complete next eval item
             that.eval_index += 1;
             if (that.eval_index >= that.evalArray.length) {
+                // Add end timestamp to data
+                that.data["evaluation_data"]["evaluation_end_ts"] = new Date().getTime();
                 that.showMemoryTask();
             } else {
                 that.showEvaluationTask();
@@ -374,7 +393,8 @@ Experiment.prototype.showEvaluationTask = function() {
 Experiment.prototype.showMemoryTask = function() {
     console.log("Showing memory task.");
     // Instantiate relevant fields in data object
-    this.data["memory_data"] = [];
+    this.data["memory_data"] = {"memory_responses": []};
+    this.data["memory_data"]["memory_start_ts"] = new Date().getTime();
 
     // Update html for memory task
     var that = this;
@@ -388,9 +408,9 @@ Experiment.prototype.showMemoryTask = function() {
             var memShape = new Lure(shapeInfo.top_shape, shapeInfo.bottom_shape,
                 shapeInfo.top_color, shapeInfo.bottom_color, shapeInfo.top_texture, shapeInfo.bottom_texture);
             // Update data with this memory object
-            that.data["memory_data"].push({"memory_shape": shapeInfo,
-                                            "memory_shape_in_expt": memItem.in_expt,
-                                            "memory_shape_catches_fish": memItem.catches_fish});
+            that.data["memory_data"]["memory_responses"].push({"memory_shape": shapeInfo,
+                                                                "memory_shape_in_expt": memItem.in_expt,
+                                                                "memory_shape_catches_fish": memItem.catches_fish});
             memShape.drawLure(canvasId = "memory-item-canvas-" + memIndex, sizeConfig = "memory"); // TODO store this ID somewhere sensible
         }
 
@@ -405,13 +425,14 @@ Experiment.prototype.showMemoryTask = function() {
                     mem_responses.push(parseInt(radio_resp));
                 }
             }
-            if (mem_responses.length < that.data["memory_data"].length) {
+            if (mem_responses.length < that.data["memory_data"]["memory_responses"].length) {
                 alert("Please select an answer for all the checkboxes!");
             } else {
                 // Add what user selected to experiment data object
-                for (m = 0; m < that.data["memory_data"].length; m++) {
-                    that.data["memory_data"][m]["input_shape_in_expt"] = mem_responses[m];
+                for (m = 0; m < that.data["memory_data"]["memory_responses"].length; m++) {
+                    that.data["memory_data"]["memory_responses"][m]["input_shape_in_expt"] = mem_responses[m];
                 }
+                that.data["memory_data"]["memory_end_ts"] = new Date().getTime();
                 that.endExperiment();
             }
         });

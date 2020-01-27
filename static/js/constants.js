@@ -18,7 +18,7 @@ const HTML_LOOKUP = { // lookup table with human-understandable html file keys a
     "judgment": "/go_fish/static/html/generate_task.html",
     "evaluation": "/go_fish/static/html/evaluate.html",
     "memory": "/go_fish/static/html/memory.html"
-    // Local pathways //
+    // Local pathways ONLY UNCOMMENT WHEN TESTING ON localhost //
     // "consent": "/static/html/consent.html",
     // "instructions": "/static/html/inst.html",
     // "experiment": "/static/html/exp.html",

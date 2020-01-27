@@ -22,7 +22,9 @@ loadExperiment = function() {
     if (urlParams.has("mode") && urlParams.get("mode").includes("test")) {istest = true;}
 
     // Set experiment condition
+    // var control = true; // DEBUGGING
     var control = Math.random() < 0.5;
+
 
     console.log("Starting experiment with test = ", istest, "; control = ", control);
     var exp = new Experiment(istest, control);
