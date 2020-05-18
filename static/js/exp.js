@@ -1,14 +1,9 @@
 
 /*
  * TODO
- * Experimental
- * - correct shapes in prediction, judgment, memory
- *
- * Core logic
  *
  * Cleanup
- * - clean up html (try referencing globals within html)
- * - comment css?
+ * - Generate html dynamically, trim down current html stubs
  * - try to separate out html-referencing functions in this file (if it knows about e.g. an object's id, quarantine it)
  */
 
@@ -313,6 +308,11 @@ Experiment.prototype.showJudgmentTask = function() {
                                                                 "judgment_shape": shapeInfo,
                                                                 "judgment_catches_fish": jItem.catches_fish});
             jShape.drawLure(canvasId = "generate-item-canvas-" + jIndex, sizeConfig = "generate"); // TODO store this ID somewhere sensible
+
+            // Set image for radio buttons (catch fish, no fish)
+            // TODO store these IDs somewhere sensible
+            $("#checkbox-fish-generate-" + jIndex).attr("src", that.fish_img_path_small);
+            $("#checkbox-no_fish-generate-" + jIndex).attr("src", that.no_fish_img_path_small);
         }
 
         // Update button response

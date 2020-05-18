@@ -8,27 +8,32 @@
  */
 const HTML_LOOKUP = { // lookup table with human-understandable html file keys and the path to those files as vals
     // Prod pathways //
-    "consent": "/go_fish/static/html/consent.html",
-    "instructions": "/go_fish/static/html/inst.html",
-    "experiment": "/go_fish/static/html/exp.html",
-    "evidence": "/go_fish/static/html/evidence.html",
-    "evidence_resp": "/go_fish/static/html/evidence_response.html",
-    "prediction": "/go_fish/static/html/prediction.html",
-    "generate": "/go_fish/static/html/generate_input.html",
-    "judgment": "/go_fish/static/html/generate_task.html",
-    "evaluation": "/go_fish/static/html/evaluate.html",
-    "memory": "/go_fish/static/html/memory.html"
-    // Local pathways ONLY UNCOMMENT WHEN TESTING ON localhost //
-    // "consent": "/static/html/consent.html",
-    // "instructions": "/static/html/inst.html",
-    // "experiment": "/static/html/exp.html",
-    // "evidence": "/static/html/evidence.html",
-    // "evidence_resp": "/static/html/evidence_response.html",
-    // "prediction": "/static/html/prediction.html",
-    // "generate": "/static/html/generate_input.html",
-    // "judgment": "/static/html/generate_task.html",
-    // "evaluation": "/static/html/evaluate.html",
-    // "memory": "/static/html/memory.html"
+    "prod": {
+        "consent": "/go_fish/static/html/consent.html",
+        "instructions": "/go_fish/static/html/inst.html",
+        "experiment": "/go_fish/static/html/exp.html",
+        "evidence": "/go_fish/static/html/evidence.html",
+        "evidence_resp": "/go_fish/static/html/evidence_response.html",
+        "prediction": "/go_fish/static/html/prediction.html",
+        "generate": "/go_fish/static/html/generate_input.html",
+        "judgment": "/go_fish/static/html/generate_task.html",
+        "evaluation": "/go_fish/static/html/evaluate.html",
+        "memory": "/go_fish/static/html/memory.html"
+    },
+    // Local pathways //
+    "test": {
+        "consent": "/static/html/consent.html",
+        "instructions": "/static/html/inst.html",
+        "experiment": "/static/html/exp.html",
+        "evidence": "/static/html/evidence.html",
+        "evidence_resp": "/static/html/evidence_response.html",
+        "prediction": "/static/html/prediction.html",
+        "generate": "/static/html/generate_input.html",
+        "judgment": "/static/html/generate_task.html",
+        "evaluation": "/static/html/evaluate.html",
+        "memory": "/static/html/memory.html"
+
+    }
 };
 
 const WRITE_ENDPOINT = "submit.php"; // endpoint for writing json results
@@ -88,15 +93,19 @@ const INSTRUCTION_ARRAY = [
 
 const IMAGE_LOOKUP = {
     // Prod pathways //
-    "fish_img": "/go_fish/img/fish_icon.png",
-    "no_fish_img": "/go_fish/img/fish_icon-no_fish.png",
-    "fish_checkbox": "/go_fish/img/fish_icon-checkbox.png",
-    "no_fish_checkbox": "/go_fish/img/fish_icon-no_fish-checkbox.png"
+    "prod": {
+        "fish_img": "/go_fish/img/fish_icon.png",
+        "no_fish_img": "/go_fish/img/fish_icon-no_fish.png",
+        "fish_checkbox": "/go_fish/img/fish_icon-checkbox.png",
+        "no_fish_checkbox": "/go_fish/img/fish_icon-no_fish-checkbox.png"
+    },
     // Local pathways //
-    // "fish_img": "/img/fish_icon.png",
-    // "no_fish_img": "/img/fish_icon-no_fish.png",
-    // "fish_checkbox": "/img/fish_icon-checkbox.png",
-    // "no_fish_checkbox": "/img/fish_icon-no_fish-checkbox.png"
+    "test": {
+        "fish_img": "/img/fish_icon.png",
+        "no_fish_img": "/img/fish_icon-no_fish.png",
+        "fish_checkbox": "/img/fish_icon-checkbox.png",
+        "no_fish_checkbox": "/img/fish_icon-no_fish-checkbox.png"
+    }
 };
 
 /*
