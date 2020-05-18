@@ -395,28 +395,28 @@ const EVAL_ARRAY = [
     // TODO consider including how much evidence each rule is consistent with
     {
         rule_text: "If a lure combination has a red shape or a blue shape, it will catch fish.",
-        is_target: false
+        is_target: false // 5/8
     },
     {
         rule_text: "If a lure combination has a diamond, it will catch fish.",
-        is_target: false
+        is_target: false // 5/8
     },
     {
         rule_text: "If a lure combination has a pointy shape on the bottom, it will catch fish.",
-        is_target: true
+        is_target: true // 8/8
     },
     {
         rule_text: "There is no pattern to which lure combinations catch fish: the results are " +
             "random, but there are approximately equal numbers that catch fish and don’t.",
-        is_target: false
+        is_target: false // NA
     },
     { // Distractor rule
         rule_text: "If a lure combination has a yellow shape or a diamond on the bottom, it will catch fish.",
-        is_target: false
+        is_target: false // 8/8
     },
     {
         rule_text: "If a lure combination has a purple dot on at least one of the lures, it will catch fish.",
-        is_target: false
+        is_target: false // 6/8
     },
 ];
 
