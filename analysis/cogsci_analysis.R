@@ -632,9 +632,8 @@ unique(eval_data_distractor_target$rule_text)
 table(eval_data_distractor_target$subjID)
 interaction_test = aov(data = eval_data_distractor_target, input_rule_rating ~ Condition*is_target_rule)
 summary(interaction_test) 
-
-# TODO interaction is significant here: worth noting in cog sci?
-
+# getting DF for reporting F statistics in Anova above
+unique(eval_data_distractor_target$subjID)
 
 
 # 4. Evaluation among participants who *did not generate correct rule*
