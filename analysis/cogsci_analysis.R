@@ -1,4 +1,6 @@
+#' 
 #' Analysis for Cog Sci 2020 submission
+#' 
 
 
 rm(list = ls())
@@ -579,7 +581,6 @@ eval_difference = evaluation_data %>%
   mutate(diff = input_rule_rating - mean_subj_rating) %>%
   select(subjID, Condition.x, diff)
 
-# TODO is this right? Is the conversion from V to z okay?
 wil_exp = wilcox.test(eval_difference$diff[eval_difference$Condition.x == "Explain"], exact = F)
 wil_des = wilcox.test(eval_difference$diff[eval_difference$Condition.x == "Describe"], exact = F)
 report_wilcox_summary(wil_exp) # Explainers
@@ -621,7 +622,7 @@ t_eval_target_dist_desc = t.test(
 report_t_summary(t_eval_target_dist_exp) # Explainers
 report_t_summary(t_eval_target_dist_desc) # Describers
 # It appears that ratings of the distractor rule relative to the target rule were 
-# much *more* different among explainers than controls
+# *more* different among explainers than controls
 # (explainers: 6.6 v. 4.12; controls: 6.09 v. 4.74), even though the differences were significant for both groups.
 
 # Test whether this difference is significant with ANOVA
@@ -630,6 +631,7 @@ eval_data_distractor_target = evaluation_data %>%
 # sanity check
 unique(eval_data_distractor_target$rule_text)
 table(eval_data_distractor_target$subjID)
+# check for significant interaction between condition and target rule v. distractor
 interaction_test = aov(data = eval_data_distractor_target, input_rule_rating ~ Condition*is_target_rule)
 summary(interaction_test) 
 # getting DF for reporting F statistics in Anova above
@@ -713,7 +715,7 @@ t_subset_target_dist_desc = t.test(
 report_t_summary(t_subset_target_dist_exp) # Explainers
 report_t_summary(t_subset_target_dist_desc) # Describers
 # It appears that among participants who *didn't generate the target rule*, 
-# ratings of the distractor rule relative to the target rule were much *more* different among explainers than controls
+# ratings of the distractor rule relative to the target rule were *more* different among explainers than controls
 # (explainers: 6.24 v. 4.62; controls: 5.91 v. 5.17), even though the differences were significant for both groups.
 
 # Test whether this difference is significant with ANOVA
