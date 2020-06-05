@@ -1,0 +1,181 @@
+---
+title: "Go Fish Explanation, Description, and Free Response"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(viridis)
+library(patchwork)
+library(knitr)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r globals, include=FALSE}
+# Data files
+ROUND1_SUMMARY_DATA = "round1/01_go_fish_meta.csv"
+ROUND1_TRIAL_DATA = "round1/02_go_fish_trials.csv"
+ROUND1_GENERATION_RESP_DATA = "round1/03_go_fish_generation_free_resp.csv"
+ROUND1_GENERATION_JUDG_DATA = "round1/04_go_fish_generation_judgment.csv"
+ROUND1_EVAL_DATA = "round1/05_go_fish_evaluation.csv"
+ROUND1_MEMORY_DATA = "round1/06_go_fish_memory.csv"
+
+ROUND2_SUMMARY_DATA = "round2/01_go_fish_meta.csv"
+ROUND2_TRIAL_DATA = "round2/02_go_fish_trials.csv"
+ROUND2_GENERATION_RESP_DATA = "round2/03_go_fish_generation_free_resp.csv"
+ROUND2_GENERATION_JUDG_DATA = "round2/04_go_fish_generation_judgment.csv"
+ROUND2_EVAL_DATA = "round2/05_go_fish_evaluation.csv"
+ROUND2_MEMORY_DATA = "round2/06_go_fish_memory.csv"
+
+GENERATION_RESP_DATA_CODED = "free_response_combined.csv"
+```
+
+
+
+```{r analysis_fxn, include=FALSE}
+# Read in and process summary data file
+read_summary_data = function(filepath, is_round1) {
+  # Read in data at filepath and add/modify columns as needed
+  summary_data = read_csv(filepath)
+  summary_data = summary_data %>%
+    mutate(Condition = ifelse(is_control == TRUE, "Describe", "Explain"),
+           Round1 = is_round1,
+           experiment_completion_time = (expt_end_ts - expt_start_ts) / 1000)
+  return(summary_data)
+}
+
+# Read in and process data from explain/describe trials
+read_trial_data = function(filepath, is_round1) {
+  trial_data = read_csv(filepath)
+  trial_data = trial_data %>%
+    mutate(
+      Condition = ifelse(is_control == TRUE, "Describe", "Explain"),
+      Round1 = is_round1,
+      input_correct =
+        (input_prediction_catches_fish == prediction_catches_fish))
+  trial_data$input_evidence_response = str_replace_all(
+    trial_data$input_evidence_response, "\n" , "[newline]")
+  return(trial_data)
+}
+
+# Read in coded free response data (note this requires writing free response data to csv in initialization code)
+read_coded_free_resp_data = function(filename, summary_data) {
+  generation_free_resp_coded = read_csv(filename)
+  generation_free_resp_coded = generation_free_resp_coded %>%
+    select(subjID, free_response_str, Revision) %>%
+    inner_join(., summary_data, by = "subjID") %>%
+    select(subjID, Condition, free_response_str, Revision)
+  
+  return(generation_free_resp_coded)
+}
+
+# Read in and process data from generation "judgment" (binary response) task
+read_generation_judgment_data = function(filepath, is_round1) {
+  generation_judgment_data = read_csv(filepath)
+  generation_judgment_data = generation_judgment_data %>%
+    mutate(
+      Condition = ifelse(is_control == TRUE, "Describe", "Explain"),
+      Round1 = is_round1,
+      input_correct = 
+        (input_judgment == judgment_catches_fish))
+  return(generation_judgment_data)
+}
+
+# Summarize generation judgment data by participant
+get_generation_judgment_subj_summary = function(generation_judgment_data) {
+  generation_subject_summary = generation_judgment_data %>%
+    group_by(Condition, subjID) %>%
+    summarize(subj_accuracy = sum(input_correct) / n())
+  return(generation_subject_summary)
+}
+
+```
+
+
+
+```{r data, include=FALSE}
+# Read in data
+summary_data = bind_rows(read_summary_data(ROUND1_SUMMARY_DATA, TRUE), 
+                         read_summary_data(ROUND2_SUMMARY_DATA, FALSE))
+trial_data = bind_rows(read_trial_data(ROUND1_TRIAL_DATA, TRUE),
+                       read_trial_data(ROUND2_TRIAL_DATA, FALSE))
+generation_free_resp_coded = read_coded_free_resp_data(GENERATION_RESP_DATA_CODED, summary_data)
+generation_judgment_data = bind_rows(read_generation_judgment_data(ROUND1_GENERATION_JUDG_DATA, TRUE),
+                                     read_generation_judgment_data(ROUND2_GENERATION_JUDG_DATA, FALSE))
+
+# Summarize data as needed
+generation_judgment_subject_summary = get_generation_judgment_subj_summary(generation_judgment_data)
+```
+
+
+
+# Summary
+This document is intended for easy review and analysis of participant free response data. 
+
+We display participant explanations and descriptions during the evidence phase of the experiment, as well as explicit hypotheses from the free response hypothesis generation task. 
+
+
+
+# Explanations
+
+Below we list each subject's trial explanations ordered by trial index (1-8), along with whether they ultimately generated the correct hypothesis and what their final accuracy was on the hypothesis discrimination task.
+
+```{r explanations, echo=FALSE}
+
+explanation_data = generation_free_resp_coded %>%
+  select(subjID, Condition, Revision) %>%
+  filter(Condition == "Explain") %>%
+  inner_join(., trial_data, by = c("subjID", "Condition")) %>%
+  inner_join(., generation_judgment_subject_summary, by = c("subjID")) %>%
+  select(subjID, trial_index, input_evidence_response, Revision, subj_accuracy) %>%
+  arrange(subjID, trial_index)
+
+
+kable(explanation_data,
+      col.names = c("Subject ID", "Trial", "Explanation", "Hyp. Gen. Correct", "Hyp. Gen. Accuracy"))
+
+```
+
+
+
+# Descriptions
+
+Below we list each control subject's trial descriptions ordered by trial index (1-8), along with whether they ultimately generated the correct hypothesis and what their final accuracy was on the hypothesis discrimination task.
+
+```{r descriptions, echo=FALSE}
+
+description_data = generation_free_resp_coded %>%
+  select(subjID, Condition, Revision) %>%
+  filter(Condition == "Describe") %>%
+  inner_join(., trial_data, by = c("subjID", "Condition")) %>%
+  inner_join(., generation_judgment_subject_summary, by = c("subjID")) %>%
+  select(subjID, trial_index, input_evidence_response, Revision, subj_accuracy) %>%
+  arrange(subjID, trial_index)
+
+
+kable(explanation_data,
+      col.names = c("Subject ID", "Trial", "Description", "Hyp. Gen. Correct", "Hyp. Gen. Accuracy"))
+
+```
+
+
+
+# Hypothesis Generation: Free Response Data
+
+Below we list each subject's hypothesis generation free response, along with whether it was coded as correct
+
+```{r free_resp, echo=FALSE}
+
+free_resp_summary = generation_free_resp_coded %>%
+  inner_join(., generation_judgment_subject_summary, by = c("subjID", "Condition")) %>%
+  select(subjID, Condition, free_response_str, Revision, subj_accuracy) %>%
+  arrange(Condition, subjID)
+
+kable(free_resp_summary,
+      col.names = c("Subject ID", "Condition", "Hypothesis", "Correct", "Judgment Task Accuracy"))
+```
+
+
+

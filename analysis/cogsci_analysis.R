@@ -63,6 +63,8 @@ read_trial_data = function(filepath, is_round1) {
       Round1 = is_round1,
       input_correct =
         (input_prediction_catches_fish == prediction_catches_fish))
+  trial_data$input_evidence_response = str_replace_all(
+    trial_data$input_evidence_response, "\n" , "[newline]")
   return(trial_data)
 }
 
@@ -77,22 +79,6 @@ read_generation_judgment_data = function(filepath, is_round1) {
       input_correct = 
         (input_judgment == judgment_catches_fish))
   return(generation_judgment_data)
-}
-
-
-# Read in and process data from generation free response task
-# NB: coding of free response answers is handled separately
-read_generation_free_resp_data = function(filepath, is_round1) {
-  generation_free_resp_data = read_csv(filepath)
-  generation_free_resp_data = generation_free_resp_data %>%
-    mutate(
-      Condition = ifelse(is_control == TRUE, "Describe", "Explain"),
-      Round1 = is_round1)
-  
-  generation_free_resp_data$free_response_str = str_replace_all(
-    generation_free_resp_data$free_response, "\n" , "[newline]")
-  
-  return(generation_free_resp_data)
 }
 
 
@@ -645,7 +631,7 @@ subset_participants = generation_free_resp_coded %>%
   select(subjID, Condition, Revision) %>%
   filter(Revision == 0) %>%
   # filter(Revision == 1) %>%
-  inner_join(., evaluation_data, on = c("subjID", "Condition"))
+  inner_join(., evaluation_data, by = c("subjID", "Condition"))
 # Sanity check the join above
 table(subset_participants$subjID) # 6 (number of eval rows) for each subj ID
 unique(subset_participants$subjID) # 56 for incorrect rule gen, 30 for correct
@@ -766,7 +752,7 @@ report_t_summary(t_mem)
 # 3. Memory performance comparing participants who did and didn't get the correct rule
 memory_hypothesis_join = generation_free_resp_coded %>%
   select(subjID, Condition, Revision) %>%
-  inner_join(., memory_subject_summary, on = subjID)
+  inner_join(., memory_subject_summary, by = subjID)
 
 t_mem_correct = t.test(memory_hypothesis_join$subj_accuracy[memory_hypothesis_join$Revision == 0],
                        memory_hypothesis_join$subj_accuracy[memory_hypothesis_join$Revision == 1],
@@ -812,7 +798,7 @@ time_on_task + time_on_trials
 # 3. Overall time on task comparing participants who did and didn't get the correct rule
 task_time_join = generation_free_resp_coded %>%
   select(subjID, Condition, Revision) %>%
-  inner_join(., summary_data, on = c("subjID", "Condition")) %>%
+  inner_join(., summary_data, by = c("subjID", "Condition")) %>%
   select(subjID, Condition, Revision, experiment_completion_time)
 
 t_task_time_correct = t.test(task_time_join$experiment_completion_time[task_time_join$Revision == 0],
@@ -831,7 +817,7 @@ table(trial_time_subject_summary$Condition[is.na(trial_time_subject_summary$mean
 
 trial_time_join = generation_free_resp_coded %>%
   select(subjID, Condition, Revision) %>%
-  inner_join(., trial_time_subject_summary, on = c("subjID", "Condition")) %>%
+  inner_join(., trial_time_subject_summary, by = c("subjID", "Condition")) %>%
   select(subjID, Condition, Revision, mean_trial_completion)
 
 t_trial_time_correct = t.test(trial_time_join$mean_trial_completion[trial_time_join$Revision == 0],
@@ -932,7 +918,7 @@ subset_participants %>%
 # Plot eval ratings of target rule among participants who did and didn't get correct rule in each condition
 breakout_participants = generation_free_resp_coded %>%
   select(subjID, Condition, Revision) %>%
-  inner_join(., evaluation_data, on = subjID)
+  inner_join(., evaluation_data, by = subjID)
 
 subset_summary = breakout_participants %>%
   filter(is_target_rule == T) %>%
