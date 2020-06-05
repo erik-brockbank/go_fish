@@ -6,9 +6,9 @@ from os.path import isfile, join
 
 """
     To run this:
-    cd to data_analysis/go_fish/round1
+    cd to /go_fish/analysis
     python json_to_csv_round1.py
-    Outputs: csv files listed below
+    Outputs: csv files listed below in /round1 directory
 """
 
 # TODO data worth adding at some point
