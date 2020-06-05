@@ -752,7 +752,7 @@ report_t_summary(t_mem)
 # 3. Memory performance comparing participants who did and didn't get the correct rule
 memory_hypothesis_join = generation_free_resp_coded %>%
   select(subjID, Condition, Revision) %>%
-  inner_join(., memory_subject_summary, by = subjID)
+  inner_join(., memory_subject_summary, by = c("subjID"))
 
 t_mem_correct = t.test(memory_hypothesis_join$subj_accuracy[memory_hypothesis_join$Revision == 0],
                        memory_hypothesis_join$subj_accuracy[memory_hypothesis_join$Revision == 1],
@@ -918,7 +918,7 @@ subset_participants %>%
 # Plot eval ratings of target rule among participants who did and didn't get correct rule in each condition
 breakout_participants = generation_free_resp_coded %>%
   select(subjID, Condition, Revision) %>%
-  inner_join(., evaluation_data, by = subjID)
+  inner_join(., evaluation_data, by = c("subjID", "Condition"))
 
 subset_summary = breakout_participants %>%
   filter(is_target_rule == T) %>%
