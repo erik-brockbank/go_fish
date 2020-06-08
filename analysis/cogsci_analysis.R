@@ -37,6 +37,9 @@ DISTRACTOR_LABELS = c("TRUE" = "Target rule", "FALSE" = "Distractor rule")
 
 DISTRACTOR_RULE = "If a lure combination has a yellow shape or a diamond on the bottom, it will catch fish."
 
+# the memory probe item with this shape config was erroneously coded as being in experiment when it wasn't
+# we correct the `memory_shape_in_expt` column value when reading in the data
+MEMORY_MISCUE = "{'top_shape': 'diamond', 'top_color': 'blue', 'top_texture': False, 'bottom_shape': 'circle', 'bottom_color': 'blue', 'bottom_texture': False}"
 
 
 
@@ -100,6 +103,11 @@ read_memory_data = function(filepath, is_round1) {
            Round1 = is_round1,
            memory_correct = 
              (memory_shape_in_expt == input_shape_in_expt))
+
+  # Fix mis-coded memory probe
+  memory_data %>%
+    filter(memory_shape == MEMORY_MISCUE) %>%
+    mutate(memory_shape_in_expt = 0)
   return(memory_data)
 }
 
@@ -484,7 +492,6 @@ evaluation_data = bind_rows(read_evaluation_data(ROUND1_EVAL_DATA, TRUE),
                             read_evaluation_data(ROUND2_EVAL_DATA, FALSE))
 memory_data = bind_rows(read_memory_data(ROUND1_MEMORY_DATA, TRUE),
                         read_memory_data(ROUND2_MEMORY_DATA, FALSE))
-
 
 # Summarize data
 prediction_summary = get_prediction_summary(trial_data)
