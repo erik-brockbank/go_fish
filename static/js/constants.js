@@ -496,7 +496,7 @@ const MEMORY_ARRAY = [
             bottom_color: "blue",
             bottom_texture: false
         },
-        in_expt: 1,
+        in_expt: 0,
         catches_fish: 0
     },
     { // Evidence lure #6
