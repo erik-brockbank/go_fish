@@ -534,6 +534,7 @@ t_gen = t.test(
 )
 report_t_summary(t_gen)
 
+
 # 3. Generation judgment task: proportion of people who got 100% across conditions
 # NB: similar Chi-sq test with raw count of people who were *coded as getting rule* is what we report above 
 # for the free response task so this is effectively a parallel analysis for people who got 100% on judgment task
@@ -835,6 +836,81 @@ report_t_summary(t_trial_time_correct) # Means are seconds on trials
 
 
 
+
+# APPENDIX ANALYSIS: POWER =====================================================
+library(pwr)
+library(ES)
+
+# Effect size and power for generation free response task effect
+p1 = generation_props$success[generation_props$Condition == "Explain"] / generation_props$total[generation_props$Condition == "Explain"]
+p2 = generation_props$success[generation_props$Condition == "Describe"] / generation_props$total[generation_props$Condition == "Describe"]
+
+ES.h(p1, p2) # Effect size
+
+power.prop.test(n = generation_props$total[generation_props$Condition == "Explain"], # could use either condition here
+                p1 = p1,
+                p2 = p2,
+                #alternative = "one.sided",
+                sig.level = 0.05) # Power to detect our effect size
+
+power.prop.test(p1 = p1,
+                p2 = p2,
+                power = 0.8,
+                #alternative = "one.sided",
+                sig.level = 0.05) # Observations needed to detect our effect size with 80% power
+
+
+# Effect size and power for generation judgment task effect
+p1 = generation_judgment_summary$mean_accuracy[generation_judgment_summary$Condition == "Explain"]
+p2 = generation_judgment_summary$mean_accuracy[generation_judgment_summary$Condition == "Describe"]
+
+ES.h(p1, p2) # Effect size
+
+power.prop.test(n = generation_props$total[generation_props$Condition == "Explain"], # could use either condition here
+                p1 = p1,
+                p2 = p2,
+                alternative = "one.sided",
+                sig.level = 0.05) # Power to detect our effect size
+
+power.prop.test(p1 = p1,
+                p2 = p2,
+                power = 0.8,
+                alternative = "one.sided",
+                sig.level = 0.05) # Observations needed to detect our effect size with 80% power
+
+
+# Effect size and power for evaluation effect (different rating of target across conditions)
+power_data = evaluation_data %>%
+  filter(is_target_rule == TRUE) %>%
+  group_by(Condition) %>%
+  summarize(mean_rating = mean(input_rule_rating),
+            sd_rating = sd(input_rule_rating),
+            var_rating = var(input_rule_rating),
+            n = n())
+
+# TODO How to get pooled SD?
+# NOTE SDs are pretty different for two conditions so equal variance may not be legit...
+sd_pooled = sqrt(((power_data$sd_rating[power_data$Condition == "Explain"]^2) + 
+                    (power_data$sd_rating[power_data$Condition == "Describe"]^2)) / 2)
+sd_pooled = ((power_data$var_rating[power_data$Condition == "Explain"] * (power_data$n[power_data$Condition == "Explain"] - 1)) +
+  (power_data$var_rating[power_data$Condition == "Describe"] * (power_data$n[power_data$Condition == "Describe"] - 1))) /
+  ((power_data$n[power_data$Condition == "Explain"] - 1) + (power_data$n[power_data$Condition == "Describe"] - 1))
+
+
+mean_diff = power_data$mean_rating[power_data$Condition == "Explain"] - 
+  power_data$mean_rating[power_data$Condition == "Describe"]
+
+power.t.test(n = dat$subjects[dat$Condition == "Explain"], # can use either condition here
+             delta = mean_diff,
+             sd = sd_pooled,
+             alternative = "one.sided",
+             sig.level = 0.05) # Power to detect our effect size
+
+power.t.test(delta = mean_diff,
+             sd = sd_pooled,
+             sig.level = 0.05,
+             alternative = "one.sided",
+             power = 0.8) # Number of subjects needed to detect an effect with 80% power
 
 
 
