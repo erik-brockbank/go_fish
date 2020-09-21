@@ -1,0 +1,573 @@
+Subject,Condition,Trial index,Subject response,FINAL - total mechanisms,FINAL - total shape references,FINAL - abstract shape references,FINAL - concrete shape references,FINAL - total color references,FINAL - abstract color references,FINAL - concrete color references,FINAL - total purple dot references,FINAL - abstract purple dot references,FINAL - concrete purple dot references
+user_1579194662020,Explain,1,i dont know,0,0,0,0,0,0,0,0,0,0
+user_1579194662020,Explain,2,they are too different,0,0,0,0,0,0,0,0,0,0
+user_1579194662020,Explain,3,too different,0,0,0,0,0,0,0,0,0,0
+user_1579194662020,Explain,4,i dont know,0,0,0,0,0,0,0,0,0,0
+user_1579194662020,Explain,5,"the bottom is pointy, the top is smooth",0,2,2,0,0,0,0,0,0,0
+user_1579194662020,Explain,6,"the bottom is not pointy, the top isnt smooth",0,2,2,0,0,0,0,0,0,0
+user_1579194662020,Explain,7,I have no idea now,0,0,0,0,0,0,0,0,0,0
+user_1579194662020,Explain,8,maybe im just bad at shapes,0,0,0,0,0,0,0,0,0,0
+user_1579194668636,Explain,1,The specific shape attracts the fish,1,0,0,0,0,0,0,0,0,0
+user_1579194668636,Explain,2,Maybe the lure is not the right color,0,0,0,0,0,0,0,0,0,0
+user_1579194668636,Explain,3,Not the right shape or color,0,0,0,0,0,0,0,0,0,0
+user_1579194668636,Explain,4,Yellow bottom section,0,0,0,0,1,0,1,0,0,0
+user_1579194668636,Explain,5,Pointed bottom section,0,1,1,0,0,0,0,0,0,0
+user_1579194668636,Explain,6,No pointed bottom section,0,1,1,0,0,0,0,0,0,0
+user_1579194668636,Explain,7,"Pointed bottom section, maybe with a purple dot anywhere?",0,1,1,0,0,0,0,1,0,1
+user_1579194668636,Explain,8,No pointed bottom part,0,1,1,0,0,0,0,0,0,0
+user_1579194678938,Explain,1,Because he got lucky.,0,0,0,0,0,0,0,0,0,0
+user_1579194678938,Explain,2,Because the fish mouth is smaller than the blue thing.,1,0,0,0,1,0,1,0,0,0
+user_1579194678938,Explain,3,because the green one is round,0,1,1,0,1,0,1,0,0,0
+user_1579194678938,Explain,4,because the yellow thing is sharp,0,1,1,0,1,0,1,0,0,0
+user_1579194678938,Explain,5,because the green thing is a spuare,0,1,0,1,1,0,1,0,0,0
+user_1579194678938,Explain,6,the orange thing is round,0,1,1,0,1,0,1,0,0,0
+user_1579194678938,Explain,7,the blue thing is sharp,0,1,1,0,1,0,1,0,0,0
+user_1579194678938,Explain,8,because the combination is a triangle with a round thing,0,2,1,1,0,0,0,0,0,0
+user_1579194691731,Describe,1,Red teardrop shape that has a small purple circle on the left side of it and a yellow upside down triangle underneath.,0,2,0,2,2,0,2,1,0,1
+user_1579194691731,Describe,2,Green circle with a blue raindrop underneath.,0,2,0,2,2,0,2,0,0,0
+user_1579194691731,Describe,3,Large yellow diamond with a small green circle underneath it that contains a tiny purple dot on the bottom right side (looks like an olive).,0,2,0,2,2,0,2,1,0,1
+user_1579194691731,Describe,4,Large blue oval and yellow shape that looks like the sparkle emoji that also contains a small purple dot in the right center.,0,2,0,2,2,0,2,1,0,1
+user_1579194691731,Describe,5,Large red circle that contains a purple dot slightly off center to the right. Also has a green diamond shape underneath with a purple dot that's in the same position as the one in the red circle.,0,2,0,2,2,0,2,2,0,2
+user_1579194691731,Describe,6,Blue 4 sided star shape with a red circle underneath.,0,2,0,2,2,0,2,0,0,0
+user_1579194691731,Describe,7,Yellow diamond that contains a purple dot near the top left. Also has a plain blue diamond underneath.,0,2,0,2,2,0,2,1,0,1
+user_1579194691731,Describe,8,Upside down green triangle with a purple dot on the left corner. Underneath there is a red oval with a purple dot located center left.,0,2,0,2,2,0,2,2,0,2
+user_1579194695509,Explain,1,The shape of the combination might resemble something similar familiar in the fish's environment,1,0,0,0,0,0,0,0,0,0
+user_1579194695509,Explain,2,The shape of the lure makes it easy for the fish to escape i.e. it isn't sharp,1,1,1,0,0,0,0,0,0,0
+user_1579194695509,Explain,3,Perhaps fish bite on the round end of the lure and are able to escape. Or because the diamond's shape isn't helpful,1,2,1,1,0,0,0,0,0,0
+user_1579194695509,Explain,4,The pointy ends of the diamond help catch the fish despite the oval on top,1,3,1,2,0,0,0,0,0,0
+user_1579194695509,Explain,5,"The shape of the lure resembles the other lures which have caught fish, so maybe something about the structure of the lure",0,0,0,0,0,0,0,0,0,0
+user_1579194695509,Explain,6,It seems that lures with a rounded shape on the bottom don't catch fish. This lure has a circle on the lower end,0,2,1,1,0,0,0,0,0,0
+user_1579194695509,Explain,7,"The lures that have managed to catch fish had a shape with sharp edges, so does this one. It has a diamond on the bottom",0,2,1,1,0,0,0,0,0,0
+user_1579194695509,Explain,8,"The shape on the bottom is round, similar to the lures that haven't caught any fish",0,1,1,0,0,0,0,0,0,0
+user_1579194713221,Explain,1,It might have been attracted to the bright orange color; which could be perceived as food.,1,0,0,0,2,1,1,0,0,0
+user_1579194713221,Explain,2,"Maybe because the bottom blue part of the lure blended in with the water, so the fish was not moved towards the lure.",1,0,0,0,1,0,1,0,0,0
+user_1579194713221,Explain,3,Maybe these type of fish ae lured towards specific colors that correlate to food that they might frequently eat and yellow might not be one of them.,1,0,0,0,1,0,1,0,0,0
+user_1579194713221,Explain,4,Possibly because it has the same shape/form as the first lure that was used to catch the fish.,0,0,0,0,0,0,0,0,0,0
+user_1579194713221,Explain,5,"In the first and third lures that were used to catch the fish, the bottom part of the lure has almost a diamond/triangular shape; so it could make sense that this lure was able to catch a fish since it also has the same shape on the bottom part of the lure.",0,1,0,1,0,0,0,0,0,0
+user_1579194713221,Explain,6,Possibly because the shape of the lure do not match at all with the lures that did work to catch the fish.,0,0,0,0,0,0,0,0,0,0
+user_1579194713221,Explain,7,"Possibly because like past lures that worked, fiash are now more prone to be lead towards items that have a diamond shape form.",0,1,0,1,0,0,0,0,0,0
+user_1579194713221,Explain,8,Maybe because the bottom part of the lure is a circular shape rather than a diamond shape.,0,2,1,1,0,0,0,0,0,0
+user_1579194724670,Explain,1,It fits into the fishes mouth perfectly,1,0,0,0,0,0,0,0,0,0
+user_1579194724670,Explain,2,It doesn't fit well with the shape of the fish's mouth,1,0,0,0,0,0,0,0,0,0
+user_1579194724670,Explain,3,It wouldn't go into the fish's mouth with how it is shaped at the top,1,0,0,0,0,0,0,0,0,0
+user_1579194724670,Explain,4,It fits into the fish's mouth and the bottom keeps the fish from being able to get away,2,0,0,0,0,0,0,0,0,0
+user_1579194724670,Explain,5,It has a square end that is pointy so it will be able to prevent the fish from escaping,1,2,1,1,0,0,0,0,0,0
+user_1579194724670,Explain,6,It wouldn't fit into the fish's mouth,1,0,0,0,0,0,0,0,0,0
+user_1579194724670,Explain,7,It keeps the fish from escaping,1,0,0,0,0,0,0,0,0,0
+user_1579194724670,Explain,8,It wouldn't fit into the fish's mouth because the top part is too wide,1,1,1,0,0,0,0,0,0,0
+user_1579197924760,Explain,1,because it's the same example showed before,0,0,0,0,0,0,0,0,0,0
+user_1579197924760,Explain,2,because it doesn't have anything same as the previous one that caught the fish,0,0,0,0,0,0,0,0,0,0
+user_1579197924760,Explain,3,because it doesn't have anything required as the first one,0,0,0,0,0,0,0,0,0,0
+user_1579197924760,Explain,4,maybe the lure requires the yellow thing in the front to catch the fish,0,0,0,0,1,0,1,0,0,0
+user_1579197924760,Explain,5,because it has the red big part containing the purple dot like the first one,0,0,0,0,1,0,1,1,0,1
+user_1579197924760,Explain,6,"because it doesn't have red big part containing purple dot like the first or fourth one, and it also doesn't have yellow front",0,0,0,0,2,0,2,1,0,1
+user_1579197924760,Explain,7,because it has the purple dot inside the big part and the front doesn't contain any round part,0,1,1,0,0,0,0,1,0,1
+user_1579197924760,Explain,8,the front is the round part so it doesn't catch the fish,0,1,1,0,0,0,0,0,0,0
+user_1579197956417,Describe,1,"This lure combination has color of red, yellow and a small purple circle.",0,0,0,0,2,0,2,1,0,1
+user_1579197956417,Describe,2,This lure combination has a green and blue color.,0,0,0,0,2,0,2,0,0,0
+user_1579197956417,Describe,3,"This lure combination has a yellow and green color, with a little bit of purple.",0,0,0,0,2,0,2,1,1,0
+user_1579197956417,Describe,4,This lure combination has a blue and yellow combined color.,0,0,0,0,2,0,2,0,0,0
+user_1579197956417,Describe,5,This lure combination has a red and green combination.,0,0,0,0,2,0,2,0,0,0
+user_1579197956417,Describe,6,This lure combination has blue and red color.,0,0,0,0,2,0,2,0,0,0
+user_1579197956417,Describe,7,This combination has yellow and blue color.,0,0,0,0,2,0,2,0,0,0
+user_1579197956417,Describe,8,It has green and red color.,0,0,0,0,2,0,2,0,0,0
+user_1579197963470,Explain,1,The fish might have been attracted to the bright colors of the lure.,1,0,0,0,1,1,0,0,0,0
+user_1579197963470,Explain,2,The colors are not as bright as the first lure and it is possible that the blue and green lure is harder to see under water since it blends in.,1,0,0,0,3,1,2,0,0,0
+user_1579197963470,Explain,3,The color of the lure is not very eye-catching.,1,0,0,0,0,0,0,0,0,0
+user_1579197963470,Explain,4,The blue and yellow looks bigger lengthwise compared to the lures that did not catch any fish.,0,1,1,0,2,0,2,0,0,0
+user_1579197963470,Explain,5,The red and green are very noticeable.,1,0,0,0,2,0,2,0,0,0
+user_1579197963470,Explain,6,The blue part of the lure might have been hard to spot underwater.,1,0,0,0,1,0,1,0,0,0
+user_1579197963470,Explain,7,The yellow part with the purple might have been easier for the fish to see and therefore take a bite.,1,0,0,0,1,0,1,1,0,1
+user_1579197963470,Explain,8,The fish do not seem to like the lures that are majority green.,0,0,0,0,1,0,1,0,0,0
+user_1579197975863,Describe,1,red tear drop with purple dot on top of yellow cone,0,2,0,2,2,0,2,1,0,1
+user_1579197975863,Describe,2,green circle on top of blue tear drop,0,2,0,2,2,0,2,0,0,0
+user_1579197975863,Describe,3,yellow diamond on top of green circle with purple dot,0,2,0,2,2,0,2,1,0,1
+user_1579197975863,Describe,4,blue oval on top of yellow star with purple dot,0,2,0,2,2,0,2,1,0,1
+user_1579197975863,Describe,5,red circle with purple dot with green diamond with purple dot,0,2,0,2,2,0,2,2,0,2
+user_1579197975863,Describe,6,blue star with red circle,0,2,0,2,2,0,2,0,0,0
+user_1579197975863,Describe,7,yellow diamond with purple dot with blue diamond,0,2,0,2,2,0,2,1,0,1
+user_1579197975863,Describe,8,green triangle with purple dot with red oval with purple dot,0,2,0,2,2,0,2,2,0,2
+user_1579197986612,Explain,1,it could have begin just chance that she got a fish or that fish might actually like the lure combination.,1,0,0,0,0,0,0,0,0,0
+user_1579197986612,Explain,2,this lure combination didn't have the necessary lure part or part from previous one that caught a fish to catch the fish,0,0,0,0,0,0,0,0,0,0
+user_1579197986612,Explain,3,the lure didn't have the parts from the first lure combination that caught the fish,0,0,0,0,0,0,0,0,0,0
+user_1579197986612,Explain,4,the lure is similar to the first lure combination that caught the fish in the sense that it have small yellow part attached to it on the bottom,0,0,0,0,1,0,1,0,0,0
+user_1579197986612,Explain,5,the lure's overall shape is like the other that caught the fish; round on top and sharp triangle like bottom,0,3,2,1,0,0,0,0,0,0
+user_1579197986612,Explain,6,the shape of this lure isn't like the other ones that caught the fish,0,0,0,0,0,0,0,0,0,0
+user_1579197986612,Explain,7,I think because the lure has sharp triangle like shape at the bottom which is similar to those that has caught fish in the past,0,2,1,1,0,0,0,0,0,0
+user_1579197986612,Explain,8,the lure combination at the bottom is not a upside down triangle shape like those who have caught fishes,0,1,0,1,0,0,0,0,0,0
+user_1579197988272,Explain,1,"My friend might have caught a fish with this lure combination because its shape, or maybe the dot got its attention.",1,0,0,0,0,0,0,1,0,1
+user_1579197988272,Explain,2,Maybe because the shape of it resembles a different sea creature and the fish thinks it is dangerous or wants nothing to do with it,1,0,0,0,0,0,0,0,0,0
+user_1579197988272,Explain,3,because of the many sharp edges or resembles a sea creature that they are trying to avoid,1,1,1,0,0,0,0,0,0,0
+user_1579197988272,Explain,4,"the oval shape looks like a fish's body, similar to that of the first lure combination",1,1,0,1,0,0,0,0,0,0
+user_1579197988272,Explain,5,circular shape again resembling some kind of body and also the dot catches the fish's attention thinking it is something alive (the eye),2,1,1,0,0,0,0,2,1,1
+user_1579197988272,Explain,6,"does not resemble any kind of body form and also the dot does not look like an eye, it is just another shape attached (position of the circle/dot)",2,0,0,0,0,0,0,1,0,1
+user_1579197988272,Explain,7,"dot caught fishes attention, squares are stacked in a row looks grouped together",1,1,0,1,0,0,0,1,0,1
+user_1579197988272,Explain,8,"the two dots catches the fish off guard, eyes are not in correct place position (maybe looks like a novel object",1,0,0,0,0,0,0,2,1,1
+user_1579198000158,Explain,1,Because it's colorful,0,0,0,0,0,0,0,0,0,0
+user_1579198000158,Explain,2,Because the colors of the lure may camouflage with the water and the fish cannot really see it well,1,0,0,0,0,0,0,0,0,0
+user_1579198000158,Explain,3,Because of the shape,0,0,0,0,0,0,0,0,0,0
+user_1579198000158,Explain,4,Because she shape underwater may seem like food to fishes,1,0,0,0,0,0,0,0,0,0
+user_1579198000158,Explain,5,Because the red color its bright and it may catch the fishes attention,1,0,0,0,2,1,1,0,0,0
+user_1579198000158,Explain,6,The shape may not seem like food to fish,1,0,0,0,0,0,0,0,0,0
+user_1579198000158,Explain,7,"Because it is pretty similar to another lure that also catch a fish, the combination of colors seems to be efficient at grabbing the fish's attention",1,0,0,0,0,0,0,0,0,0
+user_1579198000158,Explain,8,Because of the shape of the lure,0,0,0,0,0,0,0,0,0,0
+user_1579198652845,Explain,1,because it is big and covers the fish's view. thus preventing it from ignoring the lure.,1,0,0,0,0,0,0,0,0,0
+user_1579198652845,Explain,2,because the bottom end is round. Fishes may think edges=food.,1,1,1,0,0,0,0,0,0,0
+user_1579198652845,Explain,3,"Again, because the bottom is rounded. however maybe the top should also be not so extreme on shapes",0,2,2,0,0,0,0,0,0,0
+user_1579198652845,Explain,4,So this one proves my theory that the bottom shape must be edgy (like peaks... triangle-ish shapes),0,3,3,0,0,0,0,0,0,0
+user_1579198652845,Explain,5,Because the bottom shape was pointy,0,1,1,0,0,0,0,0,0,0
+user_1579198652845,Explain,6,The bottom shape is round,0,1,1,0,0,0,0,0,0,0
+user_1579198652845,Explain,7,Bottom shape was pointy,0,1,1,0,0,0,0,0,0,0
+user_1579198652845,Explain,8,the bottom shape is round,0,1,1,0,0,0,0,0,0,0
+user_1579208189179,Describe,1,"Red tear shaped lure with a small purple circle on the left side of the tear shape, and a small yellow upsidedown triangle underneath the teardrop",0,2,0,2,2,0,2,1,0,1
+user_1579208189179,Describe,2,A green circle base with a small blue teardrop on the bottom,0,2,0,2,2,0,2,0,0,0
+user_1579208189179,Describe,3,A yellow square tilted like a diamond with a small circle on the bottom. The green circle has a purple dot at the 5oclock mark,0,2,0,2,2,0,2,1,0,1
+user_1579208189179,Describe,4,A blue vertical oval with a small four point star hanging on the bottom. There is a small purple dot at the junction between the top point of the star and the right point.,0,2,0,2,1,0,1,1,0,1
+user_1579208189179,Describe,5,"A red circle with a purple dot near the center, with a green square hanging from a corner at the bottom. The green square has a purple dot on the right corner.",0,2,0,2,2,0,2,2,0,2
+user_1579208189179,Describe,6,"A blue four point star with the corners facing the up, down, left and right. There is a smaller red circle hanging from the bottom corner.",0,2,0,2,2,0,2,0,0,0
+user_1579208189179,Describe,7,"A yellow square tilted to the angle of a diamond. There is a purple dot slightly right of the top corner on the square. There is a smaller blue square hanging from the bottom corner of the square, also slanted like a diamond.",0,2,0,2,2,0,2,1,0,1
+user_1579208189179,Describe,8,"An upsidedown green triangle with a purple dot on the top left corner. A vertical red oval hangs from the bottom, with a purple dot slightly left of the center.",0,2,0,2,2,0,2,2,0,2
+user_1579208200966,Explain,1,By luck I guess.,0,0,0,0,0,0,0,0,0,0
+user_1579208200966,Explain,2,The shape and the color does not attract the fish.,1,0,0,0,0,0,0,0,0,0
+user_1579208200966,Explain,3,The fish does not recognize the green color.,1,0,0,0,1,0,1,0,0,0
+user_1579208200966,Explain,4,The fish recognize the yellow color on the bottom.,1,0,0,0,1,1,0,0,0,0
+user_1579208200966,Explain,5,She recognize the red color on the top of the lure. I guess the fish only get attracted by either red color on the upper part of the lure and/or yellow color on the bottom part of the lure.,2,0,0,0,3,0,3,0,0,0
+user_1579208200966,Explain,6,"To attract the fish, the lure has to be red on the top and/or yellow on the bottom.",1,0,0,0,2,0,2,0,0,0
+user_1579208200966,Explain,7,The small purple circle on the top of the lure attract the fish.,1,0,0,0,0,0,0,1,0,1
+user_1579208200966,Explain,8,"The lure does not recognize green color. She only recognize red, yellow, and purple.",1,0,0,0,3,0,3,1,0,1
+user_1579208201031,Describe,1,tear drop with a triangle under and a purple circle in the teardrop,0,2,0,2,0,0,0,1,0,1
+user_1579208201031,Describe,2,green circle with a blue teardrop under,0,2,0,2,2,0,2,0,0,0
+user_1579208201031,Describe,3,circle with a triangle under,0,2,0,2,0,0,0,0,0,0
+user_1579208201031,Describe,4,blue oval with a star and dot in it,0,2,0,2,1,0,1,1,0,1
+user_1579208201031,Describe,5,big red circle with a purple circle and then a green square with a purple dot under,0,2,0,2,2,0,2,2,0,2
+user_1579208201031,Describe,6,star with a red circle under,0,2,0,2,1,0,1,0,0,0
+user_1579208201031,Describe,7,two boxes stacked on each other with the top box has a purple dot,0,1,0,1,0,0,0,1,0,1
+user_1579208201031,Describe,8,green triangle with a purple dot and and an oval with a purple dot,0,2,0,2,1,0,1,2,0,2
+user_1579208211705,Explain,1,he have tried this before so he know,1,0,0,0,0,0,0,0,0,0
+user_1579208211705,Explain,2,because it is shaped more like a circle so the fish would slip from the lure combination,1,1,0,1,0,0,0,0,0,0
+user_1579208211705,Explain,3,same as the previous one,0,0,0,0,0,0,0,0,0,0
+user_1579208211705,Explain,4,because the bottom of the lure looks like the first one that my friend used,0,0,0,0,0,0,0,0,0,0
+user_1579208211705,Explain,5,maybe the fish was attracted to the purple dot,1,0,0,0,0,0,0,1,0,1
+user_1579208211705,Explain,6,there is no colored dot inside the star or the circle,0,2,0,2,0,0,0,1,0,1
+user_1579208211705,Explain,7,because of the triangle shaped on the bottom,0,1,0,1,0,0,0,0,0,0
+user_1579208211705,Explain,8,because of the circle shape on the bottom,0,1,0,1,0,0,0,0,0,0
+user_1579208242783,Explain,1,The fish thought that this lure seemed attractive because of its color.,1,0,0,0,0,0,0,0,0,0
+user_1579208242783,Explain,2,Friend might not have caught any fish with this lure combination because it does not match the previous lure combination. It has no big orange tear drop shape.,0,1,0,1,1,0,1,0,0,0
+user_1579208242783,Explain,3,Maybe because the lure did not have the orange tear drop on the top,0,1,0,1,1,0,1,0,0,0
+user_1579208242783,Explain,4,Maybe they caught a fish because the fish liked the oval blue color and the star shape.,1,2,0,2,1,0,1,0,0,0
+user_1579208242783,Explain,5,Maybe she caught a fish with this combination because it liked the round shape at the top,1,1,1,0,0,0,0,0,0,0
+user_1579208242783,Explain,6,Maybe because the fish did not like the shape of the star on top even though it was blue. The fish may not have liked the round bottom either.,1,2,1,1,1,0,1,0,0,0
+user_1579208242783,Explain,7,maybe the fish like that this lure had a blue square on the bottom. I do not think that the fish would like the top of the lure because it resembles a previous lure that the fish didn't like.,1,1,0,1,1,0,1,0,0,0
+user_1579208242783,Explain,8,The fish did not like the triangle shape at the top of the lure neither the bottom.,1,1,0,1,0,0,0,0,0,0
+user_1579208311948,Explain,1,"I'm not sure if fish can see colors, but maybe because of bright colors. Another possible reason is the shape of the combinations - it kind of looks like a fish?",2,0,0,0,0,0,0,0,0,0
+user_1579208311948,Explain,2,Maybe because the shapes are too round to catch fish. It might not be helpful to hook a fish.,1,1,1,0,0,0,0,0,0,0
+user_1579208311948,Explain,3,"Although the top part is kind of sharp, but still the bottom part is round.",0,2,2,0,0,0,0,0,0,0
+user_1579208311948,Explain,4,The bottom part has relatively sharp points.,0,1,1,0,0,0,0,0,0,0
+user_1579208311948,Explain,5,The bottom part has sharp points.,0,1,1,0,0,0,0,0,0,0
+user_1579208311948,Explain,6,The bottom part of the combination is round.,0,1,1,0,0,0,0,0,0,0
+user_1579208311948,Explain,7,"Like the other combinations with sharp bottom part, the bottom part of this combination also has sharp points.",0,1,1,0,0,0,0,0,0,0
+user_1579208311948,Explain,8,The bottom part is too round - it does not have pointy ends.,0,2,2,0,0,0,0,0,0,0
+user_1579208538125,Explain,1,"bright colors, maybe the darker spot could have been taken for an eye causing the fish to think the lure was a smaller creature it could eat",1,0,0,0,1,1,0,1,1,0
+user_1579208538125,Explain,2,"no bright colors, nothing that imitates a creature",1,0,0,0,1,1,0,0,0,0
+user_1579208538125,Explain,3,"the larger shape is too sharp, the dark purple spot is on the smaller body",1,1,1,0,0,0,0,1,0,1
+user_1579208538125,Explain,4,the larger shaped is more curved and the smaller is sharper,0,2,2,0,0,0,0,0,0,0
+user_1579208538125,Explain,5,the larger shape is curved and the smaller shape is sharper,0,2,2,0,0,0,0,0,0,0
+user_1579208538125,Explain,6,the larger shape is sharp and the smaller shape is curved,0,2,2,0,0,0,0,0,0,0
+user_1579208538125,Explain,7,the smaller shape is sharp/not curved,0,1,1,0,0,0,0,0,0,0
+user_1579208538125,Explain,8,the smaller shape is curved,0,1,1,0,0,0,0,0,0,0
+user_1579208807017,Describe,1,Teardrop shaped red and yellow lure.,0,1,0,1,2,0,2,0,0,0
+user_1579208807017,Describe,2,Green circular with a blue teardrop shape.,0,2,1,1,2,0,2,0,0,0
+user_1579208807017,Describe,3,Yellow diamond with green circle shape.,0,2,0,2,2,0,2,0,0,0
+user_1579208807017,Describe,4,Blue oval with yellow star shape.,0,2,0,2,2,0,2,0,0,0
+user_1579208807017,Describe,5,Red circle with green diamond shape lure.,0,2,0,2,2,0,2,0,0,0
+user_1579208807017,Describe,6,Blue star with red circle lure.,0,2,0,2,2,0,2,0,0,0
+user_1579208807017,Describe,7,Yellow diamond with blue diamond shape lure.,0,2,0,2,2,0,2,0,0,0
+user_1579208807017,Describe,8,Green triangle with red oval shape.,0,2,0,2,2,0,2,0,0,0
+user_1579212222581,Explain,1,because it has a similar shape with the example at the beginning,0,0,0,0,0,0,0,0,0,0
+user_1579212222581,Explain,2,maybe because of the color is not warm color,0,0,0,0,1,1,0,0,0,0
+user_1579212222581,Explain,3,because the lure combination doesn't have red color in it,0,0,0,0,1,0,1,0,0,0
+user_1579212222581,Explain,4,i think the tip of the lure has to be yellow in order to catch a fish,0,0,0,0,1,0,1,0,0,0
+user_1579212222581,Explain,5,the bigger and main part of this lure has the same color with the first one,0,0,0,0,0,0,0,0,0,0
+user_1579212222581,Explain,6,the main part of the lure is blue and the tip is also not yellow,0,0,0,0,2,0,2,0,0,0
+user_1579212222581,Explain,7,because the smaller part of the lure is not round shape,0,1,1,0,0,0,0,0,0,0
+user_1579212222581,Explain,8,"because the tip of the lure must be triangle, square or star shape",0,3,0,3,0,0,0,0,0,0
+user_1579212226365,Describe,1,"An upside down triangle, and a waterdrop-shaped red item on top with purple dot.",0,2,0,2,1,0,1,1,0,1
+user_1579212226365,Describe,2,a green circle above a blue water drop shape,0,2,0,2,2,0,2,0,0,0
+user_1579212226365,Describe,3,a yellow square on top of a green circle with a red dot inside.,0,2,0,2,2,0,2,1,0,1
+user_1579212226365,Describe,4,a blue banana shape on top of a yellow star with a red dot inside,0,2,0,2,2,0,2,1,0,1
+user_1579212226365,Describe,5,a red circle with purple dot inside on top of a green square with a red dot inside,0,2,0,2,2,0,2,2,0,2
+user_1579212226365,Describe,6,a blue star on top of a smaller red circle,0,2,0,2,2,0,2,0,0,0
+user_1579212226365,Describe,7,a yellow square with a purple dot inside on top of a blue square,0,2,0,2,2,0,2,1,0,1
+user_1579212226365,Describe,8,a green downward triangle with a purple dot inside on top of a red banana shape with a purple dot inside,0,2,0,2,2,0,2,2,0,2
+user_1579212319954,Describe,1,some red drop with an arrow,0,2,0,2,1,0,1,0,0,0
+user_1579212319954,Describe,2,green circle with blue drop,0,2,0,2,2,0,2,0,0,0
+user_1579212319954,Describe,3,yellow rectangle with green and purple circle,0,2,0,2,2,0,2,1,0,1
+user_1579212319954,Describe,4,a big blue circle with yellow star and a small purple circle,0,2,0,2,2,0,2,1,0,1
+user_1579212319954,Describe,5,a big red circle and a small purple circle with green rectangle,0,2,0,2,2,0,2,1,0,1
+user_1579212319954,Describe,6,blue star with red circle,0,2,0,2,2,0,2,0,0,0
+user_1579212319954,Describe,7,yellow rectangle with a purple circle and a blue small rectangle,0,2,0,2,2,0,2,1,0,1
+user_1579212319954,Describe,8,green triangle with purple circle inside and red circle with purple circle inside,0,2,0,2,2,0,2,2,0,2
+user_1579212320210,Explain,1,The color and the shape of the lure,0,0,0,0,0,0,0,0,0,0
+user_1579212320210,Explain,2,the shape and color is completely different from the first lure,0,0,0,0,0,0,0,0,0,0
+user_1579212320210,Explain,3,the shape of the lure is round and might be the reason why it's not attracting any fish,1,1,1,0,0,0,0,0,0,0
+user_1579212320210,Explain,4,the bottom of the lure has pointy edges and also the color is also yellow as the first lure,0,1,1,0,1,0,1,0,0,0
+user_1579212320210,Explain,5,the lure has pointy edges,0,1,1,0,0,0,0,0,0,0
+user_1579212320210,Explain,6,the bottom of the lure is round and might be the reason why it's not catching any fish,0,1,1,0,0,0,0,0,0,0
+user_1579212320210,Explain,7,pointy edges,0,1,1,0,0,0,0,0,0,0
+user_1579212320210,Explain,8,the shape is round,0,1,1,0,0,0,0,0,0,0
+user_1579212329168,Describe,1,My friend used the red as A and the yellow as the hook to grab the fish with,1,0,0,0,2,0,2,0,0,0
+user_1579212329168,Describe,2,"My friend combined a green circle with a blue cone, which was not able to grab the fish.",1,2,0,2,2,0,2,0,0,0
+user_1579212329168,Describe,3,My friend used a diamond with a circle hook,0,2,0,2,0,0,0,0,0,0
+user_1579212329168,Describe,4,My friend used an oval with a rhombus hook,0,2,0,2,0,0,0,0,0,0
+user_1579212329168,Describe,5,My friend used a circle with a square hook,0,2,0,2,0,0,0,0,0,0
+user_1579212329168,Describe,6,My friend had a circle hook attached to a star shape,0,2,0,2,0,0,0,0,0,0
+user_1579212329168,Describe,7,"My friend used a yellow, larger square attached to a blue, smaller square",0,2,0,2,2,0,2,0,0,0
+user_1579212329168,Describe,8,My friend used a green triangle attached to a red oval,0,2,0,2,2,0,2,0,0,0
+user_1579212340838,Explain,1,color combination,0,0,0,0,0,0,0,0,0,0
+user_1579212340838,Explain,2,shape and color,0,0,0,0,0,0,0,0,0,0
+user_1579212340838,Explain,3,color and shape,0,0,0,0,0,0,0,0,0,0
+user_1579212340838,Explain,4,color and shape is similar to first.,0,0,0,0,0,0,0,0,0,0
+user_1579212340838,Explain,5,red color and point at bottom,0,1,1,0,1,0,1,0,0,0
+user_1579212340838,Explain,6,not point at bottom of lure,0,1,1,0,0,0,0,0,0,0
+user_1579212340838,Explain,7,point at bottom of lure,0,1,1,0,0,0,0,0,0,0
+user_1579212340838,Explain,8,not point at bottom,0,1,1,0,0,0,0,0,0,0
+user_1579212345756,Explain,1,I don't know maybe this combination was attractive..?,0,0,0,0,0,0,0,0,0,0
+user_1579212345756,Explain,2,since it's round it was unable to catch the fish unlike the first one.,1,1,1,0,0,0,0,0,0,0
+user_1579212345756,Explain,3,maybe the combination was too small to be seen?,1,0,0,0,0,0,0,0,0,0
+user_1579212345756,Explain,4,long enough for the fish to be unable to escape,1,0,0,0,0,0,0,0,0,0
+user_1579212345756,Explain,5,the bottom part was sharp enough to catch a fish,1,1,1,0,0,0,0,0,0,0
+user_1579212345756,Explain,6,looks very unique..? so the fish was being defiant?,0,0,0,0,0,0,0,0,0,0
+user_1579212345756,Explain,7,both top and bottom are sharp enough to catch a fish,1,1,1,0,0,0,0,0,0,0
+user_1579212345756,Explain,8,"maybe the fish bit the bottom part and because it wasn't sharp enough like the top part, it escaped",1,1,1,0,0,0,0,0,0,0
+user_1579212382927,Describe,1,"The lure combination consisted of a tear drop, a circle on the left side of the tear drop, and a triangle connecting to the smooth part of the tear drop",0,2,0,2,0,0,0,1,0,1
+user_1579212382927,Describe,2,the lure combination that did not catch a fish consisted of a circle whose bottom is touching a tip of a tear drop,0,2,0,2,0,0,0,0,0,0
+user_1579212382927,Describe,3,this lure combination consisted of a diamond whose bottom is touching a green circle that has a tiny dot on its bottom right side,0,2,0,2,1,0,1,1,0,1
+user_1579212382927,Describe,4,the combination that caught a fish consists of an oval whose bottom is touching a tip of a star that has a dot inside,0,2,0,2,0,0,0,1,0,1
+user_1579212382927,Describe,5,the lure combination consists of a red circle that has a purple dot inside. The circle is touching a green diamond which has a purple dot on its right side,0,2,0,2,2,0,2,2,0,2
+user_1579212382927,Describe,6,this lure combination consists of a blue star. Its bottom edge is touching a red circle,0,2,0,2,2,0,2,0,0,0
+user_1579212382927,Describe,7,the lure has a yellow diamond which has a purple dot inside. Its bottom edge is touching the tip of a blue diamond,0,2,0,2,2,0,2,1,0,1
+user_1579212382927,Describe,8,"the lure combination has an upside-down green triangle which has a purple dot on its left side. The tip of the triangle is touching a small, red oval that also has a dot inside",0,2,0,2,2,0,2,2,0,2
+user_1579215578091,Explain,1,My friends might have caught a fish with this lure combination because it has pointy ends.,0,1,1,0,0,0,0,0,0,0
+user_1579215578091,Explain,2,She might have not caught a fish because it is round and won't hang onto the fish.,1,1,1,0,0,0,0,0,0,0
+user_1579215578091,Explain,3,She didn't catch a fish because of its round end.,0,1,1,0,0,0,0,0,0,0
+user_1579215578091,Explain,4,She caught a fish because of the pointy ends that can hang onto the fish,1,1,1,0,0,0,0,0,0,0
+user_1579215578091,Explain,5,She caught a fish because of the pointy end,0,1,1,0,0,0,0,0,0,0
+user_1579215578091,Explain,6,She didn't catch a fish because of the round end.,0,1,1,0,0,0,0,0,0,0
+user_1579215578091,Explain,7,She caught a fish because of the sharp end that can hang onto the fish's mouth.,1,1,1,0,0,0,0,0,0,0
+user_1579215578091,Explain,8,She didn't catch the fish because of the round end.,0,1,1,0,0,0,0,0,0,0
+user_1579215605616,Explain,1,the fish can easily bite on the tip of the triangle,1,1,0,1,0,0,0,0,0,0
+user_1579215605616,Explain,2,the fish cannot firmly bit on the round droplet object,1,2,1,1,0,0,0,0,0,0
+user_1579215605616,Explain,3,the fish cannot firmly bite on the round object,1,1,1,0,0,0,0,0,0,0
+user_1579215605616,Explain,4,"the object in the end of the lure has many angles, thus the fish can bite on the angles and not let the lure slip away",1,1,1,0,0,0,0,0,0,0
+user_1579215605616,Explain,5,the fish can firmly bite on the object since it has more angles,1,1,1,0,0,0,0,0,0,0
+user_1579215605616,Explain,6,the sphere shape object in the end of the lure gets slippery in a fish's mouth so it cannot bite the lure firmly,1,1,0,1,0,0,0,0,0,0
+user_1579215605616,Explain,7,the rectangle in the end of the lure can let the fish bite on firmly,1,1,0,1,0,0,0,0,0,0
+user_1579215605616,Explain,8,the slippery surface of the lure cannot grab the fish,1,0,0,0,0,0,0,0,0,0
+user_1579215628572,Explain,1,The bright colors attract the fish,1,0,0,0,1,1,0,0,0,0
+user_1579215628572,Explain,2,"No sharp edges for the fish to attach to, no bright colors",1,1,1,0,1,1,0,0,0,0
+user_1579215628572,Explain,3,No sharp edges for the fish to attach to,1,1,1,0,0,0,0,0,0,0
+user_1579215628572,Explain,4,"Bright colors attract the fish
+ Sharp edges catch the fish (attachment)",2,1,1,0,1,1,0,0,0,0
+user_1579215628572,Explain,5,"Bright colors to attract the fish
+ Purple spots seem to attract the fish as well
+ Sharp edges for the fish to attach to",3,1,1,0,1,1,0,1,0,1
+user_1579215628572,Explain,6,"Absence of the purple spot that seems to be the common factor in all the lures that attract the fish.
+ No sharp edges for the fish to attach to.",2,1,1,0,0,0,0,1,0,1
+user_1579215628572,Explain,7,"Purple spot and bright colors attract fish
+ Sharp edges catch the fish",2,1,1,0,1,1,0,1,0,1
+user_1579215628572,Explain,8,"2 purple spots as opposed to one (seem to push the fish away)
+ No sharp edges for the fish to attach to",2,1,1,0,0,0,0,1,0,1
+user_1579215634553,Describe,1,The largest part of the lure looks like an upside down tear and is red. On the top left hand corner of the teardrop piece there is a purple circle. At the very bottom of the piece there is an upside down triangle.,0,2,0,2,1,0,1,1,0,1
+user_1579215634553,Describe,2,This combination is composed of a large green circle and it has an blue upside down teardrop attached at the bottom.,0,2,0,2,2,0,2,0,0,0
+user_1579215634553,Describe,3,The largest part of this lure is a yellow diamond and at the bottom of the diamond there is a green circle with a small purple inside it.,0,2,0,2,2,0,2,1,0,1
+user_1579215634553,Describe,4,The lure has a large blue oval and at the bottom of the oval there is a yellow star with a purple circle inside it.,0,2,0,2,2,0,2,1,0,1
+user_1579215634553,Describe,5,This combination has a large red circle with a small purple circle inside of it. At the bottom of the red circle there is a green diamond with a small purple circle inside it.,0,2,0,2,2,0,2,2,0,2
+user_1579215634553,Describe,6,There is a large blue star and it has a red circle attached at the bottom.,0,2,0,2,2,0,2,0,0,0
+user_1579215634553,Describe,7,There is a large yellow diamond with a purple circle inside it. There is a blue diamond attached to the bottom of the yellow diamond.,0,2,0,2,2,0,2,1,0,1
+user_1579215634553,Describe,8,This lure has a large green upside down triangle and it has a purple circle inside of it. At them bottom of the triangle there is a red oval with a purple circle inside it.,0,2,0,2,2,0,2,2,0,2
+user_1579215643144,Explain,1,The size and colors may be attractive to the fish.,1,0,0,0,0,0,0,0,0,0
+user_1579215643144,Explain,2,The shape and color may have not been appealing to the fish.,1,0,0,0,0,0,0,0,0,0
+user_1579215643144,Explain,3,The shape may have not been appealing to the fish.,1,0,0,0,0,0,0,0,0,0
+user_1579215643144,Explain,4,The yellow tip may be appealing to the fish.,1,0,0,0,1,0,1,0,0,0
+user_1579215643144,Explain,5,The large red shape with a purple dot may be appealing to the fish.,1,0,0,0,1,0,1,1,0,1
+user_1579215643144,Explain,6,The blue diamond shape and red tip may not be appealing to the fish.,1,1,0,1,2,0,2,0,0,0
+user_1579215643144,Explain,7,The purple dot in the large shape may be appealing to the fish.,1,0,0,0,0,0,0,1,0,1
+user_1579215643144,Explain,8,The green triangle may not be appealing to the fish.,1,1,0,1,1,0,1,0,0,0
+user_1579215646109,Describe,1,"A large teardrop shaped figure that is orange, and inside this figure is a small violet circle that is on the left-hand side of the teardrop and, it is above the curve part of the tear drop. also below the teardrop is a yellow equilateral triangle where a side of the triangle is touching the teardrop",0,2,0,2,2,0,2,1,0,1
+user_1579215646109,Describe,2,it is a large green circle with a small blue teardrop shaped figure below the circle where the tip or point of the teardrop is touching the circle,0,2,0,2,2,0,2,0,0,0
+user_1579215646109,Describe,3,"a medium-sized yellow square that is shaped like a baseball base, and below the square is a small green circle and inside the circle is a violet circle that is smaller. the violet circle is located at 5 o'clock",0,2,0,2,2,0,2,1,0,1
+user_1579215646109,Describe,4,"a large blue oval where it is vertically long and below the oval is a medium-sized four pointed star and inside the star shape is a small violet circle, located on the top-right side and between to points",0,2,0,2,1,0,1,1,0,1
+user_1579215646109,Describe,5,"a large orange circle with a small violet circle located off-center of the circle of right-bottom, and below that is a small green squared that a corner of the square is touching the orange circle, and inside the square is a smaller violet circle located on the right-most corner and it is one circle away from the corner",0,2,0,2,2,0,2,2,0,2
+user_1579215646109,Describe,6,a large blue four-pointed star with a small orange circle located at the bottom point of the star,0,2,0,2,2,0,2,0,0,0
+user_1579215646109,Describe,7,a large yellow square that is position like a baseball base and a small blue square with the same orientation and inside the yellow square is a smaller violet circle located next to the top-most corner on the right-hand side of that corner,0,2,0,2,2,0,2,1,0,1
+user_1579215646109,Describe,8,"a large green triangle with the top part being flat with a small violet circle at the left-most corner, and below the bottom corner is a vertically long, small, orange oval with a smaller violet circle located on its left-most side",0,2,0,2,2,0,2,2,0,2
+user_1579215658114,Explain,1,Might be the shape?,0,0,0,0,0,0,0,0,0,0
+user_1579215658114,Explain,2,The shape of rain drop is not sharp enough to catch the fish,1,1,0,1,0,0,0,0,0,0
+user_1579215658114,Explain,3,The round shape is not good for catching fish,0,1,1,0,0,0,0,0,0,0
+user_1579215658114,Explain,4,The spiky shape is good at catching fish,0,1,1,0,0,0,0,0,0,0
+user_1579215658114,Explain,5,It's spiky at the end,0,1,1,0,0,0,0,0,0,0
+user_1579215658114,Explain,6,Round shape again,0,1,1,0,0,0,0,0,0,0
+user_1579215658114,Explain,7,Spiky end,0,1,1,0,0,0,0,0,0,0
+user_1579215658114,Explain,8,Similar to round shape,0,1,1,0,0,0,0,0,0,0
+user_1579215695067,Describe,1,It looks sharp.,0,1,1,0,0,0,0,0,0,0
+user_1579215695067,Describe,2,It does not have a sharp edge.,0,1,1,0,0,0,0,0,0,0
+user_1579215695067,Describe,3,It has a square on the top of a triangle at the bottom.,0,2,0,2,0,0,0,0,0,0
+user_1579215695067,Describe,4,It is narrower than others.,0,1,1,0,0,0,0,0,0,0
+user_1579215695067,Describe,5,It has a circle on the top and a square at the bottom.,0,2,0,2,0,0,0,0,0,0
+user_1579215695067,Describe,6,It has a small circle at the bottom.,0,1,0,1,0,0,0,0,0,0
+user_1579215695067,Describe,7,It has a big square and a small square.,0,2,0,2,0,0,0,0,0,0
+user_1579215695067,Describe,8,Is has a sharp triangle on the top.,0,2,1,1,0,0,0,0,0,0
+user_1579219127588,Explain,1,It is red and fish like that color. It also kind looks like a smaller fish so maybe the fish likes to eat smaller fish.,2,0,0,0,1,0,1,0,0,0
+user_1579219127588,Explain,2,This is green so maybe it blends in with the seaweed and the fish do not see it.,1,0,0,0,1,0,1,0,0,0
+user_1579219127588,Explain,3,It looks pretty sharp. Maybe the fish could tell that this was not food but a trick!,1,1,1,0,0,0,0,0,0,0
+user_1579219127588,Explain,4,It has a big circle shape at the top and a pointy shape at the bottom.... just like the first one that caught fish!,0,2,1,1,0,0,0,0,0,0
+user_1579219127588,Explain,5,Not surprised. This is your classic case of red lure. It is also a circle on top and something pointy on the bottom.,0,2,1,1,1,0,1,0,0,0
+user_1579219127588,Explain,6,This lure has the pointy in the wrong spots. The pointy needs to be at the bottom and the circle needs to be at the top.,0,2,1,1,0,0,0,0,0,0
+user_1579219127588,Explain,7,The purple circle lures the fish in.,1,0,0,0,0,0,0,1,0,1
+user_1579219127588,Explain,8,Oh no. I guess the purple circle is not a good measure as to if the fish will bite. Maybe it is because needs to have the circle shape at the top and more yellow.,0,1,0,1,1,0,1,1,0,1
+user_1579219134310,Explain,1,"There are three different colors to the lure combination, with a large piece on the top",0,0,0,0,0,0,0,0,0,0
+user_1579219134310,Explain,2,"It is a more abstract shape overall, one less color than the previous lure combination.",0,0,0,0,0,0,0,0,0,0
+user_1579219134310,Explain,3,"It has the color green, and based on the previous combination, the fish weren't attracted to that color.",1,0,0,0,1,0,1,0,0,0
+user_1579219134310,Explain,4,"It has yellow on the bottom of the combination and also a purple dot, which is similar to the first lure combination.",0,0,0,0,1,0,1,1,0,1
+user_1579219134310,Explain,5,It uses the pink-orangish color with a purple dot on the top of the combination.,0,0,0,0,1,0,1,1,0,1
+user_1579219134310,Explain,6,It has the color blue and no purple dot.,0,0,0,0,1,0,1,1,0,1
+user_1579219134310,Explain,7,It has the purple dot on the top portion of the combination.,0,0,0,0,0,0,0,1,0,1
+user_1579219134310,Explain,8,"The fish prefer circular shapes on the top of the combination, not the bottom.",1,1,1,0,0,0,0,0,0,0
+user_1579219138051,Explain,1,"It was both bright red and bright yellow. It didn't look like a hook or anything painful, so the fish probably was curious as to what it was.",1,0,0,0,4,2,2,0,0,0
+user_1579219138051,Explain,2,This lure seems hard to bite since it's so round. The blue also probably blended into the water for the most part.,2,1,1,0,1,0,1,0,0,0
+user_1579219138051,Explain,3,"The rounded green part was probably hard to bite. There's also a red circle that looks kind of like an eye, so the fish probably thought it was a predator.",2,1,1,0,1,0,1,1,0,1
+user_1579219138051,Explain,4,"The blue part of the lure probably for the most part blended into the water, so the yellow part made it seem like maybe it was small food. Especially since the red circle was in the yellow part, it seemed like the yellow star was prey.",3,1,0,1,2,0,2,1,0,1
+user_1579219138051,Explain,5,It still seems that the red circle in the green square may have resembled a small prey for the fish to eat. The red part maybe was a flashy thing the small prey used to detract predators.,2,1,0,1,1,0,1,1,0,1
+user_1579219138051,Explain,6,"The big blue part is pretty spikey, so the fish probably wanted to avoid it.",1,1,1,0,1,0,1,0,0,0
+user_1579219138051,Explain,7,"This combination probably caught a fish because the blue part was easy to bite, and the yellow part didn't resemble an actual fish.",2,0,0,0,2,0,2,0,0,0
+user_1579219138051,Explain,8,"This one seemed like two fish attached. One larger fish was chasing a smaller fish, and the actual fish didn't want to be eaten.",1,0,0,0,0,0,0,0,0,0
+user_1579219153464,Describe,1,purple circle in a red tear drop on top of a yellow cone,0,2,0,2,2,0,2,1,0,1
+user_1579219153464,Describe,2,Green circle on top of a blue tear drop,0,2,0,2,2,0,2,0,0,0
+user_1579219153464,Describe,3,Yellow diamond on top of a green circle with a purple small circle at the bottom right,0,2,0,2,2,0,2,1,0,1
+user_1579219153464,Describe,4,blue long oval on top of a yellow diamond with a purple circle at the top right,0,2,0,2,2,0,2,1,0,1
+user_1579219153464,Describe,5,Red circle with a purple circle on the lower bottom right with a green diamond with a purple circle,0,2,0,2,2,0,2,2,0,2
+user_1579219153464,Describe,6,blue star on top of a red circle,0,2,0,2,2,0,2,0,0,0
+user_1579219153464,Describe,7,Yellow dimoand with a purple circle at the top left on top of a blue diamond,0,2,0,2,2,0,2,1,0,1
+user_1579219153464,Describe,8,Green triangle with a purple circle at the top left on top of a red oval with a purple circle to the middle left,0,2,0,2,2,0,2,2,0,2
+user_1579219155320,Describe,1,"Red teardrop, blue circle in teardrop, yellow triangle pointed at the bottom",0,2,0,2,2,0,2,1,0,1
+user_1579219155320,Describe,2,"Green circle, blue teardrop tip up",0,2,0,2,2,0,2,0,0,0
+user_1579219155320,Describe,3,"Yellow diamond, small green circle and in it a small red circle",0,2,0,2,2,0,2,1,0,1
+user_1579219155320,Describe,4,"Blue oval, yellow diamond tip up and down, purple circle in it",0,2,0,2,2,0,2,1,0,1
+user_1579219155320,Describe,5,"Red circle, purple circle in it, green diamond tip up and down with purple circle in it",0,2,0,2,2,0,2,2,0,2
+user_1579219155320,Describe,6,"blue star diamond, red circle below it",0,2,0,2,2,0,2,0,0,0
+user_1579219155320,Describe,7,"Yellow diamond, purple circle in it, blue diamond below",0,2,0,2,2,0,2,1,0,1
+user_1579219155320,Describe,8,"Green triangle tip down, purple circle in i t, red oval below it with purple circle in it",0,2,0,2,2,0,2,2,0,2
+user_1579219158469,Explain,1,this type of lure has a pointy end that is narrow and facing straight down which could explain a facilitation for the fish to grab onto it,1,1,1,0,0,0,0,0,0,0
+user_1579219158469,Explain,2,the end of the lure is circular thus making it harder for fish to physically grasp on,1,1,1,0,0,0,0,0,0,0
+user_1579219158469,Explain,3,the end of the lure is circular thus making it difficult for the fish to grasp onto it,1,1,1,0,0,0,0,0,0,0
+user_1579219158469,Explain,4,the end of the lure is pointy and facing downward thus making it easier for the fish to get hooked onto,1,1,1,0,0,0,0,0,0,0
+user_1579219158469,Explain,5,the end of the lure is pointy thus making it easier for the fish to grasp onto,1,1,1,0,0,0,0,0,0,0
+user_1579219158469,Explain,6,the end of the lure is circular thus making it difficult for a fish to grasp onto it,1,1,1,0,0,0,0,0,0,0
+user_1579219158469,Explain,7,the end of the lure is pointy thus making it easy for the fish to grasp onto it,1,1,1,0,0,0,0,0,0,0
+user_1579219158469,Explain,8,"the end of the lure is oval shaped, meaning circular thus making it hard for the fish to grasp onto it",1,2,1,1,0,0,0,0,0,0
+user_1579219186091,Describe,1,red water droplet shape with purple circle and yellow triangle on bottom,0,2,0,2,2,0,2,1,0,1
+user_1579219186091,Describe,2,green circle with blue water droplet on bottom,0,2,0,2,2,0,2,0,0,0
+user_1579219186091,Describe,3,yellow diamond with circle on bottom that looks like an olive,0,2,0,2,1,0,1,0,0,0
+user_1579219186091,Describe,4,blue oval with yellow diamond on bottom with little purple dot,0,2,0,2,2,0,2,1,0,1
+user_1579219186091,Describe,5,"big red circle with purple circle inside, green diamond on bottom with smaller purple circle",0,2,0,2,2,0,2,2,0,2
+user_1579219186091,Describe,6,"blue star like shape, red circle on bottom",0,2,0,2,2,0,2,0,0,0
+user_1579219186091,Describe,7,"yellow diamond with purple circle in right corner, blue small diamond on bottom",0,2,0,2,2,0,2,1,0,1
+user_1579219186091,Describe,8,"green upside down triangle with purple dot in left corner, red oval on bottom with purple circle",0,2,0,2,2,0,2,2,0,2
+user_1579219227658,Describe,1,"The lure combination consists of a red, teardrop shape that is attached to a downward-pointing, yellow tip below. The ""teardrop"" also has a purple dot located on the left side of the shape.",0,1,0,1,2,0,2,1,0,1
+user_1579219227658,Describe,2,The lure combination consists of a green circle and a blue shape that resembles a teardrop.,0,2,0,2,2,0,2,0,0,0
+user_1579219227658,Describe,3,"This lure combination consists of a yellow diamond and a green circle. The circle contains a purple dot, which is located in the bottom-right region.",0,2,0,2,2,0,2,1,0,1
+user_1579219227658,Describe,4,"This lure combination consists of a blue oval and yellow shape that resembles a star. The ""star"" contains a purple dot on its right-hand side.",0,2,0,2,2,0,2,1,0,1
+user_1579219227658,Describe,5,"The lure combinations consists of a red circle, which contains a smaller purple circle located near the center, and a green diamond, which contains a purple dot on its right-hand side.",0,2,0,2,2,0,2,2,0,2
+user_1579219227658,Describe,6,"The lure combination consists of a blue ""star"" and a red circle.",0,2,0,2,2,0,2,0,0,0
+user_1579219227658,Describe,7,"The lure combination consists of a yellow diamond, which contains a purple circle near its top corner, and a smaller blue diamond.",0,2,0,2,2,0,2,1,0,1
+user_1579219227658,Describe,8,"This lure combination consists of a green triangle, which contains a purple circle near its left corner, and a red oval, which contains a purple dot on it left-hand side.",0,2,0,2,2,0,2,2,0,2
+user_1579284326081,Describe,1,"purple circle + red fire shape
+ yellow cone bottom",0,2,0,2,2,0,2,1,0,1
+user_1579284326081,Describe,2,"green circle 
+ blue drop
+ = no fish",0,2,0,2,2,0,2,0,0,0
+user_1579284326081,Describe,3,"yellow suqare
+ green circle +red dot
+ = no fish",0,2,0,2,2,0,2,1,0,1
+user_1579284326081,Describe,4,"blue long circle
+ yellow star + red dot
+ = fish",0,2,0,2,2,0,2,1,0,1
+user_1579284326081,Describe,5,"red big circle + purple dot
+ green square + red dot",0,2,0,2,2,0,2,2,0,2
+user_1579284326081,Describe,6,"big blue star
+ red circle
+ = no fish",0,2,0,2,2,0,2,0,0,0
+user_1579284326081,Describe,7,"yellow square + purple dot
+ blue square
+ = fish",0,2,0,2,2,0,2,1,0,1
+user_1579284326081,Describe,8,"green triangle + purple dot
+ red long circle + purple dot
+ =no fish",0,2,0,2,2,0,2,2,0,2
+user_1579284327417,Describe,1,It looks like a teardrop attached to a triangle,0,2,0,2,0,0,0,0,0,0
+user_1579284327417,Describe,2,It looks like a circle attached to a teardrop,0,2,0,2,0,0,0,0,0,0
+user_1579284327417,Describe,3,it looks like a diamond attached to a circle,0,2,0,2,0,0,0,0,0,0
+user_1579284327417,Describe,4,it looks like an oval attached to a star,0,2,0,2,0,0,0,0,0,0
+user_1579284327417,Describe,5,it looks like a circle attached to a diamond,0,2,0,2,0,0,0,0,0,0
+user_1579284327417,Describe,6,it looks like a star attached to a circle,0,2,0,2,0,0,0,0,0,0
+user_1579284327417,Describe,7,it looks like a diamond attached to a smaller diamond,0,2,0,2,0,0,0,0,0,0
+user_1579284327417,Describe,8,it looks like a triangle attached to an oval,0,2,0,2,0,0,0,0,0,0
+user_1579284342519,Explain,1,The fish like this combination of colors,1,0,0,0,0,0,0,0,0,0
+user_1579284342519,Explain,2,This lure only has two components instead of three,0,0,0,0,0,0,0,0,0,0
+user_1579284342519,Explain,3,The fish don't like the green circle,1,1,0,1,1,0,1,0,0,0
+user_1579284342519,Explain,4,The lure is a longer shape like the first one used.,0,1,1,0,0,0,0,0,0,0
+user_1579284342519,Explain,5,Fish might be attracted to the orange color.,1,0,0,0,1,0,1,0,0,0
+user_1579284342519,Explain,6,The bottom of the lure is round.,0,1,1,0,0,0,0,0,0,0
+user_1579284342519,Explain,7,The bottom of the lure is pointy.,0,1,1,0,0,0,0,0,0,0
+user_1579284342519,Explain,8,the bottom of the lure is rounded.,0,1,1,0,0,0,0,0,0,0
+user_1579284368207,Describe,1,Red teardrop with a purple dot and yellow upside down triangle,0,2,0,2,2,0,2,1,0,1
+user_1579284368207,Describe,2,Green circle with blue teardrop,0,2,0,2,2,0,2,0,0,0
+user_1579284368207,Describe,3,Yellow diamond with green circle and a purple dot in the circle,0,2,0,2,2,0,2,1,0,1
+user_1579284368207,Describe,4,Blue oval with yellow weird diamond thing and a purple dot inside,0,2,0,2,2,0,2,1,0,1
+user_1579284368207,Describe,5,Red circle with purple dot and green diamond with purple dot,0,2,0,2,2,0,2,2,0,2
+user_1579284368207,Describe,6,Blue ninja symbol with red circle underneath,0,2,0,2,2,0,2,0,0,0
+user_1579284368207,Describe,7,Yellow diamond with purple dot and blue diamond,0,2,0,2,2,0,2,1,0,1
+user_1579284368207,Describe,8,Green upsidedown triangle with purple dot and red oval with purple dot,0,2,0,2,2,0,2,2,0,2
+user_1579284396381,Explain,1,"because it has a water-drop shape that's easy to stay above the water, once the fish bites it, it is easy to see.",1,1,0,1,0,0,0,0,0,0
+user_1579284396381,Explain,2,"it's not a triangle shape at the bottom, not easy to catch.",0,1,0,1,0,0,0,0,0,0
+user_1579284396381,Explain,3,it's round at bottom.,0,1,1,0,0,0,0,0,0,0
+user_1579284396381,Explain,4,it has sharp angles at the bottom.,0,1,1,0,0,0,0,0,0,0
+user_1579284396381,Explain,5,it has sharp angles at bottom.,0,1,1,0,0,0,0,0,0,0
+user_1579284396381,Explain,6,it is round at bottom.,0,1,1,0,0,0,0,0,0,0
+user_1579284396381,Explain,7,it has sharp angles,0,1,1,0,0,0,0,0,0,0
+user_1579284396381,Explain,8,"it's an ellipse at bottom, so not likely to catch.",0,1,0,1,0,0,0,0,0,0
+user_1579284397497,Describe,1,An orange water drop with a purple circle in the middle on the left side and an upside down yellow isosceles triangle attached at the bottom,0,2,0,2,2,0,2,1,0,1
+user_1579284397497,Describe,2,A green circle with a smaller blue drop attached at the bottom,0,2,0,2,2,0,2,0,0,0
+user_1579284397497,Describe,3,A yellow rhombus square with a smaller green circle that has a purple dot on the bottom right corner attached at the bottom,0,2,0,2,2,0,2,1,0,1
+user_1579284397497,Describe,4,A star-shaped yellow object that has a purple dot on the up right corner attaches to the bottom of a straight up blue ellipse,0,2,0,2,2,0,2,1,0,1
+user_1579284397497,Describe,5,An orange circle with a smaller purple circle in it has a green rhombus with a purple dot on the right corner attached.,0,2,0,2,2,0,2,2,0,2
+user_1579284397497,Describe,6,A star-shaped blue object with a small orange circle attached at the bottom,0,2,0,2,2,0,2,0,0,0
+user_1579284397497,Describe,7,A yellow rhombus that has a small purple circle on the right side of top attaches to a smaller blue rhombus.,0,2,0,2,2,0,2,1,0,1
+user_1579284397497,Describe,8,A small orange ellipse with a purple dot on the middle left side attaches to the bottom of an upside down green isosceles triangle with a small purple circle on the left corner.,0,2,0,2,2,0,2,2,0,2
+user_1579284401246,Explain,1,The lure is big and colorful. It also has a purple dot that may look like an eye to the fish.,1,0,0,0,0,0,0,1,0,1
+user_1579284401246,Explain,2,This lure's colors may have deterred the fish from trying to bite the line.,1,0,0,0,0,0,0,0,0,0
+user_1579284401246,Explain,3,This lure may have been too small to catch the attention of the fish.,1,0,0,0,0,0,0,0,0,0
+user_1579284401246,Explain,4,The fish may be attracted to the little yellow part of the lures.,1,0,0,0,1,0,1,0,0,0
+user_1579284401246,Explain,5,The fish may be attracted to the color red or the shape of the smaller end of the lure.,1,0,0,0,1,0,1,0,0,0
+user_1579284401246,Explain,6,The end of the lure may deter the fish from biting.,1,0,0,0,0,0,0,0,0,0
+user_1579284401246,Explain,7,The shape of the end of the lure is what attracts the fish.,1,0,0,0,0,0,0,0,0,0
+user_1579284401246,Explain,8,The rounded edges of the end of the lure deter the fish from biting.,1,1,1,0,0,0,0,0,0,0
+user_1579284442919,Explain,1,It has the bright colors of red and yellow; that might catch the fishes attention.,1,3,1,2,0,0,0,0,0,0
+user_1579284442919,Explain,2,"The colors may not stand out as much to the fish. The fish may perceive the green to be vegetation, which is something a carnivorous fish wouldn't consume, so it has no interest.",2,0,0,0,1,0,1,0,0,0
+user_1579284442919,Explain,3,The shape of this lure is different than the previous lures. Plus the colors green are still used so the odd shape and unique color combination may have deterred any fish from seeing it as a bait.,1,0,0,0,1,0,1,0,0,0
+user_1579284442919,Explain,4,Maybe the shape of the lure resembles a smaller fish that is hunted by the fish. the blue part is long and the yellow part is small and somewhat resembles a tail. The fish might perceive this lure as a smaller fish to prey on.,1,2,2,0,2,0,2,0,0,0
+user_1579284442919,Explain,5,"this follows the last lures example of being shaped like a smaller fish that would be preyed on. Plus, noticing that all of the successful baits used so far have a smaller part that is pointed in more than one direction. this lure follows that pattern by having a smaller square shaped lure with many edges.",1,2,1,1,0,0,0,0,0,0
+user_1579284442919,Explain,6,The main body is pointed and the lower body of the lure circular. This doesn't follow any of the patterns of the previous successful fish lures.,0,2,2,0,0,0,0,0,0,0
+user_1579284442919,Explain,7,"The lower part of the lure is a pointed shape, with more than 1 point, so it follows the pattern of the previous lures that were successful.",0,1,1,0,0,0,0,0,0,0
+user_1579284442919,Explain,8,The bottom part of the lure is long and is not pointed.,0,2,2,0,0,0,0,0,0,0
+user_1579287780266,Describe,1,A teardrop on a cone with a dot on the left of the teardrop,0,2,0,2,0,0,0,1,0,1
+user_1579287780266,Describe,2,a ball with a teardrop on the bottom,0,2,0,2,0,0,0,0,0,0
+user_1579287780266,Describe,3,sideways square with a circle containing a dot below it,0,2,0,2,0,0,0,1,0,1
+user_1579287780266,Describe,4,oval with a hanging diamond with a dot on it,0,2,0,2,0,0,0,1,0,1
+user_1579287780266,Describe,5,"circle with a small square hanging off it, both shapes contain dots.",0,2,0,2,0,0,0,2,0,2
+user_1579287780266,Describe,6,star with a circle hanging off it,0,2,0,2,0,0,0,0,0,0
+user_1579287780266,Describe,7,a diamond with a dot in it with a smaller diamond hanging off the 1st diamond,0,2,0,2,0,0,0,1,0,1
+user_1579287780266,Describe,8,"triangle with an oval hanging off it, both contain dots",0,2,0,2,0,0,0,2,0,2
+user_1579287784902,Describe,1,"yellow triangle, red drop, purple circle",0,2,0,2,2,0,2,1,0,1
+user_1579287784902,Describe,2,"green circle, small blue drop",0,2,0,2,2,0,2,0,0,0
+user_1579287784902,Describe,3,"yellow diamond, small green circle and small purple circle",0,2,0,2,2,0,2,1,0,1
+user_1579287784902,Describe,4,"blue oval, yellow star, and purple circle inside star",0,2,0,2,2,0,2,1,0,1
+user_1579287784902,Describe,5,"red circle with smaller purple circle inside, green diamond below it with small purple circle",0,2,0,2,2,0,2,2,0,2
+user_1579287784902,Describe,6,blue star with small red circle attached,0,2,0,2,2,0,2,0,0,0
+user_1579287784902,Describe,7,yellow diamond with small purple circle inside it with blue diamond attached,0,2,0,2,2,0,2,1,0,1
+user_1579287784902,Describe,8,green triangle with small purple circle inside with red oval with another small purple circle inside,0,2,0,2,2,0,2,2,0,2
+user_1579287804113,Describe,1,Red upside ice cream cone inside a purple circle on the left top. Underneath the red upside down ice cream cone is a small yellow triangle.,0,2,0,2,2,0,2,1,0,1
+user_1579287804113,Describe,2,Large green circle with small upside down blue ice cream cone sitting on the bottom.,0,2,0,2,2,0,2,0,0,0
+user_1579287804113,Describe,3,Yellow square with pointed corner on top of a small green circle with a purple circle on the right bottom inside the green circle.,0,2,0,2,2,0,2,1,0,1
+user_1579287804113,Describe,4,Large blue vertical oval sitting on top of four sides yellow star with purple circle on top right.,0,2,0,2,2,0,2,1,0,1
+user_1579287804113,Describe,5,Red circle with small purple circle in center sitting on top of green square with corner touching red circle. A purple circle is inside the top right green square.,0,2,0,2,2,0,2,2,0,2
+user_1579287804113,Describe,6,Blue star sitting on top of small red circle.,0,2,0,2,2,0,2,0,0,0
+user_1579287804113,Describe,7,Yellow square with purple circle on top right sitting on blue square. Both squares corners touching each other,0,2,0,2,2,0,2,1,0,1
+user_1579287804113,Describe,8,Upside down green triangle with purple circle in top left on vertical red oval with purple circle on center left,0,2,0,2,2,0,2,2,0,2
+user_1579287829598,Describe,1,"Red on top, with a pointy yellow bottom, and purple dot in the left hand side.",0,1,1,0,2,0,2,1,0,1
+user_1579287829598,Describe,2,"Green and cicular on the top, with a blue teardrop shapped base.",0,2,1,1,2,0,2,0,0,0
+user_1579287829598,Describe,3,"On top its yellow and diamond shaped, with a green circular bottom with a purple dot on the lower right hand side of the green circle.",0,2,1,1,2,0,2,1,0,1
+user_1579287829598,Describe,4,"Long blue oval on top, with a four point star shape and a purple dot on the top side of the star.",0,2,0,2,1,0,1,1,0,1
+user_1579287829598,Describe,5,The top part is red circule with a purple dot slightly off the center. The bottom is a rotated green square with a purple dot thats on the middle right.,0,2,0,2,2,0,2,2,0,2
+user_1579287829598,Describe,6,Blue star shape pattern with a red circle attached on the bottom side.,0,2,0,2,2,0,2,0,0,0
+user_1579287829598,Describe,7,"A yellow inverted square on top, with a purple dot toward the topside of the shape with a slightly right position. The bottom portion is the same shape but blue.",0,2,0,2,2,0,2,1,0,1
+user_1579287829598,Describe,8,"Triangular base with a purple dot on the right hand side, with an oval bottom with a purple dot on the middle left side.",0,2,0,2,0,0,0,2,0,2
+user_1579287849867,Describe,1,This lure has a bulky upper part and a triangle hook at the bottom.,0,2,1,1,0,0,0,0,0,0
+user_1579287849867,Describe,2,A circle and the shape of a drop of water under it.,0,2,0,2,0,0,0,0,0,0
+user_1579287849867,Describe,3,A square and a circle,0,2,0,2,0,0,0,0,0,0
+user_1579287849867,Describe,4,An oval and a star-shaped hook at the bottom,0,2,0,2,0,0,0,0,0,0
+user_1579287849867,Describe,5,A circle with a small purple inner circle and a square with a purple circle.,0,2,0,2,0,0,0,2,0,2
+user_1579287849867,Describe,6,Star-shaped on the top and a circle at the bottom,0,2,0,2,0,0,0,0,0,0
+user_1579287849867,Describe,7,two squares with a small inner circle in the upper one,0,2,0,2,0,0,0,1,0,1
+user_1579287849867,Describe,8,"Both parts in the combination have a small purple dot within themselves, and the upper part is a triangle while the lower is an oval.",0,2,0,2,0,0,0,2,0,2
+user_1579287866563,Describe,1,"From profile view, a red tear-drop shaped base with a smaller purple dot located to the top left of the lure base. To that base, a yellow triangle is attached, with one of it's sides adjacent to the base of the tear-drop.",0,2,0,2,2,0,2,1,0,1
+user_1579287866563,Describe,2,"From profile view, the lure is a green circle, with a blue tear-drop attachment at the bottom.",0,2,0,2,2,0,2,0,0,0
+user_1579287866563,Describe,3,"From profile view, the lure is a yellow square rotated about 60 degrees so the orientation is a diamond. To that yellow base is a smaller green circle attached to the bottom, and the green circle has a smaller purple dot to the bottom right of the green attachment.",0,2,0,2,2,0,2,1,0,1
+user_1579287866563,Describe,4,"From a profile view, the lure has an ovular blue shaped base oriented long-way vertically, with a four-point curved ""star/diamond"" shape attached to the bottom of the oval (much like the star shape we see in religious illustrations). To that yellow attachment is a smaller purple dot on the top right.",0,2,0,2,2,0,2,1,0,1
+user_1579287866563,Describe,5,"From a profile view, the lure has a circular red base with a purple dot towards the just slightly moved off from of the red circle center to the bottom right. To that red base, is a smaller green square oriented as a diamond shape, with a purple dot placed to the right corner.",0,2,0,2,2,0,2,2,0,2
+user_1579287866563,Describe,6,"From a profile view, the lure is a four point star, with one of the points oriented vertically, so the shape is similar to a diamond. To that blue base is a smaller red circle attached to the bottom point.",0,2,0,2,2,0,2,0,0,0
+user_1579287866563,Describe,7,"From a profile view, the lure has a yellow square base that is rotated to an orientation to look like a diamond. On that yellow base is a purple dot placed close to the top point, but slightly shifted to the top right of the diamond. And to that yellow base, a smaller blue square, with the same diamond orientation to the yellow base.",0,2,0,2,2,0,2,1,0,1
+user_1579287866563,Describe,8,"From a profile view, the lure has a green triangular base, oriented as an inverted pyramid (one of the points is oriented vertically downward while a side of the shape is oriented horizontally flat). To that green triangle base, a purple dot is placed to the top left corner of the triangle. And to that green base, a smaller red oval is attached to the bottom triangle point. On that red oval, is a smaller purple dot placed on the left side of the oval.",0,2,0,2,2,0,2,2,0,2
+user_1579305551774,Describe,1,"The base consists of a red circle connected to a red triangle facing north, its cone like.At the bottom there is a yellow triangle facing down (the point faces down) There is a purple circle on the left side where the red circle and triangle connect. It kind of looks like the head of a bird if you were looking from above, the yellow triangle being the beak.",0,3,0,3,3,0,3,1,0,1
+user_1579305551774,Describe,2,The part that would catch the fish isn't pointy.,1,1,1,0,0,0,0,0,0,0
+user_1579305551774,Describe,3,"Again, the part that would catch the fish (the bottom part), isn't pointy.",1,1,1,0,0,0,0,0,0,0
+user_1579305551774,Describe,4,It is pointy on three sides. It would penetrate the fish better.,1,1,1,0,0,0,0,0,0,0
+user_1579305551774,Describe,5,"At first I said I wasn't sure my friend would be able to catch a fish with this, but I guess it would work because it is pointy. The purple dot doesn't have anything to do with it. Pointy shapes with 3 of the points not being connected to another shape help catch fish.",0,2,2,0,0,0,0,1,0,1
+user_1579305551774,Describe,6,"I am assuming that the part used to catch the fish is the shape most south. In this case, it is round and the fish would slip through.",1,1,1,0,0,0,0,0,0,0
+user_1579305551774,Describe,7,The bottom part is pointy. The top part doesn't really matter...?,0,1,1,0,0,0,0,0,0,0
+user_1579305551774,Describe,8,"Again, the bottom shape is round. Round ones don't catch fish apparently.",0,1,1,0,0,0,0,0,0,0
+user_1579305561565,Describe,1,The body of the lure looks like a raindrop that has a purple circle on it. Attached is a yellow triangle which could be what the fish lure onto.,1,2,0,2,1,0,1,1,0,1
+user_1579305561565,Describe,2,The main body of the lure is a circle and attached there is a teardrop shaped segment. Perhaps this teardrop piece is too round for the fish to latch onto.,1,2,0,2,0,0,0,0,0,0
+user_1579305561565,Describe,3,The main body of this lure is a yellow diamond and attached there is a green circle with another red circle within. I think that the fish can't latch onto these round attachments.,1,2,0,2,2,0,2,1,0,1
+user_1579305561565,Describe,4,The body of this lure is a blue oval and attached there is a small diamond that has a small purple circle within it. I think this lure worked because the attachment is not round and it is a small enough point for the fish to latch to.,0,3,1,2,1,0,1,1,0,1
+user_1579305561565,Describe,5,The body of the lure is a circle and it has another circle within it. Attached is a green diamond with a purple circle inside. This is consistent with my theory that the fish can only latch onto angular/not round attachments.,1,3,1,2,1,0,1,2,0,2
+user_1579305561565,Describe,6,The body of the lure looks like a blue star. Attached is a red circle.,0,2,0,2,2,0,2,0,0,0
+user_1579305561565,Describe,7,The body of this lure is a diamond and it has a purple circle within it. Attached is a blue diamond.,0,2,0,2,1,0,1,1,0,1
+user_1579305561565,Describe,8,The body of this lure is a green triangle with a small purple circle. Attached is a red oval with a purple circle.,0,2,0,2,2,0,2,2,0,2
+user_1579305566870,Describe,1,Lure is red tear-drop shaped and within the red drop on the upper left there is a small purple dot. Below the red drop there is an inverted medium-sized triangle. The fish is oval shaped with upper and lower triangle fins.,0,5,1,4,1,0,1,1,0,1
+user_1579305566870,Describe,2,Green large circle and blue teardrop below the circle. No fish caught.,0,2,0,2,2,0,2,0,0,0
+user_1579305566870,Describe,3,Lure: Yellow diamond and green circle with tiny purple dot at 5 o'clock; no fish,0,2,0,2,2,0,2,1,0,1
+user_1579305566870,Describe,4,Large blue oval and medium-sized yellow diamond below the oval with purple dot at the top right; caught fish .,0,2,0,2,2,0,2,1,0,1
+user_1579305566870,Describe,5,Red large circle in the middle with a purple dot slightly offset from the right. Below the red dot is a green diamond with a smaller purple dot inside; caught fish.,0,2,0,2,2,0,2,2,0,2
+user_1579305566870,Describe,6,"Blue compass in the middle with medium-sized red dot on the ""south""; no fish",0,1,1,0,0,0,0,1,0,1
+user_1579305566870,Describe,7,Yellow diamond in the middle with purple dot near the top but slightly offset to the right. Medium blue diamond below; caught fish,0,2,0,2,2,0,2,1,0,1
+user_1579305566870,Describe,8,Inverted green triangle with a purple dot on the upper left. medium red oval below the green triangle and a tiny purple dot in the middle of the oval; no fish.,0,2,0,2,2,0,2,2,0,2
+user_1579305576041,Describe,1,This lure is a read tear drop with a purple circle inside of it. On the round side of the red teardrop is a yellow triangle.,0,2,0,2,2,0,2,1,0,1
+user_1579305576041,Describe,2,It is a green circle with a blue teardrop coming off of it.,0,2,0,2,2,0,2,0,0,0
+user_1579305576041,Describe,3,It is a yellow square with a green circle hanging off of it. The green circle has another small purple circle in it.,0,2,0,2,2,0,2,1,0,1
+user_1579305576041,Describe,4,It is a blue oval with a star hanging off of it. The star has a purple circle hanging off of it.,0,0,0,0,0,0,0,0,0,0
+user_1579305576041,Describe,5,It is a red circle with a small purple circle inside of it. A sharp square with a purple circle in that is hanging off of it.,0,3,1,2,1,0,1,2,0,2
+user_1579305576041,Describe,6,It is a blue star with a red circle hanging off of it.,0,2,0,2,2,0,2,0,0,0
+user_1579305576041,Describe,7,It is a yellow square with a purple circle inside of it. There is a blue square hanging off of it.,0,2,0,2,2,0,2,1,0,1
+user_1579305576041,Describe,8,There is a green triangle with a purple circle in it. There is a red oval with a purple circle hanging off of it.,0,2,0,2,2,0,2,2,0,2
+user_1579305586898,Describe,1,It is a read teardrop with a purple spot and on the bottom there is a yellow triangle,0,2,0,2,2,0,2,1,0,1
+user_1579305586898,Describe,2,It is a green circle with a blue tearcrop at the bottom. The narrower end attached to the sphere,0,2,0,2,2,0,2,0,0,0
+user_1579305586898,Describe,3,The lure is yellow square tilted onto its corner. Attached to it on the bottom there is a green sphere and in the green sphere there is purple dot.,0,2,0,2,2,0,2,1,0,1
+user_1579305586898,Describe,4,It is a blue oval and attached to the bottom there is a yellow ninga star shape with a purple dot in it. The oval is also bigger than the ninga star.,0,2,0,2,2,0,2,1,0,1
+user_1579305586898,Describe,5,It is a red circle with a purple dot and on the bottom a green square tilted to the corner also with a purple dot. the red circle and green square are attached at the corner.,0,2,0,2,2,0,2,2,0,2
+user_1579305586898,Describe,6,It is a blue ninga star shape with a red circle attached to one of it's points.,0,2,0,2,2,0,2,0,0,0
+user_1579305586898,Describe,7,It is a yellow square tilted so it loks like a diamond with a purple dot. Attached to it is a blue square also tilted to look like a diamond shape. the 2 squares are attached at the corners.,0,2,0,2,2,0,2,1,0,1
+user_1579305586898,Describe,8,it is a green triangle with a purple dot and it is attached to a red oval also has a purple dot inside it. the oval is attached to the triangle's point and the triangle is upside down. the oval is under the triangle.,0,2,0,2,2,0,2,2,0,2
+user_1579305710969,Describe,1,this is a favorite lure combination of this fish.,1,0,0,0,0,0,0,0,0,0
+user_1579305710969,Describe,2,this lure combination is not the one to catch a fish.,0,0,0,0,0,0,0,0,0,0
+user_1579305710969,Describe,3,with this lure combination won't catch a fish.,0,0,0,0,0,0,0,0,0,0
+user_1579305710969,Describe,4,"this one is different but,it works to catch a fish.",0,0,0,0,0,0,0,0,0,0
+user_1579305710969,Describe,5,this lure combination has red and purple color which is the same as the first one that my friend could catch a fish.,0,2,0,2,0,0,0,0,0,0
+user_1579305710969,Describe,6,this lure combination is not proper for fishing.,0,0,0,0,0,0,0,0,0,0
+user_1579305710969,Describe,7,this lure combination is different in shape and colors to compare with the first one.,0,0,0,0,0,0,0,0,0,0
+user_1579305710969,Describe,8,this one is ugly,0,0,0,0,0,0,0,0,0,0
+user_1579305885489,Describe,1,my friend caught one fish with this lure combination,0,0,0,0,0,0,0,0,0,0
+user_1579305885489,Describe,2,this lure combination did not catch a fish because the circle was combined with a teardrop and it did not catch a fish.,0,2,0,2,0,0,0,0,0,0
+user_1579305885489,Describe,3,it didn't catch a fish because it is a diamond shape with a green circle at the end.,0,2,0,2,1,0,1,0,0,0
+user_1579305885489,Describe,4,i think this one caught the fish because it was a star shaped tips with a rectangular oval and so most likely the fish was attracted to this fish lure,1,2,0,2,0,0,0,0,0,0
+user_1579305885489,Describe,5,it is a circle and a diamond shape so it seems to be that the combination of the two shapes is guaranteed to catch a fish,0,2,0,2,0,0,0,0,0,0
+user_1579305885489,Describe,6,the blue four tip star and the small circle did not work because it did not follow the general shape of fish lures that the fish liked,0,2,0,2,0,0,0,0,0,0
+user_1579305885489,Describe,7,this lure combination consists of a yellow diamond with a purple circle inside and a smaller blue tip at the end. so most likely the smaller shape has to have a point at its south end.,0,2,1,1,2,0,2,1,0,1
+user_1579305885489,Describe,8,this lure combination has an upside down triangle and a small rectangle at its end.,0,2,0,2,0,0,0,0,0,0
+user_1579305912827,Describe,1,"on the top there is an orange waterdrop-like lure with a purple round stuff on the right of the orange lure, and on the bottom there is a yellow triangle shaped lure.",0,2,0,2,2,0,2,1,0,1
+user_1579305912827,Describe,2,on the top there is green round shaped lure and on the bottom there is a blue water-drop shaped lure.,0,2,1,1,2,0,2,0,0,0
+user_1579305912827,Describe,3,on the top there is a yellow square shaped lure and on the bottom there is a green round shaped lure with a smaller round stuff (which is purple) on the right side of the green lure.,0,2,1,1,2,0,2,1,0,1
+user_1579305912827,Describe,4,"a blue round-shaped lure on the top, and a yellow star-shaped lure on the bottom. inside the star there is a purple round stuff near the center of it.",0,2,1,1,2,0,2,1,0,1
+user_1579305912827,Describe,5,On the top: orange round lure with a smaller purple round stuff inside of the lure; on the bottom: a green square lure with a purple round stuff inside of the square lure,0,2,1,1,2,0,2,2,0,2
+user_1579305912827,Describe,6,A blue star on the top and an orange round-shaped lure on the bottom,0,2,1,1,2,0,2,0,0,0
+user_1579305912827,Describe,7,on the top there is a yellow square-shaped lure with a round purple stuff on the top right side of the lure; on the bottom there is a blue smaller square lure,0,2,0,2,2,0,2,1,0,1
+user_1579305912827,Describe,8,on the top there is a green triangle shaped lure with a round purple stuff inside that lure; on the bottom there is a orange round shaped lure with a smaller round purple stuff inside that lure,0,2,1,1,2,0,2,2,0,2

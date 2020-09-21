@@ -155,7 +155,7 @@ description_data = generation_free_resp_coded %>%
   arrange(subjID, trial_index)
 
 
-kable(explanation_data,
+kable(description_data,
       col.names = c("Subject ID", "Trial", "Description", "Hyp. Gen. Correct", "Hyp. Gen. Accuracy"))
 
 ```
@@ -171,8 +171,7 @@ Below we list each subject's hypothesis generation free response, along with whe
 free_resp_summary = generation_free_resp_coded %>%
   inner_join(., generation_judgment_subject_summary, by = c("subjID", "Condition")) %>%
   select(subjID, Condition, free_response_str, Revision, subj_accuracy) %>%
-  arrange(Condition, subjID) %>%
-  filter(Condition == "Explain")
+  arrange(Condition, subjID)
 
 kable(free_resp_summary,
       col.names = c("Subject ID", "Condition", "Hypothesis", "Correct", "Judgment Task Accuracy"))

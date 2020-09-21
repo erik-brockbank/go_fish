@@ -28,7 +28,7 @@ ROUND2_EVAL_DATA = "round2/05_go_fish_evaluation.csv"
 ROUND2_MEMORY_DATA = "round2/06_go_fish_memory.csv"
 
 GENERATION_RESP_DATA_CODED = "free_response_combined.csv"
-
+EXPLANATION_DATA_CODED = "explanation_coded.csv"
 
 
 # Data labels
@@ -40,6 +40,29 @@ DISTRACTOR_RULE = "If a lure combination has a yellow shape or a diamond on the 
 # the memory probe item with this shape config was erroneously coded as being in experiment when it wasn't
 # we correct the `memory_shape_in_expt` column value when reading in the data
 MEMORY_MISCUE = "{'top_shape': 'diamond', 'top_color': 'blue', 'top_texture': False, 'bottom_shape': 'circle', 'bottom_color': 'blue', 'bottom_texture': False}"
+
+
+
+CODED_MEASURE_FILTER = c("shape_total", "color_total", "purple_dot_total")
+coded_measure_width = 10
+CODED_MEASURE_LOOKUP = c("mechanism_total" = str_wrap("Mechanism", width = coded_measure_width),
+                         # "shape_total" = str_wrap("Shape (total)", width = coded_measure_width),
+                         "shape_abstract_total" = str_wrap("Shape (abstract)", width = coded_measure_width),
+                         "shape_concrete_total" = str_wrap("Shape (concrete)", width = coded_measure_width),
+                         # "color_total" = str_wrap("Color (total)", width = coded_measure_width),
+                         "color_abstract_total" = str_wrap("Color (abstract)", width = coded_measure_width),
+                         "color_concrete_total" = str_wrap("Color (concrete)", width = coded_measure_width),
+                         # "purple_dot_total" = str_wrap("Purple dot (total)", width = coded_measure_width),
+                         "purple_dot_abstract_total" = str_wrap("Purple dot (abstract)", width = coded_measure_width),
+                         "purple_dot_concrete_total" = str_wrap("Purple dot (concrete)", width = coded_measure_width)
+                         )
+CODED_MEASURE_LEVELS = c(str_wrap("Mechanism", width = coded_measure_width), 
+                         # str_wrap("Shape (total)", width = coded_measure_width), 
+                         str_wrap("Shape (abstract)", width = coded_measure_width), str_wrap("Shape (concrete)", width = coded_measure_width), 
+                         # str_wrap("Color (total)", width = coded_measure_width), 
+                         str_wrap("Color (abstract)", width = coded_measure_width), str_wrap("Color (concrete)", width = coded_measure_width),
+                         # str_wrap("Purple dot (total)", width = coded_measure_width), 
+                         str_wrap("Purple dot (abstract)", width = coded_measure_width), str_wrap("Purple dot (concrete)", width = coded_measure_width))
 
 
 
@@ -121,6 +144,13 @@ read_coded_free_resp_data = function(filename, summary_data) {
     select(subjID, Condition, free_response_str, Revision)
   
   return(generation_free_resp_coded)
+}
+
+
+# Read in coded explanation/description data
+read_coded_explanation_data = function(filename) {
+  explanation_free_resp_coded = read_csv(filename)
+  return(explanation_free_resp_coded)
 }
 
 
@@ -273,6 +303,45 @@ get_memory_summary = function(memory_subject_summary) {
   return(memory_summary)
 }
 
+
+# Summarize explanation/description coded data
+get_explanation_coded_subj_summary = function(explanation_data) {
+  explanation_summary = explanation_data %>%
+    group_by(Condition, Subject) %>%
+    summarize(mechanism_total = sum(`FINAL - total mechanisms`),
+              shape_total = sum(`FINAL - total shape references`),
+              shape_abstract_total = sum(`FINAL - abstract shape references`),
+              shape_concrete_total = sum(`FINAL - concrete shape references`),
+              color_total = sum(`FINAL - total color references`),
+              color_abstract_total = sum(`FINAL - abstract color references`),
+              color_concrete_total = sum(`FINAL - concrete color references`),
+              purple_dot_total = sum(`FINAL - total purple dot references`),
+              purple_dot_abstract_total = sum(`FINAL - abstract purple dot references`),
+              purple_dot_concrete_total = sum(`FINAL - concrete purple dot references`)) %>%
+    gather(
+      key = "measure",
+      value = "subject_total",
+      -Condition,
+      -Subject
+    )
+  return(explanation_summary)
+}
+
+
+# Summarize coded explanation/description results across participants by condition
+get_explanation_coded_summary = function(explanation_subject_summary) {
+  explanation_summary = explanation_subject_summary %>%
+    filter(!measure %in% CODED_MEASURE_FILTER) %>%
+    mutate(measure = factor(CODED_MEASURE_LOOKUP[measure], levels = CODED_MEASURE_LEVELS)) %>%
+    group_by(Condition, measure) %>%
+    summarize(subjects = n(),
+              measure_mean = mean(subject_total),
+              measure_se = sd(subject_total) / sqrt(subjects)
+              )
+  return(explanation_summary)
+}
+
+
 # Auxiliary function for printing out t test statistics
 report_t_summary = function(t_test) {
   paste("Mean 1:", round(t_test$estimate[1], 2), "||",
@@ -351,9 +420,11 @@ plot_generation_judgments = function(generation_judgment_summary) {
     geom_bar(stat = "identity", alpha = 0.5, width = 0.5) +
     geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper), width = 0.25) +
     geom_hline(yintercept = 0.5, linetype = "dashed", size = 1) +
-    labs(x = "", y = "Mean classification accuracy") +
-    ylim(c(0, 1)) +
+    # labs(x = "", y = "Mean classification accuracy") +
+    labs(x = "", y = "Percent Correct") +
     # ggtitle("Accuracy on generation judgment task") +
+    ggtitle("Classification Accuracy") +
+    ylim(c(0, 1)) +
     scale_color_viridis(discrete = T,
                         name = element_blank(),
                         # Change defaults to be blue/green instead of yellow/purple
@@ -377,7 +448,9 @@ plot_generation_free_responses = function(generation_free_resp_summary) {
                color = Condition, fill = Condition)) +
     geom_bar(stat = "identity", width = 0.5, alpha = 0.5) +
     labs(x = "", y = "Percent Correct") +
-    ggtitle("Rule generation across conditions") +
+    ggtitle("Free Response Accuracy") +
+    # ggtitle("Rule generation across conditions") +
+    ylim(c(0, 1)) +
     scale_color_viridis(discrete = T,
                         name = element_blank(),
                         # Change defaults to be blue/green instead of yellow/purple
@@ -474,6 +547,32 @@ plot_memory_data = function(memory_summary) {
 }
 
 
+# Bar chart of counts of feature references in coded explanations/descriptions, by condition
+plot_coded_explanation_data = function(explanation_coded_summary) {
+  explanation_coded_summary %>%
+    ggplot(aes(x = measure, y = measure_mean, 
+               color = Condition, fill = Condition)) +
+    geom_bar(stat = "identity", position = position_dodge(preserve = "single"), 
+             width = 0.5, alpha = 0.5) +
+    geom_errorbar(aes(ymin = measure_mean - measure_se, ymax = measure_mean + measure_se), 
+                  position = position_dodge(width = 0.5, preserve = "single"),
+                  width = 0.25) +
+    ggtitle("Explanation and description measures") +
+    labs(x = "", y = "Avg. count") +
+    scale_color_viridis(discrete = T,
+                        name = element_blank(),
+                        # Change defaults to be blue/green instead of yellow/purple
+                        begin = 0.25,
+                        end = 0.75) +
+    scale_fill_viridis(discrete = T,
+                       name = element_blank(),
+                       # Change defaults to be blue/green instead of yellow/purple
+                       begin = 0.25,
+                       end = 0.75) +
+    individ_plot_theme
+  
+}
+
 
 
 
@@ -508,13 +607,24 @@ memory_subject_summary = get_memory_subj_summary(memory_data)
 memory_summary = get_memory_summary(memory_subject_summary)
 
 
+# Coded explanation / description data
+
+# TODO we've only coded round2 data...
+
+explanation_coded_data = read_coded_explanation_data(EXPLANATION_DATA_CODED)
+explanation_coded_summary_subjects = get_explanation_coded_subj_summary(explanation_coded_data)
+explanation_coded_summary = get_explanation_coded_summary(explanation_coded_summary_subjects)
+
+
+
+
 
 
 # DATA ANALYSIS: GENERATION ====================================================
 
 # 1. Generation free response task
 # NB: this plot not included in cog sci submission, but statistics are reported
-plot_generation_free_responses(generation_free_resp_summary)
+generation_fr = plot_generation_free_responses(generation_free_resp_summary)
 
 generation_props = generation_free_resp_coded %>%
   group_by(Condition) %>%
@@ -525,7 +635,7 @@ report_chisq_summary(chisq_gen)
 
 
 # 2. Generation judgment task: overall accuracy across conditions
-plot_generation_judgments(generation_judgment_summary)
+generation_class = plot_generation_judgments(generation_judgment_summary)
 
 t_gen = t.test(
   generation_judgment_subject_summary$subj_accuracy[generation_judgment_subject_summary$Condition == "Describe"],
@@ -545,7 +655,7 @@ count_data = table(generation_task_comparison$Condition, generation_task_compari
 chisq.test(count_data) # NB: this is equivalent to prop.test(count_data)
 
 
-
+generation_fr + generation_class
 
 
 
@@ -564,7 +674,7 @@ report_t_summary(t_eval)
 
 # 2. Wilcoxon signed-rank test showing that target rule is different from all other rules across both groups
 eval_summary_other_rules = evaluation_data %>%
-  filter(is_target_rule == FALSE) %>% # for target rule, summarize across participants
+  filter(is_target_rule == FALSE) %>%
   group_by(is_target_rule, Condition, subjID) %>%
   summarize(mean_subj_rating = mean(input_rule_rating))
 
@@ -833,6 +943,19 @@ t_trial_time_correct = t.test(trial_time_join$mean_trial_completion[trial_time_j
                               var.equal = T)
 
 report_t_summary(t_trial_time_correct) # Means are seconds on trials
+
+
+
+
+# COVARIATE ANALYSIS: EXPLANATIONS / DESCRIPTIONS ==============================
+
+# glimpse(explanation_coded_data)
+# glimpse(explanation_coded_summary_subjects)
+# glimpse(explanation_coded_summary)
+
+
+plot_coded_explanation_data(explanation_coded_summary)
+
 
 
 
