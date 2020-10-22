@@ -1,5 +1,5 @@
 #'
-#' Analysis for Cog Sci 2020 submission
+#' Analysis for manuscript submission
 #'
 
 
