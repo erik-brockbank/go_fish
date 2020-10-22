@@ -1,6 +1,6 @@
-#' 
+#'
 #' Analysis for Cog Sci 2020 submission
-#' 
+#'
 
 
 rm(list = ls())
@@ -9,6 +9,8 @@ setwd("~/web/go_fish/analysis/")
 library(tidyverse)
 library(viridis)
 library(patchwork)
+library(pwr)
+library(ES)
 
 
 # GLOBALS ======================================================================
@@ -56,12 +58,12 @@ CODED_MEASURE_LOOKUP = c("mechanism_total" = str_wrap("Mechanism", width = coded
                          "purple_dot_abstract_total" = str_wrap("Purple dot (abstract)", width = coded_measure_width),
                          "purple_dot_concrete_total" = str_wrap("Purple dot (concrete)", width = coded_measure_width)
                          )
-CODED_MEASURE_LEVELS = c(str_wrap("Mechanism", width = coded_measure_width), 
-                         # str_wrap("Shape (total)", width = coded_measure_width), 
-                         str_wrap("Shape (abstract)", width = coded_measure_width), str_wrap("Shape (concrete)", width = coded_measure_width), 
-                         # str_wrap("Color (total)", width = coded_measure_width), 
+CODED_MEASURE_LEVELS = c(str_wrap("Mechanism", width = coded_measure_width),
+                         # str_wrap("Shape (total)", width = coded_measure_width),
+                         str_wrap("Shape (abstract)", width = coded_measure_width), str_wrap("Shape (concrete)", width = coded_measure_width),
+                         # str_wrap("Color (total)", width = coded_measure_width),
                          str_wrap("Color (abstract)", width = coded_measure_width), str_wrap("Color (concrete)", width = coded_measure_width),
-                         # str_wrap("Purple dot (total)", width = coded_measure_width), 
+                         # str_wrap("Purple dot (total)", width = coded_measure_width),
                          str_wrap("Purple dot (abstract)", width = coded_measure_width), str_wrap("Purple dot (concrete)", width = coded_measure_width))
 
 
@@ -102,7 +104,7 @@ read_generation_judgment_data = function(filepath, is_round1) {
     mutate(
       Condition = ifelse(is_control == TRUE, "Describe", "Explain"),
       Round1 = is_round1,
-      input_correct = 
+      input_correct =
         (input_judgment == judgment_catches_fish))
   return(generation_judgment_data)
 }
@@ -124,7 +126,7 @@ read_memory_data = function(filepath, is_round1) {
   memory_data = memory_data %>%
     mutate(Condition = ifelse(is_control == TRUE, "Describe", "Explain"),
            Round1 = is_round1,
-           memory_correct = 
+           memory_correct =
              (memory_shape_in_expt == input_shape_in_expt))
 
   # Fix mis-coded memory probe
@@ -142,7 +144,7 @@ read_coded_free_resp_data = function(filename, summary_data) {
     select(subjID, free_response_str, Revision) %>%
     inner_join(., summary_data, by = "subjID") %>%
     select(subjID, Condition, free_response_str, Revision)
-  
+
   return(generation_free_resp_coded)
 }
 
@@ -207,7 +209,7 @@ get_evaluation_summary = function(evaluation_data) {
               se_rating = sd(input_rule_rating) / sqrt(n()),
               ci_lower = mean_rating - se_rating,
               ci_upper = mean_rating + se_rating)
-  
+
   # Average rating across participants on distractor rule
   eval_summary_distractor_rule = evaluation_data %>%
     filter(rule_text == DISTRACTOR_RULE) %>% # for distractor rule, summarize across participants
@@ -218,7 +220,7 @@ get_evaluation_summary = function(evaluation_data) {
               se_rating = sd(input_rule_rating) / sqrt(n()),
               ci_lower = mean_rating - se_rating,
               ci_upper = mean_rating + se_rating)
-  
+
   # Average of each participant's average across non-target rules
   eval_summary_other_rules = evaluation_data %>%
     filter(is_target_rule == FALSE &
@@ -233,7 +235,7 @@ get_evaluation_summary = function(evaluation_data) {
               se_rating = sd(mean_subj_rating) / sqrt(n()),
               ci_lower = mean_rating - se_rating,
               ci_upper = mean_rating + se_rating)
-  
+
   eval_summary = rbind(eval_summary_target_rule, eval_summary_distractor_rule, eval_summary_other_rules)
   return(eval_summary)
 }
@@ -286,7 +288,10 @@ get_trial_time_summary = function(trial_time_subj_summary) {
 get_memory_subj_summary = function(memory_data) {
   memory_subj_accuracy = memory_data %>%
     group_by(Condition, subjID) %>%
-    summarize(subj_accuracy = sum(memory_correct) / n())
+    summarize(
+      subj_correct = sum(memory_correct),
+      total = n(),
+      subj_accuracy = subj_correct / total)
   return(memory_subj_accuracy)
 }
 
@@ -415,7 +420,7 @@ plot_prediction_summary = function(prediction_summary) {
 # Bar chart of classification accuracy on binary generation judgment task by condition
 plot_generation_judgments = function(generation_judgment_summary) {
   generation_judgment_summary %>%
-    ggplot(aes(x = Condition, y = mean_accuracy, 
+    ggplot(aes(x = Condition, y = mean_accuracy,
                color = Condition, fill = Condition)) +
     geom_bar(stat = "identity", alpha = 0.5, width = 0.5) +
     geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper), width = 0.25) +
@@ -444,7 +449,7 @@ plot_generation_judgments = function(generation_judgment_summary) {
 # NB: this chart not included in cog sci submission
 plot_generation_free_responses = function(generation_free_resp_summary) {
   generation_free_resp_summary %>%
-    ggplot(aes(x = Condition, y = correct_generation_pct, 
+    ggplot(aes(x = Condition, y = correct_generation_pct,
                color = Condition, fill = Condition)) +
     geom_bar(stat = "identity", width = 0.5, alpha = 0.5) +
     labs(x = "", y = "Percent Correct") +
@@ -469,12 +474,12 @@ plot_generation_free_responses = function(generation_free_resp_summary) {
 # Bar chart of average evaluation ratings across conditions on rule evaluation task
 plot_evaluation_results = function(evaluation_summary, comparison_set) {
   evaluation_summary %>%
-    ggplot(aes(x = ruleset, y = mean_rating, 
+    ggplot(aes(x = ruleset, y = mean_rating,
                color = Condition, fill = Condition)) +
     geom_bar(stat = "identity", position = position_dodge(preserve = "single"), width = 0.5, alpha = 0.5) +
     geom_errorbar(
-      aes(ymin = ci_lower, ymax = ci_upper), 
-      position = position_dodge(width = 0.5, preserve = "single"), 
+      aes(ymin = ci_lower, ymax = ci_upper),
+      position = position_dodge(width = 0.5, preserve = "single"),
       width = 0.2) +
     labs(y = "Mean evaluation rating") +
     # ggtitle("Evaluation across conditions") +
@@ -498,7 +503,7 @@ plot_evaluation_results = function(evaluation_summary, comparison_set) {
 # Bar chart of experiment completion time or avg. trial time
 plot_time_data = function(time_summary, ylab, ymax, title) {
   time_summary %>%
-    ggplot(aes(x = Condition, y = mean_task_time, 
+    ggplot(aes(x = Condition, y = mean_task_time,
                color = Condition, fill = Condition)) +
     geom_bar(stat = "identity", width = 0.5, alpha = 0.5) +
     geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper), width = 0.25) +
@@ -516,22 +521,22 @@ plot_time_data = function(time_summary, ylab, ymax, title) {
                        begin = 0.25,
                        end = 0.75) +
     individ_plot_theme +
-    theme(axis.text.x = element_blank(),
-          plot.title = element_text(size = 32, face = "bold"))
+    theme(axis.text.x = element_blank())
+          #plot.title = element_text(size = 32, face = "bold"))
 }
 
 
-# Bar chart of average memory accuracy across conditions 
+# Bar chart of average memory accuracy across conditions
 plot_memory_data = function(memory_summary) {
   memory_summary %>%
-    ggplot(aes(x = Condition, y = mean_memory_accuracy, 
+    ggplot(aes(x = Condition, y = mean_memory_accuracy,
                color = Condition, fill = Condition)) +
     geom_bar(stat = "identity", width = 0.5, alpha = 0.5) +
     geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper), width = 0.25) +
     geom_hline(yintercept = 0.5, linetype = "dashed", size = 1) +
     ylim(c(0, 1)) +
-    labs(x = "", y = "Mean memory accuracy") +
-    # ggtitle("Memory probe accuracy across conditions") +
+    labs(x = "", y = "Accuracy") +
+    ggtitle("Mean memory performance") +
     scale_color_viridis(discrete = T,
                         name = element_blank(),
                         # Change defaults to be blue/green instead of yellow/purple
@@ -550,15 +555,15 @@ plot_memory_data = function(memory_summary) {
 # Bar chart of counts of feature references in coded explanations/descriptions, by condition
 plot_coded_explanation_data = function(explanation_coded_summary) {
   explanation_coded_summary %>%
-    ggplot(aes(x = measure, y = measure_mean, 
+    ggplot(aes(x = measure, y = measure_mean,
                color = Condition, fill = Condition)) +
-    geom_bar(stat = "identity", position = position_dodge(preserve = "single"), 
+    geom_bar(stat = "identity", position = position_dodge(preserve = "single"),
              width = 0.5, alpha = 0.5) +
-    geom_errorbar(aes(ymin = measure_mean - measure_se, ymax = measure_mean + measure_se), 
+    geom_errorbar(aes(ymin = measure_mean - measure_se, ymax = measure_mean + measure_se),
                   position = position_dodge(width = 0.5, preserve = "single"),
                   width = 0.25) +
     ggtitle("Explanation and description measures") +
-    labs(x = "", y = "Avg. count") +
+    labs(x = "", y = "Mean number of references") +
     scale_color_viridis(discrete = T,
                         name = element_blank(),
                         # Change defaults to be blue/green instead of yellow/purple
@@ -570,7 +575,7 @@ plot_coded_explanation_data = function(explanation_coded_summary) {
                        begin = 0.25,
                        end = 0.75) +
     individ_plot_theme
-  
+
 }
 
 
@@ -580,7 +585,7 @@ plot_coded_explanation_data = function(explanation_coded_summary) {
 # DATA INITIALIZATION ==========================================================
 
 # Read in data
-summary_data = bind_rows(read_summary_data(ROUND1_SUMMARY_DATA, TRUE), 
+summary_data = bind_rows(read_summary_data(ROUND1_SUMMARY_DATA, TRUE),
                          read_summary_data(ROUND2_SUMMARY_DATA, FALSE))
 trial_data = bind_rows(read_trial_data(ROUND1_TRIAL_DATA, TRUE),
                        read_trial_data(ROUND2_TRIAL_DATA, FALSE))
@@ -608,9 +613,6 @@ memory_summary = get_memory_summary(memory_subject_summary)
 
 
 # Coded explanation / description data
-
-# TODO we've only coded round2 data...
-
 explanation_coded_data = read_coded_explanation_data(EXPLANATION_DATA_CODED)
 explanation_coded_summary_subjects = get_explanation_coded_subj_summary(explanation_coded_data)
 explanation_coded_summary = get_explanation_coded_summary(explanation_coded_summary_subjects)
@@ -646,7 +648,7 @@ report_t_summary(t_gen)
 
 
 # 3. Generation judgment task: proportion of people who got 100% across conditions
-# NB: similar Chi-sq test with raw count of people who were *coded as getting rule* is what we report above 
+# NB: similar Chi-sq test with raw count of people who were *coded as getting rule* is what we report above
 # for the free response task so this is effectively a parallel analysis for people who got 100% on judgment task
 generation_task_comparison = generation_free_resp_coded %>%
   inner_join(generation_judgment_subject_summary, by = c("subjID", "Condition"))
@@ -654,7 +656,7 @@ generation_task_comparison = generation_free_resp_coded %>%
 count_data = table(generation_task_comparison$Condition, generation_task_comparison$subj_accuracy < 1)
 chisq.test(count_data) # NB: this is equivalent to prop.test(count_data)
 
-
+# Plot results
 generation_fr + generation_class
 
 
@@ -698,7 +700,7 @@ report_wilcox_summary(wil_des) # Describers
 t_eval_comp = t.test(
   evaluation_data$input_rule_rating[evaluation_data$Condition == "Describe"
                                     & evaluation_data$rule_text == DISTRACTOR_RULE],
-  evaluation_data$input_rule_rating[evaluation_data$Condition == "Explain" 
+  evaluation_data$input_rule_rating[evaluation_data$Condition == "Explain"
                                     & evaluation_data$rule_text == DISTRACTOR_RULE],
   var.equal = T
 )
@@ -710,7 +712,7 @@ report_t_summary(t_eval_comp)
 t_eval_target_dist_exp = t.test(
   evaluation_data$input_rule_rating[evaluation_data$Condition == "Explain"
                                     & evaluation_data$rule_text == "If a lure combination has a yellow shape or a diamond on the bottom, it will catch fish."],
-  evaluation_data$input_rule_rating[evaluation_data$Condition == "Explain" 
+  evaluation_data$input_rule_rating[evaluation_data$Condition == "Explain"
                                     & evaluation_data$is_target_rule == TRUE],
   var.equal = T
 )
@@ -718,14 +720,14 @@ t_eval_target_dist_exp = t.test(
 t_eval_target_dist_desc = t.test(
   evaluation_data$input_rule_rating[evaluation_data$Condition == "Describe"
                                     & evaluation_data$rule_text == "If a lure combination has a yellow shape or a diamond on the bottom, it will catch fish."],
-  evaluation_data$input_rule_rating[evaluation_data$Condition == "Describe" 
+  evaluation_data$input_rule_rating[evaluation_data$Condition == "Describe"
                                     & evaluation_data$is_target_rule == TRUE],
   var.equal = T
 )
 
 report_t_summary(t_eval_target_dist_exp) # Explainers
 report_t_summary(t_eval_target_dist_desc) # Describers
-# It appears that ratings of the distractor rule relative to the target rule were 
+# It appears that ratings of the distractor rule relative to the target rule were
 # *more* different among explainers than controls
 # (explainers: 6.6 v. 4.12; controls: 6.09 v. 4.74), even though the differences were significant for both groups.
 
@@ -737,7 +739,7 @@ unique(eval_data_distractor_target$rule_text)
 table(eval_data_distractor_target$subjID)
 # check for significant interaction between condition and target rule v. distractor
 interaction_test = aov(data = eval_data_distractor_target, input_rule_rating ~ Condition*is_target_rule)
-summary(interaction_test) 
+summary(interaction_test)
 # getting DF for reporting F statistics in Anova above
 unique(eval_data_distractor_target$subjID)
 
@@ -755,16 +757,16 @@ table(subset_participants$subjID) # 6 (number of eval rows) for each subj ID
 unique(subset_participants$subjID) # 56 for incorrect rule gen, 30 for correct
 sum(generation_free_resp_coded$Revision) # 30 for incorrect rule gen: this is equal to 86 (total) - number of unique participants above or equal to number of unique part. above
 
-# Plot data 
-# NB: this plot not included in cog sci submission
+# Plot data
 eval_summary_subset = get_evaluation_summary(subset_participants)
+# NB: this plot not included in manuscript
 plot_evaluation_results(eval_summary_subset, RULE_EVAL_LABELS)
 
 # Analysis: compare ratings of target rule
 t_subset_target = t.test(
-  subset_participants$input_rule_rating[subset_participants$Condition == "Describe" 
+  subset_participants$input_rule_rating[subset_participants$Condition == "Describe"
                                            & subset_participants$is_target_rule == TRUE],
-  subset_participants$input_rule_rating[subset_participants$Condition == "Explain" 
+  subset_participants$input_rule_rating[subset_participants$Condition == "Explain"
                                            & subset_participants$is_target_rule == TRUE],
   var.equal = T
 )
@@ -793,7 +795,7 @@ report_wilcox_summary(wil_des_subset) # Describers
 t_subset_dist = t.test(
   subset_participants$input_rule_rating[subset_participants$Condition == "Describe"
                                         & subset_participants$rule_text == DISTRACTOR_RULE],
-  subset_participants$input_rule_rating[subset_participants$Condition == "Explain" 
+  subset_participants$input_rule_rating[subset_participants$Condition == "Explain"
                                         & subset_participants$rule_text == DISTRACTOR_RULE],
   var.equal = T
 )
@@ -803,7 +805,7 @@ report_t_summary(t_subset_dist)
 t_subset_target_dist_exp = t.test(
   subset_participants$input_rule_rating[subset_participants$Condition == "Explain"
                                         & subset_participants$rule_text == "If a lure combination has a yellow shape or a diamond on the bottom, it will catch fish."],
-  subset_participants$input_rule_rating[subset_participants$Condition == "Explain" 
+  subset_participants$input_rule_rating[subset_participants$Condition == "Explain"
                                         & subset_participants$is_target_rule == TRUE],
   var.equal = T
 )
@@ -811,14 +813,14 @@ t_subset_target_dist_exp = t.test(
 t_subset_target_dist_desc = t.test(
   subset_participants$input_rule_rating[subset_participants$Condition == "Describe"
                                         & subset_participants$rule_text == "If a lure combination has a yellow shape or a diamond on the bottom, it will catch fish."],
-  subset_participants$input_rule_rating[subset_participants$Condition == "Describe" 
+  subset_participants$input_rule_rating[subset_participants$Condition == "Describe"
                                         & subset_participants$is_target_rule == TRUE],
   var.equal = T
 )
 
 report_t_summary(t_subset_target_dist_exp) # Explainers
 report_t_summary(t_subset_target_dist_desc) # Describers
-# It appears that among participants who *didn't generate the target rule*, 
+# It appears that among participants who *didn't generate the target rule*,
 # ratings of the distractor rule relative to the target rule were *more* different among explainers than controls
 # (explainers: 6.24 v. 4.62; controls: 5.91 v. 5.17), even though the differences were significant for both groups.
 
@@ -843,11 +845,11 @@ unique(subset_participants_distractor_target$subjID)
 
 # 1. Memory performance compared to chance
 # NB: not doing binomial test here because we are looking at accuracy percentages for N subjects
-t_mem_chance_exp = t.test(memory_subject_summary$subj_accuracy[memory_subject_summary$Condition == "Explain"], 
+t_mem_chance_exp = t.test(memory_subject_summary$subj_accuracy[memory_subject_summary$Condition == "Explain"],
                           mu = 0.5,
                           equal.var = T)
 
-t_mem_chance_desc = t.test(memory_subject_summary$subj_accuracy[memory_subject_summary$Condition == "Describe"], 
+t_mem_chance_desc = t.test(memory_subject_summary$subj_accuracy[memory_subject_summary$Condition == "Describe"],
                            mu = 0.5,
                            equal.var = T)
 
@@ -856,9 +858,7 @@ report_t_summary(t_mem_chance_desc)
 
 
 # 2. Memory accuracy across conditions
-  # NB: this plot not included in cog sci submission
-  # TODO split out this chart and analysis by positive and negative probes?
-plot_memory_data(memory_summary)
+mem = plot_memory_data(memory_summary) # This plot is combined with time on task plots further down
 
 t_mem = t.test(memory_subject_summary$subj_accuracy[memory_subject_summary$Condition == "Describe"],
                memory_subject_summary$subj_accuracy[memory_subject_summary$Condition == "Explain"],
@@ -883,7 +883,7 @@ report_t_summary(t_mem_correct)
 # COVARIATE ANALYSIS: TIME =====================================================
 
 # 1. Overall time on task across conditions
-# NB: this generates the plot but we display below with patchwork
+# This plot is combined with memory and other time on task plots further down
 time_on_task = plot_time_data(completion_time_summary, ylab = "Seconds", ymax = 1000, title = "Mean time on experiment")
 
 t_time = t.test(summary_data$experiment_completion_time[summary_data$Condition == "Describe"],
@@ -899,7 +899,7 @@ unique(trial_time_subject_summary$subjID[is.na(trial_time_subject_summary$mean_t
 table(trial_time_subject_summary$Round1[is.na(trial_time_subject_summary$mean_trial_completion)])
 table(trial_time_subject_summary$Condition[is.na(trial_time_subject_summary$mean_trial_completion)])
 
-# NB: this generates the plot but we display below with patchwork
+# This plot combined with earlier memory and time on task plots further down
 time_on_trials = plot_time_data(trial_time_summary, ylab = "Seconds", ymax = 80, title = "Mean time on trials")
 
 t_trials = t.test(trial_time_subject_summary$mean_trial_completion[trial_time_subject_summary$Condition == "Describe" &
@@ -910,7 +910,10 @@ t_trials = t.test(trial_time_subject_summary$mean_trial_completion[trial_time_su
 report_t_summary(t_trials) # Means are seconds on trials
 
 # Plot graphs from 1. and 2. above side by side with patchwork
-time_on_task + time_on_trials
+# time_on_task + time_on_trials
+mem + time_on_task + time_on_trials +
+  plot_annotation(tag_levels = 'A') &
+  theme(plot.tag = element_text(size = 20, face = "bold"))
 
 
 # 3. Overall time on task comparing participants who did and didn't get the correct rule
@@ -949,20 +952,88 @@ report_t_summary(t_trial_time_correct) # Means are seconds on trials
 
 # COVARIATE ANALYSIS: EXPLANATIONS / DESCRIPTIONS ==============================
 
-# glimpse(explanation_coded_data)
-# glimpse(explanation_coded_summary_subjects)
-# glimpse(explanation_coded_summary)
+# sanity checks
+glimpse(explanation_coded_data)
+glimpse(explanation_coded_summary_subjects)
+glimpse(explanation_coded_summary)
+unique(explanation_coded_data$Subject)
 
-
+# Plot results
 plot_coded_explanation_data(explanation_coded_summary)
 
+# Analysis (copied from Williams & Lombrozo, 2010)
+concrete_data = explanation_coded_summary_subjects %>%
+  filter(measure %in% c("shape_concrete_total", "color_concrete_total", "purple_dot_concrete_total"))
+anova_concrete = aov(data = concrete_data, subject_total ~ Condition + measure)
+summary(anova_concrete)
+
+abstract_data = explanation_coded_summary_subjects %>%
+  filter(measure %in% c("shape_abstract_total", "color_abstract_total", "purple_dot_abstract_total"))
+anova_abstract = aov(data = abstract_data, subject_total ~ Condition + measure)
+summary(anova_abstract)
+
+# ANOVAs suggest main effect of condition on number of concrete and abstract features
+# Below t-tests confirm direction/significance for each feature individually
+
+# Shape
+t_shape_abs = t.test(explanation_coded_summary_subjects$subject_total[explanation_coded_summary_subjects$measure == "shape_abstract_total" &
+                                                                   explanation_coded_summary_subjects$Condition == "Explain"],
+                explanation_coded_summary_subjects$subject_total[explanation_coded_summary_subjects$measure == "shape_abstract_total" &
+                                                                   explanation_coded_summary_subjects$Condition == "Describe"],
+                var.equal = T)
+report_t_summary(t_shape_abs) # Means are avg. number of references
+
+t_shape_conc = t.test(explanation_coded_summary_subjects$subject_total[explanation_coded_summary_subjects$measure == "shape_concrete_total" &
+                                                                        explanation_coded_summary_subjects$Condition == "Explain"],
+                     explanation_coded_summary_subjects$subject_total[explanation_coded_summary_subjects$measure == "shape_concrete_total" &
+                                                                        explanation_coded_summary_subjects$Condition == "Describe"],
+                     var.equal = T)
+report_t_summary(t_shape_conc) # Means are avg. number of references
+
+# Color
+t_color_abs = t.test(explanation_coded_summary_subjects$subject_total[explanation_coded_summary_subjects$measure == "color_abstract_total" &
+                                                                        explanation_coded_summary_subjects$Condition == "Explain"],
+                     explanation_coded_summary_subjects$subject_total[explanation_coded_summary_subjects$measure == "color_abstract_total" &
+                                                                        explanation_coded_summary_subjects$Condition == "Describe"],
+                     var.equal = T)
+report_t_summary(t_color_abs) # Means are avg. number of references
+
+t_color_conc = t.test(explanation_coded_summary_subjects$subject_total[explanation_coded_summary_subjects$measure == "color_concrete_total" &
+                                                                         explanation_coded_summary_subjects$Condition == "Explain"],
+                      explanation_coded_summary_subjects$subject_total[explanation_coded_summary_subjects$measure == "color_concrete_total" &
+                                                                         explanation_coded_summary_subjects$Condition == "Describe"],
+                      var.equal = T)
+report_t_summary(t_color_conc) # Means are avg. number of references
+
+
+# Purple dot
+t_dot_abs = t.test(explanation_coded_summary_subjects$subject_total[explanation_coded_summary_subjects$measure == "purple_dot_abstract_total" &
+                                                                        explanation_coded_summary_subjects$Condition == "Explain"],
+                     explanation_coded_summary_subjects$subject_total[explanation_coded_summary_subjects$measure == "purple_dot_abstract_total" &
+                                                                        explanation_coded_summary_subjects$Condition == "Describe"],
+                     var.equal = T)
+report_t_summary(t_dot_abs) # Means are avg. number of references
+
+t_dot_conc = t.test(explanation_coded_summary_subjects$subject_total[explanation_coded_summary_subjects$measure == "purple_dot_concrete_total" &
+                                                                         explanation_coded_summary_subjects$Condition == "Explain"],
+                      explanation_coded_summary_subjects$subject_total[explanation_coded_summary_subjects$measure == "purple_dot_concrete_total" &
+                                                                         explanation_coded_summary_subjects$Condition == "Describe"],
+                      var.equal = T)
+report_t_summary(t_dot_conc) # Means are avg. number of references
+
+
+# Finally, confirm mechanism effect
+t_mech = t.test(explanation_coded_summary_subjects$subject_total[explanation_coded_summary_subjects$measure == "mechanism_total" &
+                                                                   explanation_coded_summary_subjects$Condition == "Explain"],
+                explanation_coded_summary_subjects$subject_total[explanation_coded_summary_subjects$measure == "mechanism_total" &
+                                                                   explanation_coded_summary_subjects$Condition == "Describe"],
+                var.equal = T)
+report_t_summary(t_mech) # Means are avg. number of references
 
 
 
 
 # APPENDIX ANALYSIS: POWER =====================================================
-library(pwr)
-library(ES)
 
 # Effect size and power for generation free response task effect
 p1 = generation_props$success[generation_props$Condition == "Explain"] / generation_props$total[generation_props$Condition == "Explain"]
@@ -973,13 +1044,13 @@ ES.h(p1, p2) # Effect size
 power.prop.test(n = generation_props$total[generation_props$Condition == "Explain"], # could use either condition here
                 p1 = p1,
                 p2 = p2,
-                #alternative = "one.sided",
+                # alternative = "one.sided",
                 sig.level = 0.05) # Power to detect our effect size
 
 power.prop.test(p1 = p1,
                 p2 = p2,
                 power = 0.8,
-                #alternative = "one.sided",
+                # alternative = "one.sided",
                 sig.level = 0.05) # Observations needed to detect our effect size with 80% power
 
 
@@ -992,13 +1063,13 @@ ES.h(p1, p2) # Effect size
 power.prop.test(n = generation_props$total[generation_props$Condition == "Explain"], # could use either condition here
                 p1 = p1,
                 p2 = p2,
-                alternative = "one.sided",
+                # alternative = "one.sided",
                 sig.level = 0.05) # Power to detect our effect size
 
 power.prop.test(p1 = p1,
                 p2 = p2,
                 power = 0.8,
-                alternative = "one.sided",
+                # alternative = "one.sided",
                 sig.level = 0.05) # Observations needed to detect our effect size with 80% power
 
 
@@ -1011,19 +1082,18 @@ power_data = evaluation_data %>%
             var_rating = var(input_rule_rating),
             n = n())
 
-# TODO How to get pooled SD?
-# NOTE SDs are pretty different for two conditions so equal variance may not be legit...
-sd_pooled = sqrt(((power_data$sd_rating[power_data$Condition == "Explain"]^2) + 
+# NB SDs are pretty different for two conditions so equal variance may be a stretch?
+sd_pooled = sqrt(((power_data$sd_rating[power_data$Condition == "Explain"]^2) +
                     (power_data$sd_rating[power_data$Condition == "Describe"]^2)) / 2)
 sd_pooled = ((power_data$var_rating[power_data$Condition == "Explain"] * (power_data$n[power_data$Condition == "Explain"] - 1)) +
   (power_data$var_rating[power_data$Condition == "Describe"] * (power_data$n[power_data$Condition == "Describe"] - 1))) /
   ((power_data$n[power_data$Condition == "Explain"] - 1) + (power_data$n[power_data$Condition == "Describe"] - 1))
 
 
-mean_diff = power_data$mean_rating[power_data$Condition == "Explain"] - 
+mean_diff = power_data$mean_rating[power_data$Condition == "Explain"] -
   power_data$mean_rating[power_data$Condition == "Describe"]
 
-power.t.test(n = dat$subjects[dat$Condition == "Explain"], # can use either condition here
+power.t.test(n = power_data$n[power_data$Condition == "Explain"], # can use either condition here
              delta = mean_diff,
              sd = sd_pooled,
              alternative = "one.sided",
@@ -1039,12 +1109,10 @@ power.t.test(delta = mean_diff,
 
 # APPENDIX ANALYSIS: PREDICTIONS ===============================================
 
-plot_prediction_summary(prediction_summary)
-
-# TODO get error bars on this
+plot_prediction_summary(prediction_summary) # TODO get error bars on this
 
 # Fit regressions to data just to ensure no signal
-# TODO if including this, revise models to only look at trials > 4 
+# TODO if including this, revise models to only look at trials > 4
 # (or change graph above to look at all trials)
 mod_exp = lm(data = prediction_summary[prediction_summary$Condition == "Explain",], accuracy ~ trial_index)
 mod_des = lm(data = prediction_summary[prediction_summary$Condition == "Describe",], accuracy ~ trial_index)
@@ -1071,8 +1139,9 @@ generation_task_comparison %>%
 # Plot relationship between coded accuracy and classification accuracy
 generation_task_comparison %>%
   ggplot(aes(x = subj_accuracy, y = Revision, color = Condition)) +
-  geom_jitter(width = 0.05, height = 0.05) +
+  geom_jitter(width = 0.05, height = 0.05, alpha = 0.75) +
   scale_color_viridis(discrete = T) +
+  labs(x = "Classification accuracy", y = "Coded free resp. correct") +
   individ_plot_theme
 
 # Correlation between the two
@@ -1081,12 +1150,12 @@ cor.test(generation_task_comparison$Revision, generation_task_comparison$subj_ac
 
 
 
-# APPENDIX ANALYSIS: Exploring evaluation disbributions ========================
+# APPENDIX ANALYSIS: Exploring evaluation distributions ========================
 
 plot_evaluation_histogram = function(eval_data) {
   eval_data %>%
     ggplot(aes(x = input_rule_rating)) +
-    geom_histogram(breaks = c(1, 2, 3, 4, 5, 6, 7), 
+    geom_histogram(breaks = c(1, 2, 3, 4, 5, 6, 7),
                    position = "identity",
                    color = "lightblue", fill = "lightblue", alpha = 0.75) +
     labs(x = "Evaluation rating (1-7)") +
@@ -1114,7 +1183,7 @@ subset_participants %>%
 subset_participants %>%
   filter(Condition == "Describe" & is_target_rule == T) %>%
   plot_evaluation_histogram()
-  
+
 
 
 
@@ -1142,10 +1211,10 @@ breakout_participants %>%
   # filter(rule_text == DISTRACTOR_RULE) %>%
   ggplot(aes(x = Condition, y = input_rule_rating, color = as.factor(Revision))) +
   geom_jitter(width = 0.25, alpha = 0.5, height = 0.25, size = 4) +
-  geom_point(data = subset_summary, 
+  geom_point(data = subset_summary,
              aes(x = Condition, y = mean_rating, color = Revision),
              size = 6) +
-  geom_errorbar(data = subset_summary, 
+  geom_errorbar(data = subset_summary,
                 aes(x = Condition, y = mean_rating, color = Revision, ymin = ci_lower, ymax = ci_upper),
                 width = 0.25,
                 size = 1) +
