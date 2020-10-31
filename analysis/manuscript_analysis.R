@@ -760,7 +760,7 @@ sum(generation_free_resp_coded$Revision) # 30 for incorrect rule gen: this is eq
 # Plot data
 eval_summary_subset = get_evaluation_summary(subset_participants)
 # NB: this plot not included in manuscript
-plot_evaluation_results(eval_summary_subset, RULE_EVAL_LABELS)
+# plot_evaluation_results(eval_summary_subset, RULE_EVAL_LABELS)
 
 # Analysis: compare ratings of target rule
 t_subset_target = t.test(
@@ -961,16 +961,31 @@ unique(explanation_coded_data$Subject)
 # Plot results
 plot_coded_explanation_data(explanation_coded_summary)
 
+# Check mechanism effect: were explainers more likely to provide a mechanistic account?
+t_mech = t.test(explanation_coded_summary_subjects$subject_total[explanation_coded_summary_subjects$measure == "mechanism_total" &
+                                                                   explanation_coded_summary_subjects$Condition == "Explain"],
+                explanation_coded_summary_subjects$subject_total[explanation_coded_summary_subjects$measure == "mechanism_total" &
+                                                                   explanation_coded_summary_subjects$Condition == "Describe"],
+                var.equal = T)
+report_t_summary(t_mech) # Means are avg. number of references
+
+
+
 # Analysis (copied from Williams & Lombrozo, 2010)
+# First, do abstract feature references show a main effect of condition?
+# i.e. do explainers make more abstract references?
+abstract_data = explanation_coded_summary_subjects %>%
+  filter(measure %in% c("shape_abstract_total", "color_abstract_total", "purple_dot_abstract_total"))
+anova_abstract = aov(data = abstract_data, subject_total ~ Condition + measure)
+summary(anova_abstract)
+# Do concrete feature references show a main effect of condition?
+# i.e. do control pariticipants make more concrete references?
 concrete_data = explanation_coded_summary_subjects %>%
   filter(measure %in% c("shape_concrete_total", "color_concrete_total", "purple_dot_concrete_total"))
 anova_concrete = aov(data = concrete_data, subject_total ~ Condition + measure)
 summary(anova_concrete)
 
-abstract_data = explanation_coded_summary_subjects %>%
-  filter(measure %in% c("shape_abstract_total", "color_abstract_total", "purple_dot_abstract_total"))
-anova_abstract = aov(data = abstract_data, subject_total ~ Condition + measure)
-summary(anova_abstract)
+
 
 # ANOVAs suggest main effect of condition on number of concrete and abstract features
 # Below t-tests confirm direction/significance for each feature individually
@@ -1021,14 +1036,6 @@ t_dot_conc = t.test(explanation_coded_summary_subjects$subject_total[explanation
                       var.equal = T)
 report_t_summary(t_dot_conc) # Means are avg. number of references
 
-
-# Finally, confirm mechanism effect
-t_mech = t.test(explanation_coded_summary_subjects$subject_total[explanation_coded_summary_subjects$measure == "mechanism_total" &
-                                                                   explanation_coded_summary_subjects$Condition == "Explain"],
-                explanation_coded_summary_subjects$subject_total[explanation_coded_summary_subjects$measure == "mechanism_total" &
-                                                                   explanation_coded_summary_subjects$Condition == "Describe"],
-                var.equal = T)
-report_t_summary(t_mech) # Means are avg. number of references
 
 
 
