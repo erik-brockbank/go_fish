@@ -14,5 +14,5 @@
 ## Analysis of existing data is in the /analysis folder
 - `manuscript_analysis.R` contains all analyses for cog sci 2020 and subsequent manuscript.
 - Coded correctness values for participant free response answers (hypothesis generation task) are in `free_response_coder1.csv` and `free_response_coder2.csv`. The two coded responses are combined with final values selected in `free_response_combined.csv`.
-
+- Coded explanation and description content is in `explanation_coded.csv`. The original coding was done in google docs and the final product is copied here as csv.
 
