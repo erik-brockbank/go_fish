@@ -734,9 +734,7 @@ report_t_summary(t_eval_target_dist_desc) # Describers
 # Test whether this difference is significant with ANOVA
 eval_data_distractor_target = evaluation_data %>%
   filter(is_target_rule == T | rule_text == "If a lure combination has a yellow shape or a diamond on the bottom, it will catch fish.")
-# sanity check
-unique(eval_data_distractor_target$rule_text)
-table(eval_data_distractor_target$subjID)
+
 # check for significant interaction between condition and target rule v. distractor
 interaction_test = aov(data = eval_data_distractor_target, input_rule_rating ~ Condition*is_target_rule)
 summary(interaction_test)
@@ -753,7 +751,6 @@ subset_participants = generation_free_resp_coded %>%
   # filter(Revision == 1) %>%
   inner_join(., evaluation_data, by = c("subjID", "Condition"))
 # Sanity check the join above
-table(subset_participants$subjID) # 6 (number of eval rows) for each subj ID
 unique(subset_participants$subjID) # 56 for incorrect rule gen, 30 for correct
 sum(generation_free_resp_coded$Revision) # 30 for incorrect rule gen: this is equal to 86 (total) - number of unique participants above or equal to number of unique part. above
 
@@ -829,7 +826,6 @@ subset_participants_distractor_target = subset_participants %>%
   filter(is_target_rule == T | rule_text == "If a lure combination has a yellow shape or a diamond on the bottom, it will catch fish.")
 # sanity check
 unique(subset_participants_distractor_target$rule_text)
-table(subset_participants_distractor_target$subjID)
 
 # check for significant interaction between condition and target rule v. distractor
 interaction_test = aov(data = subset_participants_distractor_target, input_rule_rating ~ Condition*is_target_rule)
@@ -916,6 +912,7 @@ mem + time_on_task + time_on_trials +
   theme(plot.tag = element_text(size = 20, face = "bold"))
 
 
+
 # 3. Overall time on task comparing participants who did and didn't get the correct rule
 task_time_join = generation_free_resp_coded %>%
   select(subjID, Condition, Revision) %>%
@@ -952,12 +949,6 @@ report_t_summary(t_trial_time_correct) # Means are seconds on trials
 
 # COVARIATE ANALYSIS: EXPLANATIONS / DESCRIPTIONS ==============================
 
-# sanity checks
-glimpse(explanation_coded_data)
-glimpse(explanation_coded_summary_subjects)
-glimpse(explanation_coded_summary)
-unique(explanation_coded_data$Subject)
-
 # Plot results
 plot_coded_explanation_data(explanation_coded_summary)
 
@@ -969,8 +960,6 @@ t_mech = t.test(explanation_coded_summary_subjects$subject_total[explanation_cod
                 var.equal = T)
 report_t_summary(t_mech) # Means are avg. number of references
 
-
-
 # Analysis (copied from Williams & Lombrozo, 2010)
 # First, do abstract feature references show a main effect of condition?
 # i.e. do explainers make more abstract references?
@@ -978,6 +967,7 @@ abstract_data = explanation_coded_summary_subjects %>%
   filter(measure %in% c("shape_abstract_total", "color_abstract_total", "purple_dot_abstract_total"))
 anova_abstract = aov(data = abstract_data, subject_total ~ Condition + measure)
 summary(anova_abstract)
+
 # Do concrete feature references show a main effect of condition?
 # i.e. do control pariticipants make more concrete references?
 concrete_data = explanation_coded_summary_subjects %>%
@@ -985,11 +975,8 @@ concrete_data = explanation_coded_summary_subjects %>%
 anova_concrete = aov(data = concrete_data, subject_total ~ Condition + measure)
 summary(anova_concrete)
 
-
-
 # ANOVAs suggest main effect of condition on number of concrete and abstract features
 # Below t-tests confirm direction/significance for each feature individually
-
 # Shape
 t_shape_abs = t.test(explanation_coded_summary_subjects$subject_total[explanation_coded_summary_subjects$measure == "shape_abstract_total" &
                                                                    explanation_coded_summary_subjects$Condition == "Explain"],
@@ -1019,7 +1006,6 @@ t_color_conc = t.test(explanation_coded_summary_subjects$subject_total[explanati
                                                                          explanation_coded_summary_subjects$Condition == "Describe"],
                       var.equal = T)
 report_t_summary(t_color_conc) # Means are avg. number of references
-
 
 # Purple dot
 t_dot_abs = t.test(explanation_coded_summary_subjects$subject_total[explanation_coded_summary_subjects$measure == "purple_dot_abstract_total" &
