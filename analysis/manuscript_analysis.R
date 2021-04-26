@@ -4,7 +4,7 @@
 
 
 rm(list = ls())
-setwd("~/web/go_fish/analysis/")
+setwd("/Users/erikbrockbank/web/elc-lab/go_fish/analysis/")
 
 library(tidyverse)
 library(viridis)
@@ -625,7 +625,6 @@ explanation_coded_summary = get_explanation_coded_summary(explanation_coded_summ
 # DATA ANALYSIS: GENERATION ====================================================
 
 # 1. Generation free response task
-# NB: this plot not included in cog sci submission, but statistics are reported
 generation_fr = plot_generation_free_responses(generation_free_resp_summary)
 
 generation_props = generation_free_resp_coded %>%
@@ -863,6 +862,8 @@ t_mem = t.test(memory_subject_summary$subj_accuracy[memory_subject_summary$Condi
 report_t_summary(t_mem)
 
 
+
+
 # 3. Memory performance comparing participants who did and didn't get the correct rule
 memory_hypothesis_join = generation_free_resp_coded %>%
   select(subjID, Condition, Revision) %>%
@@ -873,6 +874,69 @@ t_mem_correct = t.test(memory_hypothesis_join$subj_accuracy[memory_hypothesis_jo
                        var.equal = T)
 
 report_t_summary(t_mem_correct)
+
+
+# 4. Hyp. generation performance *among participants who scored > chance on memory probe*
+# NB: this mirrors generation analysis above with all participants
+
+# Looking at individual subjects
+mem + geom_jitter(data = memory_subject_summary,
+                  aes(x = Condition, y = subj_accuracy),
+                  width = 0.1, height = 0.01, alpha = 0.75, size = 2)
+
+# Getting accuracy quantiles (this is a bit weird because accuracy was X/8)
+exp = memory_subject_summary %>% filter(Condition == "Explain")
+des = memory_subject_summary %>% filter(Condition == "Describe")
+quantile(memory_subject_summary$subj_accuracy)
+quantile(exp$subj_accuracy)
+quantile(des$subj_accuracy)
+
+# Pulling out participants who performed at or below chance
+low_mem_all = memory_subject_summary[memory_subject_summary$subj_accuracy <= 0.5,]
+low_mem_all %>% group_by(Condition) %>% summarize(n())
+
+# Generation free response performance among > chance memory participants
+gen_split = generation_free_resp_coded %>% filter(!subjID %in% low_mem_all$subjID)
+gen_split_sum = get_generation_free_response_summary(gen_split)
+
+# Plot
+plot_generation_free_responses(gen_split_sum)
+
+# Stats (difference remains highly significant)
+gen_props_split = gen_split %>%
+  group_by(Condition) %>%
+  summarize(success = sum(Revision),
+            total = n())
+chisq_gen_split = prop.test(c(gen_props_split$success), c(gen_props_split$total))
+report_chisq_summary(chisq_gen_split)
+
+
+# Generation judgment task: overall accuracy across conditions among > chance memory participants
+gen_judg_split = generation_judgment_subject_summary %>% filter(!subjID %in% low_mem_all$subjID)
+gen_judg_split_sum = get_generation_judgment_summary(gen_judg_split)
+
+# Plot
+plot_generation_judgments(gen_judg_split_sum)
+
+# Stats (difference is highly significant)
+t_gen_split = t.test(
+  gen_judg_split$subj_accuracy[gen_judg_split$Condition == "Describe"],
+  gen_judg_split$subj_accuracy[gen_judg_split$Condition == "Explain"],
+  var.equal = T
+)
+report_t_summary(t_gen_split)
+
+
+# Generation judgment task: proportion of people who got 100% across conditions
+# among > chance memory participants
+gen_task_comp_split = gen_split %>%
+  inner_join(generation_judgment_subject_summary, by = c("subjID", "Condition"))
+# NB: we want table to be subj_accuracy == 1 but we do < 1 below to get count of == 1 as the *first* column
+count_data_split = table(gen_task_comp_split$Condition, gen_task_comp_split$subj_accuracy < 1)
+chisq.test(count_data_split) # NB: this is equivalent to prop.test(count_data)
+
+
+
 
 
 
@@ -1028,23 +1092,34 @@ report_t_summary(t_dot_conc) # Means are avg. number of references
 
 # APPENDIX ANALYSIS: POWER =====================================================
 
+# Power for E1
+# How big of an effect size were we able to detect in E1 with 80% power?
+pwr.2p.test(n = 43,
+            power = 0.9,
+            sig.level = 0.05)
+
+
+ES.h(p1 = 0.65, p2 = 0.35) # Bonawitz/Griffiths (2010) effect size
+ES.h(p1 = 0.65, p2 = 0.4) # Williams/Lombrozo 2010, effect size for E1 test accuracy
+
+
 # Effect size and power for generation free response task effect
 p1 = generation_props$success[generation_props$Condition == "Explain"] / generation_props$total[generation_props$Condition == "Explain"]
 p2 = generation_props$success[generation_props$Condition == "Describe"] / generation_props$total[generation_props$Condition == "Describe"]
 
 ES.h(p1, p2) # Effect size
 
-power.prop.test(n = generation_props$total[generation_props$Condition == "Explain"], # could use either condition here
-                p1 = p1,
-                p2 = p2,
-                # alternative = "one.sided",
-                sig.level = 0.05) # Power to detect our effect size
 
-power.prop.test(p1 = p1,
-                p2 = p2,
-                power = 0.8,
-                # alternative = "one.sided",
-                sig.level = 0.05) # Observations needed to detect our effect size with 80% power
+# What is our power with given Ns?
+pwr.2p.test(h = ES.h(p1, p2),
+            n = generation_props$total[generation_props$Condition == "Explain"], # could use either condition here
+            sig.level = 0.05)
+
+# How many subjects are needed to detect with 80% power?
+pwr.2p.test(h = ES.h(p1, p2),
+            # n = generation_props$total[generation_props$Condition == "Explain"], # could use either condition here
+            power = 0.8,
+            sig.level = 0.05)
 
 
 # Effect size and power for generation judgment task effect
@@ -1053,17 +1128,16 @@ p2 = generation_judgment_summary$mean_accuracy[generation_judgment_summary$Condi
 
 ES.h(p1, p2) # Effect size
 
-power.prop.test(n = generation_props$total[generation_props$Condition == "Explain"], # could use either condition here
-                p1 = p1,
-                p2 = p2,
-                # alternative = "one.sided",
-                sig.level = 0.05) # Power to detect our effect size
+# How much power do we have with given Ns?
+pwr.2p.test(h = ES.h(p1, p2),
+            n = generation_props$total[generation_props$Condition == "Explain"], # could use either condition here
+            sig.level = 0.05)
 
-power.prop.test(p1 = p1,
-                p2 = p2,
-                power = 0.8,
-                # alternative = "one.sided",
-                sig.level = 0.05) # Observations needed to detect our effect size with 80% power
+# How many participants needed to detect with 80% power?
+pwr.2p.test(h = ES.h(p1, p2),
+            # n = generation_props$total[generation_props$Condition == "Explain"], # could use either condition here
+            power = 0.8,
+            sig.level = 0.05)
 
 
 # Effect size and power for evaluation effect (different rating of target across conditions)
