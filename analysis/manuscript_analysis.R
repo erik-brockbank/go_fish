@@ -1011,7 +1011,7 @@ report_t_summary(t_trial_time_correct) # Means are seconds on trials
 
 
 
-# COVARIATE ANALYSIS: EXPLANATIONS / DESCRIPTIONS ==============================
+# CONTENT ANALYSIS: EXPLANATIONS / DESCRIPTIONS ==============================
 
 # Plot results
 plot_coded_explanation_data(explanation_coded_summary)
@@ -1095,7 +1095,7 @@ report_t_summary(t_dot_conc) # Means are avg. number of references
 # Power for E1
 # How big of an effect size were we able to detect in E1 with 80% power?
 pwr.2p.test(n = 43,
-            power = 0.9,
+            power = 0.8,
             sig.level = 0.05)
 
 
