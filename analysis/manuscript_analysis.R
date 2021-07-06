@@ -11,6 +11,8 @@ library(viridis)
 library(patchwork)
 library(pwr)
 library(ES)
+library(lme4)
+library(emmeans)
 
 
 # GLOBALS ======================================================================
@@ -183,6 +185,8 @@ get_generation_judgment_summary = function(generation_judgment_subject_summary) 
               se_accuracy = sd(subj_accuracy) / sqrt(n()),
               ci_lower = mean_accuracy - se_accuracy,
               ci_upper = mean_accuracy + se_accuracy)
+  generation_judg_summary$Condition = factor(generation_judg_summary$Condition,
+                                             levels = c("Explain", "Describe"))
   return(generation_judg_summary)
 }
 
@@ -192,7 +196,10 @@ get_generation_free_response_summary = function(generation_free_response_coded) 
   generation_free_response_summary = generation_free_response_coded %>%
     group_by(Condition) %>%
     summarize(subjects = n(),
-              correct_generation_pct = sum(Revision) / n())
+              correct_generation_pct = sum(Revision) / n(),
+              correct_generation_sem = sqrt((correct_generation_pct * (1 - correct_generation_pct)) / subjects))
+  generation_free_response_summary$Condition = factor(generation_free_response_summary$Condition,
+                                                      levels = c("Explain", "Describe"))
   return(generation_free_response_summary)
 }
 
@@ -237,6 +244,8 @@ get_evaluation_summary = function(evaluation_data) {
               ci_upper = mean_rating + se_rating)
 
   eval_summary = rbind(eval_summary_target_rule, eval_summary_distractor_rule, eval_summary_other_rules)
+  eval_summary$ruleset = factor(eval_summary$ruleset, levels = c("Target", "Distractor", "All other rules"))
+  eval_summary$Condition = factor(eval_summary$Condition, levels = c("Explain", "Describe"))
   return(eval_summary)
 }
 
@@ -427,7 +436,6 @@ plot_generation_judgments = function(generation_judgment_summary) {
     geom_hline(yintercept = 0.5, linetype = "dashed", size = 1) +
     # labs(x = "", y = "Mean classification accuracy") +
     labs(x = "", y = "Percent Correct") +
-    # ggtitle("Accuracy on generation judgment task") +
     ggtitle("Classification Accuracy") +
     ylim(c(0, 1)) +
     scale_color_viridis(discrete = T,
@@ -452,9 +460,11 @@ plot_generation_free_responses = function(generation_free_resp_summary) {
     ggplot(aes(x = Condition, y = correct_generation_pct,
                color = Condition, fill = Condition)) +
     geom_bar(stat = "identity", width = 0.5, alpha = 0.5) +
+    geom_errorbar(aes(ymin = correct_generation_pct - correct_generation_sem,
+                      ymax = correct_generation_pct + correct_generation_sem),
+                  width = 0.25) +
     labs(x = "", y = "Percent Correct") +
     ggtitle("Free Response Accuracy") +
-    # ggtitle("Rule generation across conditions") +
     ylim(c(0, 1)) +
     scale_color_viridis(discrete = T,
                         name = element_blank(),
@@ -797,7 +807,7 @@ t_subset_dist = t.test(
 )
 report_t_summary(t_subset_dist)
 
-# 4.3 Comparison of distractor rule and target rule across conditions (this matches 3.2 above)
+# 4.4 Comparison of distractor rule and target rule across conditions (this matches 3.2 above)
 t_subset_target_dist_exp = t.test(
   subset_participants$input_rule_rating[subset_participants$Condition == "Explain"
                                         & subset_participants$rule_text == "If a lure combination has a yellow shape or a diamond on the bottom, it will catch fish."],
@@ -833,6 +843,65 @@ summary(interaction_test)
 unique(subset_participants_distractor_target$subjID)
 
 
+# DATA ANALYSIS: EVALUATION MIXED EFFECTS ======================================
+
+# glimpse(evaluation_data)
+# unique(evaluation_data$rule_text)
+evaluation_rule_abbrev = c(
+  "If a lure combination has a red shape or a blue shape, it will catch fish." = "misc1",
+  "If a lure combination has a diamond, it will catch fish." = "misc2",
+  "If a lure combination has a pointy shape on the bottom, it will catch fish." = "target",
+  "There is no pattern to which lure combinations catch fish: the results are random, but there are approximately equal numbers that catch fish and don’t." = "random",
+  "If a lure combination has a yellow shape or a diamond on the bottom, it will catch fish." = "distractor",
+  "If a lure combination has a purple dot on at least one of the lures, it will catch fish." = "misc3"
+)
+
+evaluation_rule_abbrev_coarse = c(
+  "If a lure combination has a red shape or a blue shape, it will catch fish." = "other",
+  "If a lure combination has a diamond, it will catch fish." = "other",
+  "If a lure combination has a pointy shape on the bottom, it will catch fish." = "target",
+  "There is no pattern to which lure combinations catch fish: the results are random, but there are approximately equal numbers that catch fish and don’t." = "other",
+  "If a lure combination has a yellow shape or a diamond on the bottom, it will catch fish." = "distractor",
+  "If a lure combination has a purple dot on at least one of the lures, it will catch fish." = "other"
+)
+
+evaluation_data = evaluation_data %>%
+  mutate(rule_text_abbrev = as.factor(evaluation_rule_abbrev[rule_text]),
+         rule_text_abbrev_coarse = as.factor(evaluation_rule_abbrev_coarse[rule_text]))
+# glimpse(evaluation_data)
+
+# Basic model comparison: does condition matter across all evals?
+m0 = lmer(formula = input_rule_rating ~ rule_text_abbrev + (1 | subjID),
+          data = evaluation_data,
+          REML = F)
+m1 = lmer(formula = input_rule_rating ~ rule_text_abbrev + Condition + (1 | subjID),
+          data = evaluation_data,
+          REML = F)
+anova(m1, m0)
+
+
+# m0 = lmer(formula = input_rule_rating ~ (1 | subjID),
+#           data = evaluation_data)
+# m1 = lmer(formula = input_rule_rating ~ Condition + (1 | subjID),
+#           data = evaluation_data)
+# anova(m1, m0)
+# m0 = lmer(formula = input_rule_rating ~ rule_text_abbrev_coarse + (1 | subjID),
+#           data = evaluation_data)
+# m1 = lmer(formula = input_rule_rating ~ rule_text_abbrev_coarse * Condition + (1 | subjID),
+#           data = evaluation_data)
+# anova(m1, m0)
+
+
+
+# Pairwise: difference between conditions for target and distractor
+emmeans(m1, specs = pairwise ~ rule_text_abbrev + Condition)
+# No main effects of condition for target
+# contrast                                 estimate    SE  df t.ratio p.value
+# target Describe - target Explain            0.116 0.199  88   0.583 1.0000
+
+
+
+
 
 
 
@@ -853,7 +922,8 @@ report_t_summary(t_mem_chance_desc)
 
 
 # 2. Memory accuracy across conditions
-mem = plot_memory_data(memory_summary) # This plot is combined with time on task plots further down
+memory_summary$Condition = factor(memory_summary$Condition, levels = c("Explain", "Describe"))
+mem_plot = plot_memory_data(memory_summary) # This plot is combined with time on task plots further down
 
 t_mem = t.test(memory_subject_summary$subj_accuracy[memory_subject_summary$Condition == "Describe"],
                memory_subject_summary$subj_accuracy[memory_subject_summary$Condition == "Explain"],
@@ -880,7 +950,7 @@ report_t_summary(t_mem_correct)
 # NB: this mirrors generation analysis above with all participants
 
 # Looking at individual subjects
-mem + geom_jitter(data = memory_subject_summary,
+mem_plot + geom_jitter(data = memory_subject_summary,
                   aes(x = Condition, y = subj_accuracy),
                   width = 0.1, height = 0.01, alpha = 0.75, size = 2)
 
@@ -944,6 +1014,7 @@ chisq.test(count_data_split) # NB: this is equivalent to prop.test(count_data)
 
 # 1. Overall time on task across conditions
 # This plot is combined with memory and other time on task plots further down
+completion_time_summary$Condition = factor(completion_time_summary$Condition, levels = c("Explain", "Describe"))
 time_on_task = plot_time_data(completion_time_summary, ylab = "Seconds", ymax = 1000, title = "Mean time on experiment")
 
 t_time = t.test(summary_data$experiment_completion_time[summary_data$Condition == "Describe"],
@@ -960,6 +1031,7 @@ table(trial_time_subject_summary$Round1[is.na(trial_time_subject_summary$mean_tr
 table(trial_time_subject_summary$Condition[is.na(trial_time_subject_summary$mean_trial_completion)])
 
 # This plot combined with earlier memory and time on task plots further down
+trial_time_summary$Condition = factor(trial_time_summary$Condition, levels = c("Explain", "Describe"))
 time_on_trials = plot_time_data(trial_time_summary, ylab = "Seconds", ymax = 80, title = "Mean time on trials")
 
 t_trials = t.test(trial_time_subject_summary$mean_trial_completion[trial_time_subject_summary$Condition == "Describe" &
@@ -971,7 +1043,7 @@ report_t_summary(t_trials) # Means are seconds on trials
 
 # Plot graphs from 1. and 2. above side by side with patchwork
 # time_on_task + time_on_trials
-mem + time_on_task + time_on_trials +
+mem_plot + time_on_task + time_on_trials +
   plot_annotation(tag_levels = 'A') &
   theme(plot.tag = element_text(size = 20, face = "bold"))
 
@@ -1014,6 +1086,8 @@ report_t_summary(t_trial_time_correct) # Means are seconds on trials
 # CONTENT ANALYSIS: EXPLANATIONS / DESCRIPTIONS ==============================
 
 # Plot results
+explanation_coded_summary$Condition = factor(explanation_coded_summary$Condition,
+                                             levels = c("Explain", "Describe"))
 plot_coded_explanation_data(explanation_coded_summary)
 
 # Check mechanism effect: were explainers more likely to provide a mechanistic account?
@@ -1033,7 +1107,7 @@ anova_abstract = aov(data = abstract_data, subject_total ~ Condition + measure)
 summary(anova_abstract)
 
 # Do concrete feature references show a main effect of condition?
-# i.e. do control pariticipants make more concrete references?
+# i.e. do control participants make more concrete references?
 concrete_data = explanation_coded_summary_subjects %>%
   filter(measure %in% c("shape_concrete_total", "color_concrete_total", "purple_dot_concrete_total"))
 anova_concrete = aov(data = concrete_data, subject_total ~ Condition + measure)
@@ -1086,6 +1160,57 @@ t_dot_conc = t.test(explanation_coded_summary_subjects$subject_total[explanation
                       var.equal = T)
 report_t_summary(t_dot_conc) # Means are avg. number of references
 
+
+
+# CONTENT ANALYSIS: EXPLANATIONS / DESCRIPTIOSN MIXED EFFECTS ==================
+
+
+# Make data long form
+explanation_coded_long = explanation_coded_data %>%
+  gather(measure, references, `FINAL - total mechanisms`:`FINAL - concrete purple dot references`)
+explanation_coded_long$measure = factor(explanation_coded_long$measure)
+explanation_coded_long$Condition = factor(explanation_coded_long$Condition,
+                                          levels = c("Explain", "Describe"))
+
+
+
+# NB: each of these takes 90-120s to fit
+m0 = lmer(formula = references ~ measure + (1 + measure | Subject), # measure effect varies across subjects
+          data = explanation_coded_long, REML = F)
+m1 = lmer(formula = references ~ measure * Condition + (1 + measure | Subject),
+          data = explanation_coded_long, REML = F)
+
+
+# NB: the models above may fail to converge (singular). The below do converge
+# and produce nearly identical results in emmeans
+# m0 = lmer(formula = references ~ measure + (1 | Subject), # measure effect varies across subjects
+#           data = explanation_coded_long, REML = F)
+# m1 = lmer(formula = references ~ measure * Condition + (1 | Subject),
+#           data = explanation_coded_long, REML = F)
+
+# Effect of including the condition interaction
+anova(m1, m0)
+# X^2(10) = 114.8, p < 0.001
+
+
+# 2. Pairwise: emmeans comparisons of abstract v. concrete references in each condition
+emmeans(m1, specs = pairwise ~ measure * Condition)
+
+# $contrasts
+#  contrast                                                                                              estimate     SE  df z.ratio p.value
+#  (FINAL - abstract color references Explain) - (FINAL - abstract color references Describe)             0.05882 0.0348 Inf   1.690 0.9806
+#  (FINAL - abstract purple dot references Explain) - (FINAL - abstract purple dot references Describe)   0.01492 0.0342 Inf   0.436 1.0000
+
+#  (FINAL - abstract shape references Explain) - (FINAL - abstract shape references Describe)             0.39223 0.0728 Inf   5.390 <.0001
+#  (FINAL - concrete color references Explain) - (FINAL - concrete color references Describe)            -1.18099 0.1431 Inf  -8.255 <.0001
+#  (FINAL - concrete purple dot references Explain) - (FINAL - concrete purple dot references Describe)  -0.64286 0.0767 Inf  -8.381 <.0001
+#  (FINAL - concrete shape references Explain) - (FINAL - concrete shape references Describe)            -1.54811 0.1051 Inf -14.723 <.0001
+#  (FINAL - total color references Explain) - (FINAL - total color references Describe)                  -1.12216 0.1452 Inf  -7.731 <.0001
+
+#  (FINAL - total mechanisms Explain) - (FINAL - total mechanisms Describe)                               0.45410 0.0854 Inf   5.316 <.0001
+
+#  (FINAL - total purple dot references Explain) - (FINAL - total purple dot references Describe)        -0.62794 0.0807 Inf  -7.778 <.0001
+#  (FINAL - total shape references Explain) - (FINAL - total shape references Describe)                  -1.15588 0.1077 Inf -10.735 <.0001
 
 
 
