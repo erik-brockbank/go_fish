@@ -155,6 +155,7 @@ e1_trial_accuracy = prediction_summary %>%
 e1_condition_accuracy + e1_trial_accuracy
 
 
+
 # Model
 m0_pred = with(trial_data,
                glmer(as.numeric(input_correct) ~ (1|trial_index) + (1|subjID),
@@ -167,6 +168,8 @@ anova(m1_pred, m0_pred, family = 'LRT')
 emmeans(m1_pred, pairwise ~ Condition) # NB: these emmeans are logit differences
 
 # TODO can we get an estimated slope on input_correct ~ trial_index? Or trial_index * Condition interaction
+
+
 
 
 
@@ -286,5 +289,16 @@ m1_pred = with(trial_data,
 
 anova(m1_pred, m0_pred, family = 'LRT')
 emmeans(m1_pred, pairwise ~ Condition) # NB: these emmeans are logit differences
+
+
+
+
+
+
+
+
+
+
+
 
 

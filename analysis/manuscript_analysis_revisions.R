@@ -365,7 +365,6 @@ plot_generation_judgments = function(generation_judgment_summary) {
     geom_bar(stat = "identity", alpha = 0.5, width = 0.5) +
     geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper), width = 0.25) +
     geom_hline(yintercept = 0.5, linetype = "dashed", size = 1) +
-    # labs(x = "", y = "Mean classification accuracy") +
     labs(x = "", y = "") + # NB: no y label here because we combine plots
     ggtitle("Classification Accuracy") +
     ylim(c(0, 1)) +
@@ -904,7 +903,7 @@ summary(interaction_test)
 
 # Figures
 memory_summary$Condition = factor(memory_summary$Condition, levels = c("Explain", "Describe"))
-mem_plot = plot_memory_data(memory_summary) # This plot is combined with time on task plots further down
+mem_plot = plot_memory_data(memory_summary)
 mem_plot
 
 
